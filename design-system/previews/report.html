@@ -1,11 +1,11 @@
-<!-- @dsCard name="Brand & wordmark" group="Brand" subtitle="Wordmark, mark, tagline, voice snapshot" width="880" height="720" -->
+<!-- @dsCard name="Report document" group="Patterns" subtitle="Cover + body page anatomy, numbered headings, callout, figure" width="880" height="980" -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>ACME DLS — Brand</title>
+<title>ACME DLS — Report document</title>
 <style>
 /* ==========================================================================
    ACME Corp Design Language — acme.css  (v1.0.0)
@@ -850,43 +850,73 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 body { padding: var(--acme-space-6); }
 .spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
 .spec:first-child { margin-block-start: 0; }
-.row { display: flex; flex-wrap: wrap; gap: var(--acme-space-4); align-items: center; }
-.dark-strip { padding: var(--acme-space-5); border-radius: var(--acme-radius-lg); background: var(--acme-gray-900); }
-.dark-strip .acme-wordmark { color: var(--acme-gray-0); }
-.voice { border-collapse: collapse; font-size: var(--acme-text-sm); inline-size: 100%; max-inline-size: 40rem; }
-.voice td { padding: var(--acme-space-2) var(--acme-space-3); border-block-end: 1px solid var(--acme-color-border); vertical-align: top; }
-.voice .no { color: var(--acme-color-text-subtle); text-decoration: line-through; }
+.pages { display: flex; flex-wrap: wrap; gap: var(--acme-space-5); }
+/* Page thumbnails: design at 160% width, scale to 62.5% — real proportions */
+.sheet { flex: 1 1 20rem; max-inline-size: 25rem; aspect-ratio: 8.5 / 11; overflow: hidden; border: 1px solid var(--acme-color-border); border-radius: var(--acme-radius-sm); background: var(--acme-color-surface-raised); box-shadow: var(--acme-shadow-sm); }
+.sheet__page { inline-size: 160%; block-size: 160%; transform: scale(0.625); transform-origin: 0 0; padding: var(--acme-space-12); display: flex; flex-direction: column; }
+.sheet__page > .acme-doc-footer { margin-block-start: auto; }
+.mini-chart { display: flex; align-items: flex-end; gap: var(--acme-space-2); block-size: 7rem; border-block-end: 1px solid var(--acme-color-border-strong); }
+.mini-chart i { flex: 1; background: var(--acme-color-data); border-radius: 4px 4px 0 0; }
+.mini-chart i.hl { background: var(--acme-color-data-highlight); }
 </style>
 </head>
 <body>
-  <p class="spec">Wordmark — .acme-wordmark (Archivo 800, uppercase, +12% tracking)</p>
-  <div class="row">
-    <a class="acme-wordmark" style="font-size: var(--acme-text-3xl);" href="#">
-      <span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</a>
-    <a class="acme-wordmark" href="#">
-      <span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</a>
+  <p class="spec">Page anatomy — cover and body page (thumbnails at 62.5%)</p>
+  <div class="pages">
+
+    <div class="sheet" aria-label="Report cover page">
+      <div class="sheet__page">
+        <span class="acme-wordmark"><span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</span>
+        <div style="margin-block-start: auto;">
+          <p class="acme-doc-kicker">Quarterly report</p>
+          <hr class="acme-doc-rule">
+          <h1 style="margin-block-end: var(--acme-space-3);">Q2 2026 operations report</h1>
+          <p class="acme-doc-meta">Logistics division · W. E. Coyote, R. Runner<br>Jul 16, 2026 · Internal</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet" aria-label="Report body page">
+      <div class="sheet__page">
+        <div class="acme-doc" style="counter-reset: doc-h2 2 doc-fig 2;">
+          <h2>Freight performance</h2>
+          <p style="font-size: var(--acme-text-sm);">Instant freight launched May 4 across all 14 warehouses.
+          Median dispatch time fell from 46 minutes to 8, and June order
+          volume reached its highest level since 1949.</p>
+          <div class="acme-callout">
+            <p class="acme-callout__label">Key finding</p>
+            <p style="font-size: var(--acme-text-sm);">Orders rose 12% in the first full month after launch,
+            with no increase in delivery incidents.</p>
+          </div>
+          <figure class="acme-figure">
+            <div class="mini-chart" role="img" aria-label="Bar chart of monthly orders, February to June; June highlighted.">
+              <i style="block-size: 46%"></i><i style="block-size: 52%"></i><i style="block-size: 49%"></i><i style="block-size: 62%"></i><i class="hl" style="block-size: 78%"></i>
+            </div>
+            <figcaption>Orders rose 12% after instant freight launched.</figcaption>
+          </figure>
+        </div>
+        <div class="acme-doc-footer">
+          <span>Q2 2026 operations report</span>
+          <span>4</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <p class="spec">On dark — text goes white, the mark stays ACME Red</p>
-  <div class="dark-strip">
-    <a class="acme-wordmark" style="font-size: var(--acme-text-xl);" href="#">
-      <span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</a>
+  <p class="spec">Body styles at actual size — numbered headings, callout, red in 3 places only</p>
+  <div class="acme-doc">
+    <h2 style="margin-block-start: 0;">Incident review</h2>
+    <p>Two delivery incidents were recorded in Q2, both involving the same
+    customer and a canyon. Neither was attributable to product failure;
+    see Figure 1 for the full timeline.</p>
+    <h3>Root cause</h3>
+    <p>Gravity. Recommended mitigation is bundled insurance at checkout.</p>
+    <div class="acme-callout">
+      <p class="acme-callout__label">Recommendation</p>
+      <p>Bundle "insurance against gravity" with all rocket-powered SKUs
+      from Aug 1. Projected incident cost reduction: 84%.</p>
+    </div>
   </div>
-
-  <p class="spec">Mark alone — favicon / avatar, 24 px minimum</p>
-  <div class="row">
-    <span class="acme-wordmark" style="font-size: 25px;"><span class="acme-wordmark__mark">A</span></span>
-    <span class="acme-wordmark" style="font-size: 15px;"><span class="acme-wordmark__mark">A</span></span>
-  </div>
-
-  <p class="spec">Tagline</p>
-  <h1 style="max-inline-size: 14ch;">Everything you need. Instantly.</h1>
-
-  <p class="spec">Voice — plainspoken, confident, dry</p>
-  <table class="voice">
-    <tr><td>Ships today.</td><td class="no">Blazingly fast logistics solutions!</td></tr>
-    <tr><td>Card declined. Try another card or contact your bank.</td><td class="no">Oops! Something went wrong 😢</td></tr>
-    <tr><td>Delete 12 products</td><td class="no">OK</td></tr>
-  </table>
 </body>
 </html>

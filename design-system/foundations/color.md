@@ -35,6 +35,7 @@ Full values live in [tokens/tokens.json](../tokens/tokens.json) and
 | `--acme-color-focus` | blue-500 | blue-400 | Focus ring only |
 | `--acme-color-success/warning/danger/info` | see tokens | see tokens | Status text & icons |
 | `--acme-color-danger-emphasis` | red-700 | red-500 | Danger button fills (always AA under white text) |
+| `--acme-color-data` / `-data-highlight` | blue-600 / red-600 | blue-400 / red-500 | Chart marks: Blueprint carries data, red marks the one takeaway |
 | `--acme-color-*-soft` / `-soft-text` | tinted pairs | mixed on surface | Badges, alerts |
 
 ## Rules
@@ -68,6 +69,10 @@ All combinations below are measured, not aspirational. AA normal text needs
 | Dark: muted (gray-400) on canvas / surface | 7.4 / 6.8:1 |
 | Dark: white on primary (red-500) | 4.9:1 |
 | Dark: link (red-300) on canvas | 8.5:1 |
+
+The chart pair (`data`/`data-highlight`) is additionally validated for
+color-vision deficiency: worst-case adjacent ΔE 92.3 (light) / 67.2 (dark)
+against a ≥ 12 target, and both marks hold ≥ 3:1 against their surface.
 
 ## Theming
 

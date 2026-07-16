@@ -143,6 +143,10 @@
   --acme-color-info: var(--acme-blue-600);
   --acme-color-info-soft: var(--acme-blue-50);
   --acme-color-info-soft-text: var(--acme-blue-700);
+  /* Chart marks: Blueprint carries data, red marks the single takeaway.
+     Pair is CVD-validated per surface — change only in step. */
+  --acme-color-data: var(--acme-blue-600);
+  --acme-color-data-highlight: var(--acme-red-600);
 
   accent-color: var(--acme-color-primary);
 }
@@ -178,6 +182,8 @@
     --acme-color-info: var(--acme-blue-400);
     --acme-color-info-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
     --acme-color-info-soft-text: var(--acme-blue-300);
+    --acme-color-data: var(--acme-blue-400);
+    --acme-color-data-highlight: var(--acme-red-500);
     --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
     --acme-shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.5);
     --acme-shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.6);
@@ -211,6 +217,8 @@
   --acme-color-info: var(--acme-blue-400);
   --acme-color-info-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
   --acme-color-info-soft-text: var(--acme-blue-300);
+  --acme-color-data: var(--acme-blue-400);
+  --acme-color-data-highlight: var(--acme-red-500);
   --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
   --acme-shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.5);
   --acme-shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.6);
@@ -224,6 +232,8 @@
 /* --------------------------------------------------------------------------
    2. Base
    -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: var(--acme-font-sans);
@@ -609,4 +619,220 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   justify-content: flex-end;
   gap: var(--acme-space-2);
   padding: var(--acme-space-4) var(--acme-space-6) var(--acme-space-6);
+}
+
+/* --------------------------------------------------------------------------
+   13. Presentation slides
+   Slide type is sized in cqi so a slide renders correctly at any width
+   (thumbnail, editor, projector). cqi on the container itself would resolve
+   against an ancestor, so the padding lives on a required inner __frame.
+   -------------------------------------------------------------------------- */
+.acme-slide {
+  container-type: inline-size;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  overflow: hidden;
+  background: var(--acme-color-canvas);
+  color: var(--acme-color-text);
+}
+.acme-slide__frame {
+  flex: 1;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 5cqi 6cqi;
+}
+.acme-slide .acme-wordmark { font-size: 2cqi; }
+.acme-slide__kicker {
+  font: 700 1.8cqi/1.2 var(--acme-font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--acme-color-primary);
+  margin: 0 0 1.5cqi;
+}
+.acme-slide__title {
+  font: 700 4cqi/1.15 var(--acme-font-display);
+  letter-spacing: -0.02em;
+  margin: 0 0 2cqi;
+}
+.acme-slide--hero .acme-slide__title { font-size: 6cqi; margin-block-end: 1cqi; }
+.acme-slide__meta {
+  font-size: 1.8cqi;
+  color: var(--acme-color-text-muted);
+  margin: 0;
+}
+.acme-slide__body {
+  font-size: 2.2cqi;
+  line-height: var(--acme-leading-normal);
+  color: var(--acme-color-text-muted);
+  max-inline-size: 66cqi;
+  margin: 0;
+}
+.acme-slide__bullets {
+  margin: 0;
+  padding-inline-start: 2.5cqi;
+  display: grid;
+  gap: 1.5cqi;
+  font-size: 2.2cqi;
+  line-height: var(--acme-leading-snug);
+  max-inline-size: 66cqi;
+}
+.acme-slide__bullets li::marker { color: var(--acme-color-primary); }
+.acme-slide__footer {
+  margin-block-start: auto;
+  padding-block-start: 2cqi;
+  display: flex;
+  align-items: center;
+  gap: 2cqi;
+  font-size: 1.4cqi;
+  color: var(--acme-color-text-subtle);
+}
+.acme-slide__footer .acme-wordmark { font-size: 1.4cqi; }
+.acme-slide__footer-num { margin-inline-start: auto; font-variant-numeric: tabular-nums; }
+
+/* Dark bookends (title & closing) keep Graphite regardless of theme */
+.acme-slide--dark {
+  background: var(--acme-gray-950);
+  color: var(--acme-gray-100);
+}
+.acme-slide--dark :is(.acme-slide__meta, .acme-slide__body) { color: var(--acme-gray-400); }
+.acme-slide--dark .acme-slide__footer { color: var(--acme-gray-500); }
+.acme-slide--dark .acme-wordmark { color: var(--acme-gray-0); }
+
+/* Section divider — the one sanctioned full-bleed red moment */
+.acme-slide--section {
+  background: var(--acme-red-600);
+  color: var(--acme-gray-0);
+}
+.acme-slide--section .acme-slide__kicker { color: var(--acme-red-200); }
+.acme-slide--section .acme-slide__num {
+  font: 800 12cqi/1 var(--acme-font-display);
+  font-style: italic;
+  color: var(--acme-red-300);
+  margin: 0 0 1cqi;
+}
+.acme-slide--section .acme-slide__title { margin: 0; }
+
+/* Data slide chart — Blueprint carries data, red marks the single takeaway */
+.acme-slide__chart {
+  flex: 1;
+  min-block-size: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 1.5cqi;
+  border-block-end: 1px solid var(--acme-color-border-strong);
+}
+.acme-slide__col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.8cqi;
+}
+.acme-slide__bar {
+  inline-size: 68%;
+  background: var(--acme-color-data);
+  border-radius: min(4px, 0.4cqi) min(4px, 0.4cqi) 0 0;
+}
+.acme-slide__bar--highlight { background: var(--acme-color-data-highlight); }
+.acme-slide__bar-label {
+  font: 600 1.6cqi/1 var(--acme-font-sans);
+  font-variant-numeric: tabular-nums;
+}
+.acme-slide__ticks {
+  display: flex;
+  gap: 1.5cqi;
+  padding-block-start: 0.8cqi;
+  font-size: 1.4cqi;
+  color: var(--acme-color-text-subtle);
+}
+.acme-slide__ticks span { flex: 1; text-align: center; }
+
+/* --------------------------------------------------------------------------
+   14. Report document
+   Long-form editorial styles. Red appears in exactly three places: the cover
+   rule, heading numerals, and the key-finding callout accent.
+   -------------------------------------------------------------------------- */
+.acme-doc {
+  max-inline-size: 65ch;
+  font-size: var(--acme-text-md);
+  line-height: var(--acme-leading-relaxed);
+  counter-reset: doc-h2 doc-fig;
+}
+.acme-doc h2 {
+  counter-increment: doc-h2;
+  counter-reset: doc-h3;
+  margin-block: var(--acme-space-8) var(--acme-space-3);
+}
+.acme-doc h3 {
+  counter-increment: doc-h3;
+  margin-block: var(--acme-space-6) var(--acme-space-2);
+}
+.acme-doc h2::before { content: counter(doc-h2) ".\2002"; color: var(--acme-color-primary); }
+.acme-doc h3::before { content: counter(doc-h2) "." counter(doc-h3) "\2002"; color: var(--acme-color-primary); }
+
+.acme-doc-kicker {
+  font: 700 var(--acme-text-xs)/1.2 var(--acme-font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--acme-color-primary);
+  margin: 0 0 var(--acme-space-2);
+}
+.acme-doc-rule {
+  inline-size: var(--acme-space-16);
+  block-size: 4px;
+  border: none;
+  border-radius: 2px;
+  background: var(--acme-red-600);
+  margin: var(--acme-space-4) 0;
+}
+.acme-doc-meta {
+  font-size: var(--acme-text-sm);
+  color: var(--acme-color-text-muted);
+  margin: 0;
+}
+
+.acme-callout {
+  border-inline-start: 3px solid var(--acme-color-primary);
+  border-radius: var(--acme-radius-md);
+  background: var(--acme-color-surface);
+  padding: var(--acme-space-4) var(--acme-space-5);
+  margin: var(--acme-space-6) 0;
+}
+.acme-callout__label {
+  font: 700 var(--acme-text-xs)/1.2 var(--acme-font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--acme-color-primary);
+  margin: 0 0 var(--acme-space-1);
+}
+.acme-callout p:last-child { margin: 0; }
+
+.acme-figure { margin: var(--acme-space-6) 0; }
+.acme-figure figcaption {
+  font-size: var(--acme-text-xs);
+  color: var(--acme-color-text-muted);
+  margin-block-start: var(--acme-space-2);
+}
+.acme-figure figcaption::before {
+  counter-increment: doc-fig;
+  content: "Figure " counter(doc-fig) " — ";
+  font-weight: 600;
+}
+
+.acme-doc-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--acme-space-4);
+  border-block-start: 1px solid var(--acme-color-border);
+  padding-block-start: var(--acme-space-2);
+  font-size: var(--acme-text-xs);
+  color: var(--acme-color-text-subtle);
+}
+
+@media print {
+  * { box-shadow: none !important; }
+  .acme-figure, .acme-callout, .acme-card, table { break-inside: avoid; }
+  .acme-doc { max-inline-size: none; }
 }

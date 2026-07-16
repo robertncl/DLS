@@ -10,6 +10,8 @@ Everything lives in [design-system/](design-system/):
 - **Tokens** — [tokens.json](design-system/tokens/tokens.json) (DTCG) and
   [acme.css](design-system/tokens/acme.css) (custom properties + component styles)
 - **Components** — button, forms, card, badge, alert, table, navigation, modal
+- **Patterns** — presentation deck (16:9 slide masters) and report document
+  (long-form editorial styles)
 - **Previews** — self-contained HTML pages with `@dsCard` markers, one card
   per foundation/component, light + dark
 
