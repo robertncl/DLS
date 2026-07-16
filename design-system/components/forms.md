@@ -23,8 +23,11 @@ Classes: `.acme-field`, `.acme-label`, `.acme-input`, `.acme-help`,
 
 ## Text inputs & selects
 
-- 40 px min height, `--acme-radius-md`, `--acme-color-border-strong` border on
-  `--acme-color-surface-raised`.
+- 40 px min height, `--acme-radius-md` (12 px), `--acme-color-border-strong`
+  border on `--acme-color-surface-raised`.
+- **Fields are opaque by design** — what the user types is content, and
+  content is never read through glass (see
+  [materials.md](../foundations/materials.md)).
 - `<select>` and `<textarea>` share `.acme-input`.
 
 ## Validation

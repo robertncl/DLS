@@ -1,11 +1,11 @@
-<!-- @dsCard name="Spacing, shape & elevation" group="Foundations" subtitle="4px grid, radius scale, 3 shadow levels" width="880" height="720" -->
+<!-- @dsCard name="Materials — ACME Glass" group="Foundations" subtitle="Glass + glass-strong, specular edge, contrast floors" width="880" height="780" -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>ACME DLS — Spacing, shape &amp; elevation</title>
+<title>ACME DLS — Materials</title>
 <style>
 /* ==========================================================================
    ACME Corp Design Language — acme.css  (v1.0.0)
@@ -943,42 +943,67 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 }
 </style>
 <style>
-body { padding: var(--acme-space-6); }
+body {
+  padding: var(--acme-space-6);
+  min-block-size: 100vh;
+  background:
+    radial-gradient(50rem 30rem at 85% -10%, color-mix(in srgb, var(--acme-blue-500) 32%, transparent), transparent 65%),
+    radial-gradient(40rem 26rem at -10% 45%, color-mix(in srgb, var(--acme-red-500) 26%, transparent), transparent 65%),
+    var(--acme-color-canvas);
+}
 .spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
 .spec:first-child { margin-block-start: 0; }
-.bar-row { display: grid; grid-template-columns: 7rem 1fr; gap: var(--acme-space-2); align-items: center; margin-block-end: var(--acme-space-1); font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-muted); }
-.bar { block-size: 1rem; background: var(--acme-red-600); border-radius: 2px; }
-.row { display: flex; flex-wrap: wrap; gap: var(--acme-space-5); align-items: flex-end; }
-.shape { inline-size: 5.5rem; block-size: 4rem; background: var(--acme-color-surface); border: 1px solid var(--acme-color-border-strong); display: grid; place-items: center; font: 500 var(--acme-text-xs)/1 var(--acme-font-mono); color: var(--acme-color-text-muted); }
-.elev { inline-size: 9rem; block-size: 5.5rem; background: var(--acme-color-surface-raised); border: 1px solid var(--acme-color-border); border-radius: var(--acme-radius-lg); display: grid; place-items: center; font: 500 var(--acme-text-xs)/1 var(--acme-font-mono); color: var(--acme-color-text-muted); }
+.row { display: flex; flex-wrap: wrap; gap: var(--acme-space-5); align-items: stretch; }
+.panel { flex: 1 1 18rem; border-radius: var(--acme-radius-lg); padding: var(--acme-space-5); }
+.panel h3 { margin-block-end: var(--acme-space-1); }
+.panel p { font-size: var(--acme-text-sm); margin: 0; }
+.stress {
+  border-radius: var(--acme-radius-lg);
+  background: linear-gradient(90deg, #000 0%, #000 38%, #fff 62%, #fff 100%);
+  padding: var(--acme-space-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--acme-space-4);
+}
+.stress .panel { padding: var(--acme-space-4) var(--acme-space-5); }
 </style>
 </head>
 <body>
-  <p class="spec">Spacing — 4 px grid, tokens only</p>
-  <div class="bar-row"><span>space-1 · 4</span><div class="bar" style="inline-size: var(--acme-space-1)"></div></div>
-  <div class="bar-row"><span>space-2 · 8</span><div class="bar" style="inline-size: var(--acme-space-2)"></div></div>
-  <div class="bar-row"><span>space-3 · 12</span><div class="bar" style="inline-size: var(--acme-space-3)"></div></div>
-  <div class="bar-row"><span>space-4 · 16</span><div class="bar" style="inline-size: var(--acme-space-4)"></div></div>
-  <div class="bar-row"><span>space-5 · 20</span><div class="bar" style="inline-size: var(--acme-space-5)"></div></div>
-  <div class="bar-row"><span>space-6 · 24</span><div class="bar" style="inline-size: var(--acme-space-6)"></div></div>
-  <div class="bar-row"><span>space-8 · 32</span><div class="bar" style="inline-size: var(--acme-space-8)"></div></div>
-  <div class="bar-row"><span>space-12 · 48</span><div class="bar" style="inline-size: var(--acme-space-12)"></div></div>
-  <div class="bar-row"><span>space-16 · 64</span><div class="bar" style="inline-size: var(--acme-space-16)"></div></div>
-
-  <p class="spec">Radius — containers nest downward: modal 28 › card 20 › field 12 › checkbox 6 · controls are capsules</p>
+  <p class="spec">Two materials — regular hosts controls &amp; primary-text labels; body/muted text sits on strong</p>
   <div class="row">
-    <div class="shape" style="border-radius: var(--acme-radius-sm)">sm 6</div>
-    <div class="shape" style="border-radius: var(--acme-radius-md)">md 12</div>
-    <div class="shape" style="border-radius: var(--acme-radius-lg)">lg 20</div>
-    <div class="shape" style="border-radius: var(--acme-radius-xl)">xl 28</div>
-    <div class="shape" style="border-radius: var(--acme-radius-full); inline-size: 4rem; block-size: 4rem;">full</div>
+    <div class="panel acme-glass">
+      <h3>Glass</h3>
+      <p style="color: var(--acme-color-text);">Controls and labels only. White 62% / Graphite 70%, blur 24, saturate 160%, specular edge.</p>
+    </div>
+    <div class="panel acme-glass acme-glass--strong">
+      <h3>Glass strong</h3>
+      <p style="color: var(--acme-color-text-muted);">May host muted text like this. White 85% / Graphite 90% — the floors that keep AA over any backdrop.</p>
+    </div>
   </div>
 
-  <p class="spec">Elevation — altitude, not decoration</p>
-  <div class="row">
-    <div class="elev" style="box-shadow: var(--acme-shadow-sm)">sm · resting</div>
-    <div class="elev" style="box-shadow: var(--acme-shadow-md)">md · raised</div>
-    <div class="elev" style="box-shadow: var(--acme-shadow-lg)">lg · floating</div>
+  <p class="spec">Glass controls over the ambient backdrop — capsules, press scales to 0.97</p>
+  <div class="row" style="align-items: center; gap: var(--acme-space-3);">
+    <button class="acme-btn acme-btn--primary">Add to order</button>
+    <button class="acme-btn acme-btn--secondary">Save draft</button>
+    <button class="acme-btn acme-btn--ghost">Cancel</button>
+    <div class="acme-tabs" role="tablist" aria-label="Demo segments">
+      <button class="acme-tab" role="tab" aria-selected="true">Overview</button>
+      <button class="acme-tab" role="tab" aria-selected="false" tabindex="-1">Specs</button>
+      <button class="acme-tab" role="tab" aria-selected="false" tabindex="-1">Reviews</button>
+    </div>
   </div>
+
+  <p class="spec">Worst-case stress — the tints hold AA even over pure black and pure white</p>
+  <div class="stress">
+    <div class="panel acme-glass" style="flex: 1 1 14rem;">
+      <p style="color: var(--acme-color-text); font-weight: 600;">Primary text on glass</p>
+    </div>
+    <div class="panel acme-glass acme-glass--strong" style="flex: 1 1 14rem;">
+      <p style="color: var(--acme-color-text-muted);">Muted text on glass-strong</p>
+    </div>
+  </div>
+
+  <p class="spec">Always opaque — primary/danger fills, selected chips, fields, status, print · falls back to
+  opaque surfaces without backdrop-filter or under prefers-reduced-transparency</p>
 </body>
 </html>

@@ -5,9 +5,11 @@ Classes: `.acme-topbar`, `.acme-tabs`, `.acme-breadcrumbs` · Preview:
 
 ## Top bar
 
-The global bar is always **Graphite 900**, in both themes — it anchors the
-brand. Wordmark left, primary destinations right (max 5), current page in
-white via `aria-current="page"`, other links Graphite 300.
+The global bar is a **floating glass capsule** — glass-strong material,
+specular edge, hovering over content with breathing room on all sides rather
+than capping the page. The brand anchor is the wordmark itself (the red mark
+never changes). Wordmark left, primary destinations right (max 5); the
+current page sits on a raised opaque chip via `aria-current="page"`.
 
 ```html
 <header class="acme-topbar">
@@ -20,13 +22,18 @@ white via `aria-current="page"`, other links Graphite 300.
 </header>
 ```
 
-## Tabs
+Give the bar `--acme-space-3` clearance from the viewport edges; it may pin
+(`position: sticky`) and float over scrolling content — that's what the glass
+is for.
+
+## Tabs — floating segmented control
 
 Tabs switch **views of the same thing**; they never navigate to a different
 page (that's a link) and never trigger actions (that's a button).
 
-- Underline style: 2 px ACME Red under the selected tab, selected label in
-  primary color, weight 600.
+- A glass capsule containing capsule segments; the **selected segment is a
+  raised opaque chip** (`--acme-color-surface-raised` + shadow) so the "you
+  are here" signal never depends on the backdrop.
 - 2–6 tabs, one-word labels preferred, counts allowed ("Orders 12").
 - Proper ARIA: `role="tablist"` / `role="tab"` / `aria-selected`, arrow-key
   navigation between tabs.

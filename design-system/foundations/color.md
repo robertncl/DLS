@@ -36,6 +36,7 @@ Full values live in [tokens/tokens.json](../tokens/tokens.json) and
 | `--acme-color-success/warning/danger/info` | see tokens | see tokens | Status text & icons |
 | `--acme-color-danger-emphasis` | red-700 | red-500 | Danger button fills (always AA under white text) |
 | `--acme-color-data` / `-data-highlight` | blue-600 / red-600 | blue-400 / red-500 | Chart marks: Blueprint carries data, red marks the one takeaway |
+| `--acme-material-glass` / `-strong` | white 62% / 85% | gray-900 70% / 90% | Translucent surfaces — see [materials.md](materials.md) for hosting rules |
 | `--acme-color-*-soft` / `-soft-text` | tinted pairs | mixed on surface | Badges, alerts |
 
 ## Rules

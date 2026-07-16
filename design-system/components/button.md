@@ -2,14 +2,21 @@
 
 Class: `.acme-btn` · Preview: [previews/buttons.html](../previews/buttons.html)
 
+Buttons are **capsules** (`--acme-radius-full`), and they answer the press:
+scale 0.97 on `:active` with the spring ease.
+
 ## Variants
 
-| Variant | Class | Use |
-| --- | --- | --- |
-| Primary | `.acme-btn--primary` | The single most important action on the view. ACME Red — **one per view**. |
-| Secondary | `.acme-btn--secondary` | Alternative or companion actions. Bordered, neutral. |
-| Ghost | `.acme-btn--ghost` | Low-emphasis actions in toolbars, cards, table rows. |
-| Danger | `.acme-btn--danger` | Destructive, irreversible actions. Always paired with a confirmation step. |
+| Variant | Class | Material | Use |
+| --- | --- | --- | --- |
+| Primary | `.acme-btn--primary` | **Opaque** ACME Red | The single most important action on the view — **one per view**. |
+| Secondary | `.acme-btn--secondary` | Glass | Alternative or companion actions. Hover thickens to glass-strong. |
+| Ghost | `.acme-btn--ghost` | Transparent → glass on hover | Low-emphasis actions in toolbars, cards, table rows. |
+| Danger | `.acme-btn--danger` | **Opaque** danger-emphasis | Destructive, irreversible actions. Always paired with a confirmation step. |
+
+Primary and danger are deliberately not glass: a call to action or a
+destructive verb never depends on what scrolls beneath it (see
+[materials.md](../foundations/materials.md)).
 
 ## Sizes
 
@@ -21,8 +28,9 @@ Class: `.acme-btn` · Preview: [previews/buttons.html](../previews/buttons.html)
 
 ## States
 
-Rest → hover (one shade deeper) → active (two shades) → focus-visible
-(Blueprint ring, 2 px offset) → disabled (50% opacity, `not-allowed` cursor).
+Rest → hover (one shade deeper / thicker glass) → active (two shades + press
+scale 0.97) → focus-visible (Blueprint ring, 2 px offset) → disabled (50%
+opacity, `not-allowed` cursor).
 Disabled buttons never show tooltips explaining why — put the reason in
 adjacent help text instead.
 
