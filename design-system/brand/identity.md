@@ -47,6 +47,15 @@ In code, use the `.acme-wordmark` component:
 - Don't set the wordmark in the body face or lowercase.
 - Don't place the red mark on a red background.
 
+## The material
+
+ACME interfaces are built from **ACME Glass** — translucent, blurred panels
+with a specular edge, floating over industrial Graphite. The shopkeeper got a
+glass counter: you can see the warehouse through the chrome, but everything
+you read or sign is printed on solid stock. Glass carries controls and
+navigation; content, forms, and status stay opaque. Recipes and rules live in
+[foundations/materials.md](../foundations/materials.md).
+
 ## Color in the brand
 
 ACME Red (`#C8102E`) is the signature — and it is **rationed**. Red is for the

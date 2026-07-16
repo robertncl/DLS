@@ -8,7 +8,14 @@
 <title>ACME DLS — Cards</title>
 <!-- @acme:styles -->
 <style>
-body { padding: var(--acme-space-6); }
+body {
+  padding: var(--acme-space-6);
+  min-block-size: 100vh;
+  background:
+    radial-gradient(50rem 30rem at 85% -10%, color-mix(in srgb, var(--acme-blue-500) 30%, transparent), transparent 65%),
+    radial-gradient(40rem 26rem at -10% 45%, color-mix(in srgb, var(--acme-red-500) 24%, transparent), transparent 65%),
+    var(--acme-color-canvas);
+}
 .spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
 .spec:first-child { margin-block-start: 0; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--acme-space-6); align-items: stretch; }
@@ -17,7 +24,7 @@ body { padding: var(--acme-space-6); }
 </style>
 </head>
 <body>
-  <p class="spec">.acme-card — media / interactive (hover raises) / stat</p>
+  <p class="spec">.acme-card — glass-strong panels · media / interactive (hover raises + lifts) / stat</p>
   <div class="grid">
     <article class="acme-card">
       <div class="acme-card__media" aria-hidden="true">

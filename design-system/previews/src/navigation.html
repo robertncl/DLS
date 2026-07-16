@@ -1,4 +1,4 @@
-<!-- @dsCard name="Navigation" group="Components" subtitle="Top bar, breadcrumbs, tabs" width="880" height="460" -->
+<!-- @dsCard name="Navigation" group="Components" subtitle="Floating glass bar, breadcrumbs, segmented tabs" width="880" height="500" -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,13 +8,20 @@
 <title>ACME DLS — Navigation</title>
 <!-- @acme:styles -->
 <style>
-body { padding: 0; }
-.pad { padding: var(--acme-space-6); }
+body {
+  padding: var(--acme-space-6);
+  min-block-size: 100vh;
+  background:
+    radial-gradient(50rem 30rem at 85% -10%, color-mix(in srgb, var(--acme-blue-500) 30%, transparent), transparent 65%),
+    radial-gradient(40rem 26rem at -10% 45%, color-mix(in srgb, var(--acme-red-500) 24%, transparent), transparent 65%),
+    var(--acme-color-canvas);
+}
 .spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
 .spec:first-child { margin-block-start: 0; }
 </style>
 </head>
 <body>
+  <p class="spec">Floating glass bar — glass-strong capsule, current page on a raised chip</p>
   <header class="acme-topbar">
     <a class="acme-wordmark" href="#">
       <span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</a>
@@ -26,27 +33,23 @@ body { padding: 0; }
     </nav>
   </header>
 
-  <div class="pad">
-    <p class="spec">Top bar — always Graphite 900, both themes · max 5 destinations</p>
+  <p class="spec">Breadcrumbs — hierarchies ≥ 3 levels; current page is plain text</p>
+  <nav class="acme-breadcrumbs" aria-label="Breadcrumb">
+    <a href="#">Catalog</a><span aria-hidden="true">/</span>
+    <a href="#">Rockets</a><span aria-hidden="true">/</span>
+    <span aria-current="page">Rocket skates</span>
+  </nav>
 
-    <p class="spec">Breadcrumbs — hierarchies ≥ 3 levels; current page is plain text</p>
-    <nav class="acme-breadcrumbs" aria-label="Breadcrumb">
-      <a href="#">Catalog</a><span aria-hidden="true">/</span>
-      <a href="#">Rockets</a><span aria-hidden="true">/</span>
-      <span aria-current="page">Rocket skates</span>
-    </nav>
-
-    <p class="spec">Tabs — views of the same thing, never page navigation</p>
-    <div class="acme-tabs" role="tablist" aria-label="Product sections">
-      <button class="acme-tab" role="tab" aria-selected="true" id="tab-1">Overview</button>
-      <button class="acme-tab" role="tab" aria-selected="false" id="tab-2" tabindex="-1">Specs</button>
-      <button class="acme-tab" role="tab" aria-selected="false" id="tab-3" tabindex="-1">Reviews 128</button>
-      <button class="acme-tab" role="tab" aria-selected="false" id="tab-4" tabindex="-1">Incidents 3</button>
-    </div>
-    <div role="tabpanel" aria-labelledby="tab-1" style="padding-block: var(--acme-space-4); font-size: var(--acme-text-sm); color: var(--acme-color-text-muted); max-inline-size: 60ch;">
-      Twin-turbine rocket skates with self-balancing gyros. Reaches highway
-      speed in 3 seconds. Helmet sold separately, strongly implied.
-    </div>
+  <p class="spec">Tabs — floating segmented control; selected segment is a raised opaque chip</p>
+  <div class="acme-tabs" role="tablist" aria-label="Product sections">
+    <button class="acme-tab" role="tab" aria-selected="true" id="tab-1">Overview</button>
+    <button class="acme-tab" role="tab" aria-selected="false" id="tab-2" tabindex="-1">Specs</button>
+    <button class="acme-tab" role="tab" aria-selected="false" id="tab-3" tabindex="-1">Reviews 128</button>
+    <button class="acme-tab" role="tab" aria-selected="false" id="tab-4" tabindex="-1">Incidents 3</button>
+  </div>
+  <div role="tabpanel" aria-labelledby="tab-1" style="padding-block: var(--acme-space-4); font-size: var(--acme-text-sm); color: var(--acme-color-text-muted); max-inline-size: 60ch;">
+    Twin-turbine rocket skates with self-balancing gyros. Reaches highway
+    speed in 3 seconds. Helmet sold separately, strongly implied.
   </div>
 </body>
 </html>

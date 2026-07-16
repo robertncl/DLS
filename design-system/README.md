@@ -12,6 +12,7 @@ describes a real company.
 | [brand/identity.md](brand/identity.md) | Who ACME is, the wordmark, brand pillars |
 | [brand/voice-and-tone.md](brand/voice-and-tone.md) | How ACME writes |
 | [foundations/color.md](foundations/color.md) | Palette, semantic tokens, verified contrast |
+| [foundations/materials.md](foundations/materials.md) | ACME Glass: translucent materials, contrast floors, fallbacks |
 | [foundations/typography.md](foundations/typography.md) | Families, scale, weights |
 | [foundations/spacing-layout.md](foundations/spacing-layout.md) | 4 px grid, breakpoints, containers |
 | [foundations/shape-elevation.md](foundations/shape-elevation.md) | Radius, borders, shadows |
@@ -65,3 +66,8 @@ Never edit `previews/*.html` directly — the build overwrites them.
    [foundations/color.md](foundations/color.md)).
 6. Focus rings are Blueprint Blue, never red; `prefers-reduced-motion` is
    always honored.
+7. Glass is chrome, not content: primary/danger fills, selected states, form
+   fields, status surfaces, and print stay opaque; muted text only on
+   glass-strong; everything degrades to opaque under
+   `prefers-reduced-transparency` (see
+   [foundations/materials.md](foundations/materials.md)).

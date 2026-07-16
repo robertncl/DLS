@@ -1,4 +1,4 @@
-<!-- @dsCard name="Navigation" group="Components" subtitle="Top bar, breadcrumbs, tabs" width="880" height="460" -->
+<!-- @dsCard name="Navigation" group="Components" subtitle="Floating glass bar, breadcrumbs, segmented tabs" width="880" height="500" -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -104,17 +104,28 @@
   --acme-space-20: 5rem;
   --acme-space-24: 6rem;
 
-  /* Shape */
-  --acme-radius-sm: 4px;
-  --acme-radius-md: 8px;
-  --acme-radius-lg: 12px;
-  --acme-radius-xl: 16px;
+  /* Shape — generous continuous curvature; controls are capsules */
+  --acme-radius-sm: 6px;
+  --acme-radius-md: 12px;
+  --acme-radius-lg: 20px;
+  --acme-radius-xl: 28px;
   --acme-radius-full: 999px;
 
   /* Elevation */
   --acme-shadow-sm: 0 1px 2px rgb(12 14 18 / 0.08);
   --acme-shadow-md: 0 4px 12px -2px rgb(12 14 18 / 0.12);
   --acme-shadow-lg: 0 12px 32px -8px rgb(12 14 18 / 0.16);
+
+  /* Materials — ACME Glass. Tint opacities are contrast floors: regular
+     glass hosts controls and primary-text labels only; body and muted text
+     sit on strong. See foundations/materials.md before changing. */
+  --acme-glass-blur: 24px;
+  --acme-glass-saturate: 160%;
+  --acme-material-glass: color-mix(in srgb, var(--acme-gray-0) 62%, transparent);
+  --acme-material-glass-strong: color-mix(in srgb, var(--acme-gray-0) 85%, transparent);
+  --acme-glass-edge:
+    inset 0 1px 0 rgb(255 255 255 / 0.65),
+    inset 0 0 0 1px rgb(255 255 255 / 0.28);
 
   /* Motion */
   --acme-duration-fast: 100ms;
@@ -123,6 +134,7 @@
   --acme-duration-deliberate: 400ms;
   --acme-ease-out: cubic-bezier(0.2, 0.8, 0.4, 1);
   --acme-ease-in-out: cubic-bezier(0.45, 0, 0.25, 1);
+  --acme-ease-spring: cubic-bezier(0.32, 1.36, 0.5, 1);
 
   /* Semantic aliases — light theme (default) */
   --acme-color-canvas: var(--acme-gray-0);
@@ -196,6 +208,11 @@
     --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
     --acme-shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.5);
     --acme-shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.6);
+    --acme-material-glass: color-mix(in srgb, var(--acme-gray-900) 70%, transparent);
+    --acme-material-glass-strong: color-mix(in srgb, var(--acme-gray-900) 90%, transparent);
+    --acme-glass-edge:
+      inset 0 1px 0 rgb(255 255 255 / 0.14),
+      inset 0 0 0 1px rgb(255 255 255 / 0.07);
   }
 }
 
@@ -231,6 +248,11 @@
   --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
   --acme-shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.5);
   --acme-shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.6);
+  --acme-material-glass: color-mix(in srgb, var(--acme-gray-900) 70%, transparent);
+  --acme-material-glass-strong: color-mix(in srgb, var(--acme-gray-900) 90%, transparent);
+  --acme-glass-edge:
+    inset 0 1px 0 rgb(255 255 255 / 0.14),
+    inset 0 0 0 1px rgb(255 255 255 / 0.07);
   color-scheme: dark;
 }
 
@@ -327,7 +349,7 @@ code, pre {
   min-height: 2.5rem;
   padding: 0 var(--acme-space-4);
   border: 1px solid transparent;
-  border-radius: var(--acme-radius-md);
+  border-radius: var(--acme-radius-full);
   font: 600 var(--acme-text-sm) / 1 var(--acme-font-sans);
   color: var(--acme-color-text);
   background: transparent;
@@ -335,8 +357,10 @@ code, pre {
   transition:
     background-color var(--acme-duration-base) var(--acme-ease-out),
     border-color var(--acme-duration-base) var(--acme-ease-out),
-    color var(--acme-duration-base) var(--acme-ease-out);
+    color var(--acme-duration-base) var(--acme-ease-out),
+    scale var(--acme-duration-base) var(--acme-ease-spring);
 }
+.acme-btn:not(:disabled):active { scale: 0.97; }
 .acme-btn--primary {
   background: var(--acme-color-primary);
   color: var(--acme-color-on-primary);
@@ -344,16 +368,15 @@ code, pre {
 .acme-btn--primary:hover { background: var(--acme-color-primary-hover); }
 .acme-btn--primary:active { background: var(--acme-color-primary-active); }
 .acme-btn--secondary {
-  border-color: var(--acme-color-border-strong);
-  background: var(--acme-color-surface-raised);
+  background: var(--acme-material-glass);
+  -webkit-backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  box-shadow: var(--acme-glass-edge), var(--acme-shadow-sm);
 }
-.acme-btn--secondary:hover {
-  border-color: var(--acme-color-text-subtle);
-  background: var(--acme-color-surface);
-}
+.acme-btn--secondary:hover { background: var(--acme-material-glass-strong); }
 .acme-btn--ghost { color: var(--acme-color-text-muted); }
 .acme-btn--ghost:hover {
-  background: var(--acme-color-surface);
+  background: var(--acme-material-glass);
   color: var(--acme-color-text);
 }
 .acme-btn--danger {
@@ -452,14 +475,22 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--acme-color-border);
   border-radius: var(--acme-radius-lg);
-  background: var(--acme-color-surface-raised);
-  box-shadow: var(--acme-shadow-sm);
+  background: var(--acme-material-glass-strong);
+  -webkit-backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  box-shadow: var(--acme-glass-edge), var(--acme-shadow-sm);
   overflow: hidden;
 }
-.acme-card--interactive { transition: box-shadow var(--acme-duration-base) var(--acme-ease-out); }
-.acme-card--interactive:hover { box-shadow: var(--acme-shadow-md); }
+.acme-card--interactive {
+  transition:
+    box-shadow var(--acme-duration-base) var(--acme-ease-out),
+    scale var(--acme-duration-base) var(--acme-ease-spring);
+}
+.acme-card--interactive:hover {
+  box-shadow: var(--acme-glass-edge), var(--acme-shadow-md);
+  scale: 1.01;
+}
 .acme-card__media {
   aspect-ratio: 16 / 9;
   background: var(--acme-color-surface);
@@ -542,49 +573,70 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 /* --------------------------------------------------------------------------
    10. Tabs
    -------------------------------------------------------------------------- */
+/* Floating segmented control: a glass capsule; the selected segment is a
+   raised opaque chip so its label never depends on the backdrop. */
 .acme-tabs {
-  display: flex;
+  display: inline-flex;
   gap: var(--acme-space-1);
-  border-block-end: 1px solid var(--acme-color-border);
+  padding: var(--acme-space-1);
+  border-radius: var(--acme-radius-full);
+  background: var(--acme-material-glass);
+  -webkit-backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  box-shadow: var(--acme-glass-edge), var(--acme-shadow-sm);
 }
 .acme-tab {
-  padding: var(--acme-space-2) var(--acme-space-3);
+  padding: var(--acme-space-2) var(--acme-space-4);
   border: none;
-  border-block-end: 2px solid transparent;
-  margin-block-end: -1px;
+  border-radius: var(--acme-radius-full);
   background: none;
   font: 500 var(--acme-text-sm) / var(--acme-leading-normal) var(--acme-font-sans);
   color: var(--acme-color-text-muted);
   cursor: pointer;
+  transition:
+    background-color var(--acme-duration-base) var(--acme-ease-out),
+    color var(--acme-duration-base) var(--acme-ease-out);
 }
 .acme-tab:hover { color: var(--acme-color-text); }
 .acme-tab[aria-selected="true"] {
-  color: var(--acme-color-primary);
-  border-block-end-color: var(--acme-color-primary);
+  background: var(--acme-color-surface-raised);
+  color: var(--acme-color-text);
   font-weight: 600;
+  box-shadow: var(--acme-shadow-sm);
 }
 
 /* --------------------------------------------------------------------------
    11. Top bar & breadcrumbs
    -------------------------------------------------------------------------- */
+/* Floating glass bar: strong material (labels are muted text), capsule
+   shape, hovers over content instead of capping it. */
 .acme-topbar {
   display: flex;
   align-items: center;
   gap: var(--acme-space-6);
-  padding: var(--acme-space-3) var(--acme-space-5);
-  background: var(--acme-gray-900);
-  color: var(--acme-gray-100);
+  padding: var(--acme-space-2) var(--acme-space-4);
+  border-radius: var(--acme-radius-full);
+  background: var(--acme-material-glass-strong);
+  -webkit-backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  box-shadow: var(--acme-glass-edge), var(--acme-shadow-md);
+  color: var(--acme-color-text);
 }
-.acme-topbar .acme-wordmark { color: var(--acme-gray-0); }
-.acme-topbar__nav { display: flex; gap: var(--acme-space-4); margin-inline-start: auto; }
+.acme-topbar__nav { display: flex; gap: var(--acme-space-1); margin-inline-start: auto; }
 .acme-topbar__link {
-  color: var(--acme-gray-300);
+  padding: var(--acme-space-1) var(--acme-space-3);
+  border-radius: var(--acme-radius-full);
+  color: var(--acme-color-text-muted);
   font-size: var(--acme-text-sm);
   font-weight: 500;
   text-decoration: none;
 }
-.acme-topbar__link:hover,
-.acme-topbar__link[aria-current="page"] { color: var(--acme-gray-0); }
+.acme-topbar__link:hover { color: var(--acme-color-text); }
+.acme-topbar__link[aria-current="page"] {
+  background: var(--acme-color-surface-raised);
+  color: var(--acme-color-text);
+  box-shadow: var(--acme-shadow-sm);
+}
 
 .acme-breadcrumbs {
   display: flex;
@@ -606,14 +658,17 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   display: grid;
   place-items: center;
   padding: var(--acme-space-5);
-  background: rgb(12 14 18 / 0.55);
+  background: rgb(12 14 18 / 0.3);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 .acme-modal {
   inline-size: min(28rem, 100%);
-  border: 1px solid var(--acme-color-border);
   border-radius: var(--acme-radius-xl);
-  background: var(--acme-color-surface-raised);
-  box-shadow: var(--acme-shadow-lg);
+  background: var(--acme-material-glass-strong);
+  -webkit-backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  box-shadow: var(--acme-glass-edge), var(--acme-shadow-lg);
 }
 .acme-modal__header {
   display: flex;
@@ -841,19 +896,67 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 }
 
 @media print {
-  * { box-shadow: none !important; }
+  * {
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  /* Paper is not a backdrop — glass prints opaque */
+  :root:not([data-theme=""]) {
+    --acme-material-glass: var(--acme-gray-0);
+    --acme-material-glass-strong: var(--acme-gray-0);
+  }
   .acme-figure, .acme-callout, .acme-card, table { break-inside: avoid; }
   .acme-doc { max-inline-size: none; }
 }
+
+/* --------------------------------------------------------------------------
+   15. Materials — ACME Glass utilities & opaque fallbacks
+   Components bake the materials in; .acme-glass is for bespoke surfaces.
+   -------------------------------------------------------------------------- */
+.acme-glass,
+.acme-glass--strong {
+  background: var(--acme-material-glass);
+  -webkit-backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  backdrop-filter: blur(var(--acme-glass-blur)) saturate(var(--acme-glass-saturate));
+  box-shadow: var(--acme-glass-edge), var(--acme-shadow-md);
+}
+.acme-glass--strong { background: var(--acme-material-glass-strong); }
+
+/* Every glass surface degrades to the theme's raised surface: browsers
+   without backdrop-filter, and users who ask for less transparency.
+   (:root:not([data-theme=""]) matches every root at 0-1-1 specificity so
+   these overrides beat the dark-theme token blocks above.) */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root:not([data-theme=""]) {
+    --acme-material-glass: var(--acme-color-surface-raised);
+    --acme-material-glass-strong: var(--acme-color-surface-raised);
+    --acme-glass-blur: 0px;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root:not([data-theme=""]) {
+    --acme-material-glass: var(--acme-color-surface-raised);
+    --acme-material-glass-strong: var(--acme-color-surface-raised);
+    --acme-glass-blur: 0px;
+  }
+}
 </style>
 <style>
-body { padding: 0; }
-.pad { padding: var(--acme-space-6); }
+body {
+  padding: var(--acme-space-6);
+  min-block-size: 100vh;
+  background:
+    radial-gradient(50rem 30rem at 85% -10%, color-mix(in srgb, var(--acme-blue-500) 30%, transparent), transparent 65%),
+    radial-gradient(40rem 26rem at -10% 45%, color-mix(in srgb, var(--acme-red-500) 24%, transparent), transparent 65%),
+    var(--acme-color-canvas);
+}
 .spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
 .spec:first-child { margin-block-start: 0; }
 </style>
 </head>
 <body>
+  <p class="spec">Floating glass bar — glass-strong capsule, current page on a raised chip</p>
   <header class="acme-topbar">
     <a class="acme-wordmark" href="#">
       <span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</a>
@@ -865,27 +968,23 @@ body { padding: 0; }
     </nav>
   </header>
 
-  <div class="pad">
-    <p class="spec">Top bar — always Graphite 900, both themes · max 5 destinations</p>
+  <p class="spec">Breadcrumbs — hierarchies ≥ 3 levels; current page is plain text</p>
+  <nav class="acme-breadcrumbs" aria-label="Breadcrumb">
+    <a href="#">Catalog</a><span aria-hidden="true">/</span>
+    <a href="#">Rockets</a><span aria-hidden="true">/</span>
+    <span aria-current="page">Rocket skates</span>
+  </nav>
 
-    <p class="spec">Breadcrumbs — hierarchies ≥ 3 levels; current page is plain text</p>
-    <nav class="acme-breadcrumbs" aria-label="Breadcrumb">
-      <a href="#">Catalog</a><span aria-hidden="true">/</span>
-      <a href="#">Rockets</a><span aria-hidden="true">/</span>
-      <span aria-current="page">Rocket skates</span>
-    </nav>
-
-    <p class="spec">Tabs — views of the same thing, never page navigation</p>
-    <div class="acme-tabs" role="tablist" aria-label="Product sections">
-      <button class="acme-tab" role="tab" aria-selected="true" id="tab-1">Overview</button>
-      <button class="acme-tab" role="tab" aria-selected="false" id="tab-2" tabindex="-1">Specs</button>
-      <button class="acme-tab" role="tab" aria-selected="false" id="tab-3" tabindex="-1">Reviews 128</button>
-      <button class="acme-tab" role="tab" aria-selected="false" id="tab-4" tabindex="-1">Incidents 3</button>
-    </div>
-    <div role="tabpanel" aria-labelledby="tab-1" style="padding-block: var(--acme-space-4); font-size: var(--acme-text-sm); color: var(--acme-color-text-muted); max-inline-size: 60ch;">
-      Twin-turbine rocket skates with self-balancing gyros. Reaches highway
-      speed in 3 seconds. Helmet sold separately, strongly implied.
-    </div>
+  <p class="spec">Tabs — floating segmented control; selected segment is a raised opaque chip</p>
+  <div class="acme-tabs" role="tablist" aria-label="Product sections">
+    <button class="acme-tab" role="tab" aria-selected="true" id="tab-1">Overview</button>
+    <button class="acme-tab" role="tab" aria-selected="false" id="tab-2" tabindex="-1">Specs</button>
+    <button class="acme-tab" role="tab" aria-selected="false" id="tab-3" tabindex="-1">Reviews 128</button>
+    <button class="acme-tab" role="tab" aria-selected="false" id="tab-4" tabindex="-1">Incidents 3</button>
+  </div>
+  <div role="tabpanel" aria-labelledby="tab-1" style="padding-block: var(--acme-space-4); font-size: var(--acme-text-sm); color: var(--acme-color-text-muted); max-inline-size: 60ch;">
+    Twin-turbine rocket skates with self-balancing gyros. Reaches highway
+    speed in 3 seconds. Helmet sold separately, strongly implied.
   </div>
 </body>
 </html>
