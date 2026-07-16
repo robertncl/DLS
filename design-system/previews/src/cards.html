@@ -1,0 +1,56 @@
+<!-- @dsCard name="Cards" group="Components" subtitle="Media, interactive, stat" width="880" height="520" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ACME DLS — Cards</title>
+<!-- @acme:styles -->
+<style>
+body { padding: var(--acme-space-6); }
+.spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
+.spec:first-child { margin-block-start: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--acme-space-6); align-items: stretch; }
+.stat-label { font-size: var(--acme-text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--acme-color-text-muted); margin: 0 0 var(--acme-space-1); }
+.stat-value { font-family: var(--acme-font-display); font-size: var(--acme-text-2xl); font-weight: 700; font-variant-numeric: tabular-nums; margin: 0; }
+</style>
+</head>
+<body>
+  <p class="spec">.acme-card — media / interactive (hover raises) / stat</p>
+  <div class="grid">
+    <article class="acme-card">
+      <div class="acme-card__media" aria-hidden="true">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M12 3c3.5 2 5 5.5 5 9l2.5 3.5-3.5.5c-1 2-2.5 3.5-4 4-1.5-.5-3-2-4-4l-3.5-.5L7 12c0-3.5 1.5-7 5-9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <div class="acme-card__body">
+        <h3 class="acme-card__title">Rocket skates</h3>
+        <p style="color: var(--acme-color-text-muted); font-size: var(--acme-text-sm); margin: 0;">Twin-turbine. Self-balancing. Mostly.</p>
+      </div>
+      <div class="acme-card__footer">
+        <span class="acme-badge acme-badge--warning">Low stock</span>
+        <button class="acme-btn acme-btn--secondary acme-btn--sm" style="margin-inline-start: auto;">Details</button>
+      </div>
+    </article>
+
+    <a class="acme-card acme-card--interactive" href="#" style="text-decoration: none; color: inherit;">
+      <div class="acme-card__body">
+        <h3 class="acme-card__title">Portable hole</h3>
+        <p style="color: var(--acme-color-text-muted); font-size: var(--acme-text-sm); margin: 0;">1.2 m diameter. Folds to A4. Do not stack.</p>
+      </div>
+      <div class="acme-card__footer">
+        <span class="acme-badge acme-badge--success">In stock</span>
+        <span style="margin-inline-start: auto; font-weight: 600; font-size: var(--acme-text-sm);">$149</span>
+      </div>
+    </a>
+
+    <article class="acme-card">
+      <div class="acme-card__body">
+        <p class="stat-label">Orders today</p>
+        <p class="stat-value">1,204</p>
+        <p style="font-size: var(--acme-text-xs); color: var(--acme-color-success); margin: var(--acme-space-1) 0 0;">▲ 12% vs yesterday</p>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!-- @dsCard name="Form controls" group="Components" subtitle="Inputs, select, validation, choices, switch" width="880" height="820" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ACME DLS — Form controls</title>
+<!-- @acme:styles -->
+<style>
+body { padding: var(--acme-space-6); }
+.spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
+.spec:first-child { margin-block-start: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--acme-space-5); max-inline-size: 44rem; }
+fieldset { border: none; margin: 0; padding: 0; display: grid; gap: var(--acme-space-2); }
+legend { font-size: var(--acme-text-sm); font-weight: 600; padding: 0; margin-block-end: var(--acme-space-1); }
+</style>
+</head>
+<body>
+  <p class="spec">Text fields — label above, help below, placeholder is an example</p>
+  <div class="grid">
+    <div class="acme-field">
+      <label class="acme-label" for="sku">SKU</label>
+      <input class="acme-input" id="sku" placeholder="ACME-0042" aria-describedby="sku-help">
+      <p class="acme-help" id="sku-help">Find it on the blueprint label.</p>
+    </div>
+    <div class="acme-field">
+      <label class="acme-label" for="note">Delivery note <span class="acme-label__optional">(optional)</span></label>
+      <input class="acme-input" id="note" placeholder="Leave behind the cactus">
+    </div>
+    <div class="acme-field">
+      <label class="acme-label" for="code">Promo code</label>
+      <input class="acme-input" id="code" value="ROADRUNNER" aria-invalid="true" aria-describedby="code-err">
+      <p class="acme-error" id="code-err">That code expired Jun 30. Codes are case-sensitive.</p>
+    </div>
+    <div class="acme-field">
+      <label class="acme-label" for="dis">Warehouse</label>
+      <input class="acme-input" id="dis" value="Desert Flats №3" disabled>
+      <p class="acme-help">Assigned automatically by region.</p>
+    </div>
+    <div class="acme-field">
+      <label class="acme-label" for="freight">Freight class</label>
+      <select class="acme-input" id="freight">
+        <option>Standard (5–7 days)</option>
+        <option>Express (2 days)</option>
+        <option selected>Instant (today)</option>
+      </select>
+    </div>
+    <div class="acme-field">
+      <label class="acme-label" for="msg">Message to carrier</label>
+      <textarea class="acme-input" id="msg" placeholder="Fragile. Extremely."></textarea>
+    </div>
+  </div>
+
+  <p class="spec">Choices — native inputs, themed via accent-color</p>
+  <div class="grid">
+    <fieldset>
+      <legend>Add-ons</legend>
+      <label class="acme-choice"><input type="checkbox" checked> Insurance against gravity</label>
+      <label class="acme-choice"><input type="checkbox"> Gift wrap (blueprint paper)</label>
+      <label class="acme-choice"><input type="checkbox" disabled> Signature on delivery</label>
+    </fieldset>
+    <fieldset>
+      <legend>Packaging</legend>
+      <label class="acme-choice"><input type="radio" name="pack" checked> Wooden crate</label>
+      <label class="acme-choice"><input type="radio" name="pack"> Cardboard, reinforced</label>
+      <label class="acme-choice"><input type="radio" name="pack"> As-is (brave)</label>
+    </fieldset>
+  </div>
+
+  <p class="spec">Switch — settings that apply immediately; otherwise use a checkbox</p>
+  <div style="display: grid; gap: var(--acme-space-3);">
+    <label class="acme-switch"><input type="checkbox" role="switch" checked> Restock alerts</label>
+    <label class="acme-switch"><input type="checkbox" role="switch"> Weekly catalog digest</label>
+  </div>
+</body>
+</html>

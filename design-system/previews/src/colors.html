@@ -1,0 +1,94 @@
+<!-- @dsCard name="Color" group="Foundations" subtitle="Primitive scales + semantic tokens, light/dark" width="880" height="860" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ACME DLS — Color</title>
+<!-- @acme:styles -->
+<style>
+body { padding: var(--acme-space-6); }
+.spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
+.spec:first-child { margin-block-start: 0; }
+.scale { display: flex; gap: var(--acme-space-1); }
+.scale > div { flex: 1; }
+.chip { block-size: 3rem; border-radius: var(--acme-radius-sm); border: 1px solid var(--acme-color-border); }
+.scale figcaption { font: 500 var(--acme-text-xs)/1.6 var(--acme-font-mono); color: var(--acme-color-text-muted); margin-block-start: var(--acme-space-1); }
+figure { margin: 0; }
+.sem { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: var(--acme-space-3); }
+.sem-chip { display: flex; align-items: center; gap: var(--acme-space-2); font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); }
+.sem-chip i { inline-size: 1.5rem; block-size: 1.5rem; flex: none; border-radius: var(--acme-radius-sm); border: 1px solid var(--acme-color-border); }
+</style>
+</head>
+<body>
+  <p class="spec">ACME Red — brand · anchor 600 #C8102E</p>
+  <div class="scale">
+    <figure><div class="chip" style="background:var(--acme-red-50)"></div><figcaption>50</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-100)"></div><figcaption>100</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-200)"></div><figcaption>200</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-300)"></div><figcaption>300</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-400)"></div><figcaption>400</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-500)"></div><figcaption>500</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-600)"></div><figcaption>600</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-700)"></div><figcaption>700</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-800)"></div><figcaption>800</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-900)"></div><figcaption>900</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-red-950)"></div><figcaption>950</figcaption></figure>
+  </div>
+
+  <p class="spec">Graphite — neutrals</p>
+  <div class="scale">
+    <figure><div class="chip" style="background:var(--acme-gray-0)"></div><figcaption>0</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-50)"></div><figcaption>50</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-100)"></div><figcaption>100</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-200)"></div><figcaption>200</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-300)"></div><figcaption>300</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-400)"></div><figcaption>400</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-500)"></div><figcaption>500</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-600)"></div><figcaption>600</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-700)"></div><figcaption>700</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-800)"></div><figcaption>800</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-900)"></div><figcaption>900</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-gray-950)"></div><figcaption>950</figcaption></figure>
+  </div>
+
+  <p class="spec">Blueprint Blue — info &amp; focus</p>
+  <div class="scale">
+    <figure><div class="chip" style="background:var(--acme-blue-50)"></div><figcaption>50</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-blue-100)"></div><figcaption>100</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-blue-200)"></div><figcaption>200</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-blue-300)"></div><figcaption>300</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-blue-400)"></div><figcaption>400</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-blue-500)"></div><figcaption>500</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-blue-600)"></div><figcaption>600</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-blue-700)"></div><figcaption>700</figcaption></figure>
+  </div>
+
+  <p class="spec">Status — Go Green &amp; Caution Amber</p>
+  <div class="scale" style="max-inline-size: 36rem;">
+    <figure><div class="chip" style="background:var(--acme-green-50)"></div><figcaption>g-50</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-green-400)"></div><figcaption>g-400</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-green-600)"></div><figcaption>g-600</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-amber-50)"></div><figcaption>a-50</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-amber-500)"></div><figcaption>a-500</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-amber-700)"></div><figcaption>a-700</figcaption></figure>
+  </div>
+
+  <p class="spec">Semantic tokens — resolve per theme (this page follows your system theme)</p>
+  <div class="sem">
+    <div class="sem-chip"><i style="background:var(--acme-color-canvas)"></i>--acme-color-canvas</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-surface)"></i>--acme-color-surface</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-surface-raised)"></i>--acme-color-surface-raised</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-border)"></i>--acme-color-border</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-text)"></i>--acme-color-text</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-text-muted)"></i>--acme-color-text-muted</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-primary)"></i>--acme-color-primary</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-link)"></i>--acme-color-link</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-focus)"></i>--acme-color-focus</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-success)"></i>--acme-color-success</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-warning)"></i>--acme-color-warning</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-danger)"></i>--acme-color-danger</div>
+  </div>
+</body>
+</html>

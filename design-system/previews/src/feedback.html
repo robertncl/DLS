@@ -1,0 +1,48 @@
+<!-- @dsCard name="Badges & alerts" group="Components" subtitle="5 badge variants · 4 alert variants" width="880" height="640" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ACME DLS — Badges &amp; alerts</title>
+<!-- @acme:styles -->
+<style>
+body { padding: var(--acme-space-6); }
+.spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
+.spec:first-child { margin-block-start: 0; }
+.row { display: flex; flex-wrap: wrap; gap: var(--acme-space-2); align-items: center; }
+.stack { display: grid; gap: var(--acme-space-3); max-inline-size: 40rem; }
+</style>
+</head>
+<body>
+  <p class="spec">Badges — status must read from the word alone</p>
+  <div class="row">
+    <span class="acme-badge">Draft</span>
+    <span class="acme-badge acme-badge--success">Shipped</span>
+    <span class="acme-badge acme-badge--warning">Low stock</span>
+    <span class="acme-badge acme-badge--danger">Payment failed</span>
+    <span class="acme-badge acme-badge--info">Preorder</span>
+  </div>
+
+  <p class="spec">Alerts — top of the region they describe; danger states the recovery step</p>
+  <div class="stack">
+    <div class="acme-alert" role="status">
+      <div><p class="acme-alert__title">Prices update nightly</p>
+      <p>Catalog prices sync from the warehouse at 02:00 UTC.</p></div>
+    </div>
+    <div class="acme-alert acme-alert--success" role="status">
+      <div><p class="acme-alert__title">Catalog published</p>
+      <p>All 40,000 products are live. Changes appear within a minute.</p></div>
+    </div>
+    <div class="acme-alert acme-alert--warning" role="alert">
+      <div><p class="acme-alert__title">Low stock</p>
+      <p>Only 3 anvils left. Restock arrives Jul 20.</p></div>
+    </div>
+    <div class="acme-alert acme-alert--danger" role="alert">
+      <div><p class="acme-alert__title">Payment failed</p>
+      <p>Card declined for order #4417. Try another card or contact your bank.</p></div>
+    </div>
+  </div>
+</body>
+</html>

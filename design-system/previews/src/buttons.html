@@ -1,0 +1,50 @@
+<!-- @dsCard name="Buttons" group="Components" subtitle="Primary / secondary / ghost / danger · 3 sizes" width="880" height="520" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ACME DLS — Buttons</title>
+<!-- @acme:styles -->
+<style>
+body { padding: var(--acme-space-6); }
+.spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
+.spec:first-child { margin-block-start: 0; }
+.row { display: flex; flex-wrap: wrap; gap: var(--acme-space-3); align-items: center; }
+</style>
+</head>
+<body>
+  <p class="spec">Variants — one primary per view; danger always confirms</p>
+  <div class="row">
+    <button class="acme-btn acme-btn--primary">Add to order</button>
+    <button class="acme-btn acme-btn--secondary">Save draft</button>
+    <button class="acme-btn acme-btn--ghost">Cancel</button>
+    <button class="acme-btn acme-btn--danger">Delete 12 products</button>
+  </div>
+
+  <p class="spec">Sizes — sm 32 (dense toolbars) · md 40 (default) · lg 48 (checkout)</p>
+  <div class="row">
+    <button class="acme-btn acme-btn--primary acme-btn--sm">Track order</button>
+    <button class="acme-btn acme-btn--primary">Track order</button>
+    <button class="acme-btn acme-btn--primary acme-btn--lg">Track order</button>
+  </div>
+
+  <p class="spec">With icon — icon reinforces the verb; icon-only needs aria-label</p>
+  <div class="row">
+    <button class="acme-btn acme-btn--primary">Ship it
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="acme-btn acme-btn--secondary" aria-label="Search catalog">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="m10.5 10.5 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <p class="spec">Disabled — 50% opacity; reason goes in adjacent help text, not a tooltip</p>
+  <div class="row">
+    <button class="acme-btn acme-btn--primary" disabled>Add to order</button>
+    <button class="acme-btn acme-btn--secondary" disabled>Save draft</button>
+    <span class="acme-help">Out of stock. Restock arrives Jul 20.</span>
+  </div>
+</body>
+</html>

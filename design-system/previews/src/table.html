@@ -1,0 +1,75 @@
+<!-- @dsCard name="Table" group="Components" subtitle="Data table with badges, numeric columns, row action" width="880" height="480" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ACME DLS — Table</title>
+<!-- @acme:styles -->
+<style>
+body { padding: var(--acme-space-6); }
+.spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
+.spec:first-child { margin-block-start: 0; }
+caption { position: absolute; clip-path: inset(50%); }
+</style>
+</head>
+<body>
+  <p class="spec">.acme-table — text left, numbers right (tabular-nums), one badge per row</p>
+  <table class="acme-table">
+    <caption>Recent orders</caption>
+    <thead>
+      <tr>
+        <th scope="col">Order</th>
+        <th scope="col">Product</th>
+        <th scope="col">Status</th>
+        <th scope="col" class="acme-table__num">Qty</th>
+        <th scope="col" class="acme-table__num">Total</th>
+        <th scope="col"><span style="position:absolute; clip-path:inset(50%);">Actions</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-family: var(--acme-font-mono);">#4421</td>
+        <td>Anvil, 10-ton</td>
+        <td><span class="acme-badge acme-badge--success">Shipped</span></td>
+        <td class="acme-table__num">2</td>
+        <td class="acme-table__num">$1,980.00</td>
+        <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Track</button></td>
+      </tr>
+      <tr>
+        <td style="font-family: var(--acme-font-mono);">#4420</td>
+        <td>Rocket skates</td>
+        <td><span class="acme-badge acme-badge--warning">Backordered</span></td>
+        <td class="acme-table__num">1</td>
+        <td class="acme-table__num">$399.00</td>
+        <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Track</button></td>
+      </tr>
+      <tr>
+        <td style="font-family: var(--acme-font-mono);">#4419</td>
+        <td>Portable hole</td>
+        <td><span class="acme-badge acme-badge--success">Shipped</span></td>
+        <td class="acme-table__num">4</td>
+        <td class="acme-table__num">$596.00</td>
+        <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Track</button></td>
+      </tr>
+      <tr>
+        <td style="font-family: var(--acme-font-mono);">#4418</td>
+        <td>Earthquake pills</td>
+        <td><span class="acme-badge acme-badge--danger">Payment failed</span></td>
+        <td class="acme-table__num">12</td>
+        <td class="acme-table__num">$144.00</td>
+        <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Retry</button></td>
+      </tr>
+      <tr>
+        <td style="font-family: var(--acme-font-mono);">#4417</td>
+        <td>Dehydrated boulders</td>
+        <td><span class="acme-badge">Draft</span></td>
+        <td class="acme-table__num">30</td>
+        <td class="acme-table__num">$2,250.00</td>
+        <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
