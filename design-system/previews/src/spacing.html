@@ -1,0 +1,49 @@
+<!-- @dsCard name="Spacing, shape & elevation" group="Foundations" subtitle="4px grid, radius scale, 3 shadow levels" width="880" height="720" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ACME DLS — Spacing, shape &amp; elevation</title>
+<!-- @acme:styles -->
+<style>
+body { padding: var(--acme-space-6); }
+.spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
+.spec:first-child { margin-block-start: 0; }
+.bar-row { display: grid; grid-template-columns: 7rem 1fr; gap: var(--acme-space-2); align-items: center; margin-block-end: var(--acme-space-1); font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-muted); }
+.bar { block-size: 1rem; background: var(--acme-red-600); border-radius: 2px; }
+.row { display: flex; flex-wrap: wrap; gap: var(--acme-space-5); align-items: flex-end; }
+.shape { inline-size: 5.5rem; block-size: 4rem; background: var(--acme-color-surface); border: 1px solid var(--acme-color-border-strong); display: grid; place-items: center; font: 500 var(--acme-text-xs)/1 var(--acme-font-mono); color: var(--acme-color-text-muted); }
+.elev { inline-size: 9rem; block-size: 5.5rem; background: var(--acme-color-surface-raised); border: 1px solid var(--acme-color-border); border-radius: var(--acme-radius-lg); display: grid; place-items: center; font: 500 var(--acme-text-xs)/1 var(--acme-font-mono); color: var(--acme-color-text-muted); }
+</style>
+</head>
+<body>
+  <p class="spec">Spacing — 4 px grid, tokens only</p>
+  <div class="bar-row"><span>space-1 · 4</span><div class="bar" style="inline-size: var(--acme-space-1)"></div></div>
+  <div class="bar-row"><span>space-2 · 8</span><div class="bar" style="inline-size: var(--acme-space-2)"></div></div>
+  <div class="bar-row"><span>space-3 · 12</span><div class="bar" style="inline-size: var(--acme-space-3)"></div></div>
+  <div class="bar-row"><span>space-4 · 16</span><div class="bar" style="inline-size: var(--acme-space-4)"></div></div>
+  <div class="bar-row"><span>space-5 · 20</span><div class="bar" style="inline-size: var(--acme-space-5)"></div></div>
+  <div class="bar-row"><span>space-6 · 24</span><div class="bar" style="inline-size: var(--acme-space-6)"></div></div>
+  <div class="bar-row"><span>space-8 · 32</span><div class="bar" style="inline-size: var(--acme-space-8)"></div></div>
+  <div class="bar-row"><span>space-12 · 48</span><div class="bar" style="inline-size: var(--acme-space-12)"></div></div>
+  <div class="bar-row"><span>space-16 · 64</span><div class="bar" style="inline-size: var(--acme-space-16)"></div></div>
+
+  <p class="spec">Radius — nesting decreases radius: modal 16 › card 12 › button 8 › checkbox 4</p>
+  <div class="row">
+    <div class="shape" style="border-radius: var(--acme-radius-sm)">sm 4</div>
+    <div class="shape" style="border-radius: var(--acme-radius-md)">md 8</div>
+    <div class="shape" style="border-radius: var(--acme-radius-lg)">lg 12</div>
+    <div class="shape" style="border-radius: var(--acme-radius-xl)">xl 16</div>
+    <div class="shape" style="border-radius: var(--acme-radius-full); inline-size: 4rem; block-size: 4rem;">full</div>
+  </div>
+
+  <p class="spec">Elevation — altitude, not decoration</p>
+  <div class="row">
+    <div class="elev" style="box-shadow: var(--acme-shadow-sm)">sm · resting</div>
+    <div class="elev" style="box-shadow: var(--acme-shadow-md)">md · raised</div>
+    <div class="elev" style="box-shadow: var(--acme-shadow-lg)">lg · floating</div>
+  </div>
+</body>
+</html>
