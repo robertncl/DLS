@@ -19,6 +19,8 @@ describes a real company.
 | [tokens/tokens.json](tokens/tokens.json) | Canonical tokens (DTCG format) |
 | [tokens/acme.css](tokens/acme.css) | Tokens as CSS custom properties + core component styles |
 | [components/](components/) | Specs: button, forms, card, badge, alert, table, navigation, modal |
+| [patterns/presentation-deck.md](patterns/presentation-deck.md) | 16:9 slide masters (title, section, content, data, closing) |
+| [patterns/report-document.md](patterns/report-document.md) | Long-form documents: cover, numbered headings, callouts, figures, print |
 | [previews/](previews/) | **Built**, self-contained HTML previews (one per card) |
 | [previews/src/](previews/src/) | Preview sources — edit these, then rebuild |
 | [scripts/build-previews.sh](scripts/build-previews.sh) | Inlines `acme.css` into each preview |

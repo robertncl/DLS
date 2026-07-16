@@ -1,0 +1,109 @@
+<!-- @dsCard name="Presentation deck" group="Patterns" subtitle="Five slide masters: title, section, content, data, closing" width="880" height="920" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ACME DLS — Presentation deck</title>
+<!-- @acme:styles -->
+<style>
+body { padding: var(--acme-space-6); }
+.spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
+.spec:first-child { margin-block-start: 0; }
+.deck { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: var(--acme-space-5); }
+.deck .acme-slide { border: 1px solid var(--acme-color-border); border-radius: var(--acme-radius-md); }
+</style>
+</head>
+<body>
+  <p class="spec">Five masters — decks open dark, breathe light, punctuate red · cqi-sized, any width</p>
+  <div class="deck">
+
+    <!-- 1 · Title -->
+    <section class="acme-slide acme-slide--dark acme-slide--hero" aria-label="Title slide">
+      <div class="acme-slide__frame">
+        <span class="acme-wordmark"><span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</span>
+        <div style="margin-block: auto 0;">
+          <p class="acme-slide__kicker">Q2 2026 review</p>
+          <h2 class="acme-slide__title">Everything shipped. Instantly.</h2>
+          <p class="acme-slide__meta">W. E. Coyote, VP Logistics · Jul 16, 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Section divider -->
+    <section class="acme-slide acme-slide--section" aria-label="Section divider slide">
+      <div class="acme-slide__frame">
+        <div style="margin-block: auto;">
+          <p class="acme-slide__num" aria-hidden="true">02</p>
+          <h2 class="acme-slide__title">Logistics</h2>
+        </div>
+        <footer class="acme-slide__footer" style="color: var(--acme-red-200);">
+          <span>Q2 2026 review</span>
+          <span class="acme-slide__footer-num">6</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- 3 · Content -->
+    <section class="acme-slide" aria-label="Content slide">
+      <div class="acme-slide__frame">
+        <p class="acme-slide__kicker">Logistics</p>
+        <h2 class="acme-slide__title">Instant freight in 3 steps</h2>
+        <ul class="acme-slide__bullets">
+          <li>Order routes to the nearest of 14 warehouses</li>
+          <li>Rocket-assisted dispatch inside 8 minutes</li>
+          <li>Delivery confirmed by seismograph</li>
+        </ul>
+        <footer class="acme-slide__footer">
+          <span class="acme-wordmark"><span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</span>
+          <span>Q2 2026 review</span>
+          <span class="acme-slide__footer-num">7</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- 4 · Data -->
+    <section class="acme-slide" aria-label="Data slide">
+      <div class="acme-slide__frame">
+        <p class="acme-slide__kicker">Orders</p>
+        <h2 class="acme-slide__title" style="font-size: 3.2cqi;">Orders up 12% after instant freight</h2>
+        <div class="acme-slide__chart" role="img" aria-label="Bar chart of monthly orders, February to June. June is highlighted at 1,204 orders, up 12% on May.">
+          <div class="acme-slide__col"><div class="acme-slide__bar" style="block-size: 46%"></div></div>
+          <div class="acme-slide__col"><div class="acme-slide__bar" style="block-size: 52%"></div></div>
+          <div class="acme-slide__col"><div class="acme-slide__bar" style="block-size: 49%"></div></div>
+          <div class="acme-slide__col"><div class="acme-slide__bar" style="block-size: 62%"></div></div>
+          <div class="acme-slide__col">
+            <span class="acme-slide__bar-label">1,204</span>
+            <div class="acme-slide__bar acme-slide__bar--highlight" style="block-size: 78%"></div>
+          </div>
+        </div>
+        <div class="acme-slide__ticks" aria-hidden="true">
+          <span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+        </div>
+        <footer class="acme-slide__footer">
+          <span class="acme-wordmark"><span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</span>
+          <span>Q2 2026 review</span>
+          <span class="acme-slide__footer-num">8</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- 5 · Closing -->
+    <section class="acme-slide acme-slide--dark" aria-label="Closing slide">
+      <div class="acme-slide__frame">
+        <div style="margin-block: auto;">
+          <h2 class="acme-slide__title" style="font-size: 5cqi;">Everything you need.<br>Instantly.</h2>
+          <p class="acme-slide__meta">logistics@acme.example · acme.example</p>
+        </div>
+        <footer class="acme-slide__footer">
+          <span class="acme-wordmark"><span class="acme-wordmark__mark" aria-hidden="true">A</span> ACME</span>
+          <span>Q2 2026 review</span>
+          <span class="acme-slide__footer-num">24</span>
+        </footer>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
