@@ -9,11 +9,10 @@ Anything with more than ~4 fields or its own scrollbar should be a page.
 
 ## Anatomy
 
-- Backdrop: `rgb(12 14 18 / 0.3)` with an 8 px blur — the page recedes out
-  of focus instead of going dark. Click-to-dismiss (except destructive
-  confirms).
-- Panel: glass-strong material, max 28 rem wide, `--acme-radius-xl` (28 px),
-  specular edge + `--acme-shadow-lg`, centered.
+- Backdrop: a plain `rgb(12 14 18 / 0.5)` scrim — the page dims, no blur.
+  Click-to-dismiss (except destructive confirms).
+- Panel: opaque `--acme-color-surface-raised` with a hairline border, max
+  28 rem wide, `--acme-radius-xl` (16 px), `--acme-shadow-lg`, centered.
 - Header: title 20 px + ghost close button (with `aria-label="Close"`).
 - Body: muted 14 px text; keep to a few sentences or one small form.
 - Footer: actions right-aligned — **primary/danger rightmost**, "Cancel" as a

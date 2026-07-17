@@ -49,12 +49,13 @@ In code, use the `.acme-wordmark` component:
 
 ## The material
 
-ACME interfaces are built from **ACME Glass** — translucent, blurred panels
-with a specular edge, floating over industrial Graphite. The shopkeeper got a
-glass counter: you can see the warehouse through the chrome, but everything
-you read or sign is printed on solid stock. Glass carries controls and
-navigation; content, forms, and status stay opaque. Recipes and rules live in
-[foundations/materials.md](../foundations/materials.md).
+ACME interfaces are built from **pressed steel** — opaque, flat surfaces with
+honest 1 px edges, laid out on a visible frame. The shopkeeper's counter is
+solid: everything you read or sign is printed on stock you can rap your
+knuckles on. Structure comes from borders and alignment, depth from three
+quiet shadow levels, and nothing is translucent or decorative. Recipes and
+rules live in
+[foundations/shape-elevation.md](../foundations/shape-elevation.md).
 
 ## Color in the brand
 

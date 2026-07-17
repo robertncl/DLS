@@ -25,19 +25,19 @@ muted 14 px) → footer (optional, separated by a hairline; actions and meta).
 
 ## Variants
 
-Cards are **glass-strong panels** (20 px radius, specular edge, no border) —
-strong material because card bodies carry muted text.
+Cards are **bordered raised surfaces**: `--acme-color-surface-raised`, a
+`--acme-color-border` hairline, 12 px radius, resting `--acme-shadow-sm`.
 
-- **Static** (default): resting `--acme-shadow-sm`, no hover response.
+- **Static** (default): no hover response.
 - **Interactive** (`.acme-card--interactive`): whole card is one link/button;
-  hover raises to `--acme-shadow-md` and lifts to scale 1.01. One target per
-  card — don't nest other clickables inside an interactive card.
+  hover strengthens the border and raises to `--acme-shadow-md` — no scaling
+  or lifting. One target per card — don't nest other clickables inside an
+  interactive card.
 
 ## Rules
 
 - Cards sit on `--acme-color-canvas` or `--acme-color-surface`, never on
-  another card — and never on another glass surface (glass-on-glass reads
-  as smear).
+  another card.
 - Grids of cards: equal heights per row (`stretch`), `--acme-space-6` gaps,
   3–4 columns max at xl.
 - Max one primary button across an entire card grid — card actions are
