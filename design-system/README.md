@@ -12,10 +12,9 @@ describes a real company.
 | [brand/identity.md](brand/identity.md) | Who ACME is, the wordmark, brand pillars |
 | [brand/voice-and-tone.md](brand/voice-and-tone.md) | How ACME writes |
 | [foundations/color.md](foundations/color.md) | Palette, semantic tokens, verified contrast |
-| [foundations/materials.md](foundations/materials.md) | ACME Glass: translucent materials, contrast floors, fallbacks |
 | [foundations/typography.md](foundations/typography.md) | Families, scale, weights |
 | [foundations/spacing-layout.md](foundations/spacing-layout.md) | 4 px grid, breakpoints, containers |
-| [foundations/shape-elevation.md](foundations/shape-elevation.md) | Radius, borders, shadows |
+| [foundations/shape-elevation.md](foundations/shape-elevation.md) | Surfaces, radius, borders, shadows |
 | [foundations/motion.md](foundations/motion.md) | Durations, easings, reduced-motion |
 | [tokens/tokens.json](tokens/tokens.json) | Canonical tokens (DTCG format) |
 | [tokens/acme.css](tokens/acme.css) | Tokens as CSS custom properties + core component styles |
@@ -66,8 +65,6 @@ Never edit `previews/*.html` directly — the build overwrites them.
    [foundations/color.md](foundations/color.md)).
 6. Focus rings are Blueprint Blue, never red; `prefers-reduced-motion` is
    always honored.
-7. Glass is chrome, not content: primary/danger fills, selected states, form
-   fields, status surfaces, and print stay opaque; muted text only on
-   glass-strong; everything degrades to opaque under
-   `prefers-reduced-transparency` (see
-   [foundations/materials.md](foundations/materials.md)).
+7. Surfaces are opaque and bordered: raised surfaces take a 1 px hairline,
+   shadows only say how high, and nothing is translucent or bounces (see
+   [foundations/shape-elevation.md](foundations/shape-elevation.md)).

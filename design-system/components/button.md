@@ -2,21 +2,18 @@
 
 Class: `.acme-btn` · Preview: [previews/buttons.html](../previews/buttons.html)
 
-Buttons are **capsules** (`--acme-radius-full`), and they answer the press:
-scale 0.97 on `:active` with the spring ease.
+Buttons are **rounded rectangles** (`--acme-radius-md`, 8 px) and share their
+radius with inputs so forms read as one family. A press is acknowledged by
+the `:active` color step — buttons never scale or bounce.
 
 ## Variants
 
-| Variant | Class | Material | Use |
+| Variant | Class | Surface | Use |
 | --- | --- | --- | --- |
-| Primary | `.acme-btn--primary` | **Opaque** ACME Red | The single most important action on the view — **one per view**. |
-| Secondary | `.acme-btn--secondary` | Glass | Alternative or companion actions. Hover thickens to glass-strong. |
-| Ghost | `.acme-btn--ghost` | Transparent → glass on hover | Low-emphasis actions in toolbars, cards, table rows. |
-| Danger | `.acme-btn--danger` | **Opaque** danger-emphasis | Destructive, irreversible actions. Always paired with a confirmation step. |
-
-Primary and danger are deliberately not glass: a call to action or a
-destructive verb never depends on what scrolls beneath it (see
-[materials.md](../foundations/materials.md)).
+| Primary | `.acme-btn--primary` | ACME Red fill | The single most important action on the view — **one per view**. |
+| Secondary | `.acme-btn--secondary` | Raised surface + `border-strong` outline | Alternative or companion actions. Hover fills with `--acme-color-surface`. |
+| Ghost | `.acme-btn--ghost` | Transparent → surface fill on hover | Low-emphasis actions in toolbars, cards, table rows. |
+| Danger | `.acme-btn--danger` | danger-emphasis fill | Destructive, irreversible actions. Always paired with a confirmation step. |
 
 ## Sizes
 
@@ -28,9 +25,9 @@ destructive verb never depends on what scrolls beneath it (see
 
 ## States
 
-Rest → hover (one shade deeper / thicker glass) → active (two shades + press
-scale 0.97) → focus-visible (Blueprint ring, 2 px offset) → disabled (50%
-opacity, `not-allowed` cursor).
+Rest → hover (one shade deeper / surface fill) → active (two shades deeper)
+→ focus-visible (Blueprint ring, 2 px offset) → disabled (50% opacity,
+`not-allowed` cursor).
 Disabled buttons never show tooltips explaining why — put the reason in
 adjacent help text instead.
 

@@ -8,21 +8,14 @@
 <title>ACME DLS — Buttons</title>
 <!-- @acme:styles -->
 <style>
-body {
-  padding: var(--acme-space-6);
-  min-block-size: 100vh;
-  background:
-    radial-gradient(50rem 30rem at 85% -10%, color-mix(in srgb, var(--acme-blue-500) 30%, transparent), transparent 65%),
-    radial-gradient(40rem 26rem at -10% 45%, color-mix(in srgb, var(--acme-red-500) 24%, transparent), transparent 65%),
-    var(--acme-color-canvas);
-}
+body { padding: var(--acme-space-6); }
 .spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
 .spec:first-child { margin-block-start: 0; }
 .row { display: flex; flex-wrap: wrap; gap: var(--acme-space-3); align-items: center; }
 </style>
 </head>
 <body>
-  <p class="spec">Variants — primary/danger opaque, secondary glass, capsule shape; one primary per view</p>
+  <p class="spec">Variants — primary red fill, secondary outlined, ghost quiet; one primary per view</p>
   <div class="row">
     <button class="acme-btn acme-btn--primary">Add to order</button>
     <button class="acme-btn acme-btn--secondary">Save draft</button>
