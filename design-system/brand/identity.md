@@ -59,15 +59,17 @@ rules live in
 
 ## Color in the brand
 
-ACME Red (`#C8102E`) is the signature — and it is **rationed**. Red is for the
-mark, the single primary action on a screen, links, and genuinely destructive
-or urgent moments. Everything else is Graphite neutrals. A screen that is more
-than ~10% red is off-brand. See [foundations/color.md](../foundations/color.md).
+ACME Red (`#C8102E`) lives in exactly one place now: the wordmark mark. The
+product itself is monochrome — the primary action, links, status, and data
+all speak in Graphite alone, differentiated by value and weight instead of
+hue. Red stays legible precisely because it's rationed to a single fixed
+spot; the moment it appears twice, it stops meaning "ACME" and starts meaning
+nothing. See [foundations/color.md](../foundations/color.md).
 
 ## Imagery & illustration
 
 - Product photography on plain `--acme-color-surface` backgrounds, hard light,
   visible shadows. Objects look heavy.
-- Illustration style: blueprint linework in Blueprint Blue on Graphite,
-  single-weight strokes, no gradients.
+- Illustration style: Graphite linework on Graphite, single-weight strokes,
+  no gradients.
 - No stock-photo people shaking hands. Ever.

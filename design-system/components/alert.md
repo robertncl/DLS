@@ -19,6 +19,7 @@ title.
 
 ```html
 <div class="acme-alert acme-alert--warning" role="status">
+  <svg aria-hidden="true" …><!-- triangle-exclamation --></svg>
   <div>
     <p class="acme-alert__title">Low stock</p>
     <p>Only 3 anvils left. Restock arrives Jul 20.</p>
@@ -27,7 +28,10 @@ title.
 ```
 
 Title (one line, bold, no period) + body (1–2 sentences, what + next step).
-An icon may precede the text block; it follows the variant color.
+**The leading icon is required, not optional:** info/success/warning/danger
+all render in the same ink (see [color.md](../foundations/color.md)), so the
+icon shape — info circle, check, triangle, x-circle — is what tells them
+apart, alongside the word itself.
 
 ## Rules
 

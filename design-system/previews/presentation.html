@@ -20,7 +20,8 @@
 :root {
   color-scheme: light dark;
 
-  /* ACME Red — brand */
+  /* ACME Red — reserved for the wordmark mark only; no semantic token
+     below resolves to this scale. See brand/identity.md. */
   --acme-red-50: #FDF3F4;
   --acme-red-100: #FAE3E6;
   --acme-red-200: #F5C2C9;
@@ -33,7 +34,7 @@
   --acme-red-900: #741122;
   --acme-red-950: #43060F;
 
-  /* Graphite — neutrals */
+  /* Graphite — the entire product palette */
   --acme-gray-0: #FFFFFF;
   --acme-gray-50: #F8F9FA;
   --acme-gray-100: #F1F3F5;
@@ -46,31 +47,6 @@
   --acme-gray-800: #262B33;
   --acme-gray-900: #16191F;
   --acme-gray-950: #0C0E12;
-
-  /* Blueprint Blue — info & focus */
-  --acme-blue-50: #EFF4FE;
-  --acme-blue-100: #DEE9FD;
-  --acme-blue-200: #BCD2FA;
-  --acme-blue-300: #8FB0F5;
-  --acme-blue-400: #5F88EE;
-  --acme-blue-500: #3B82F6;
-  --acme-blue-600: #2563EB;
-  --acme-blue-700: #1D4ED8;
-
-  /* Go Green — success */
-  --acme-green-50: #F0FBF4;
-  --acme-green-300: #7FD99A;
-  --acme-green-400: #4CBB74;
-  --acme-green-500: #22C55E;
-  --acme-green-600: #15803D;
-  --acme-green-700: #116932;
-
-  /* Caution Amber — warning */
-  --acme-amber-50: #FEF8EB;
-  --acme-amber-300: #FCD34D;
-  --acme-amber-500: #F59E0B;
-  --acme-amber-700: #B45309;
-  --acme-amber-800: #92400E;
 
   /* Typography */
   --acme-font-sans: "Inter", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
@@ -124,7 +100,9 @@
   --acme-ease-out: cubic-bezier(0.2, 0.8, 0.4, 1);
   --acme-ease-in-out: cubic-bezier(0.45, 0, 0.25, 1);
 
-  /* Semantic aliases — light theme (default) */
+  /* Semantic aliases — light theme (default). Monochrome: every token is a
+     graphite stop; a solid fill darkens toward black for rest → hover →
+     active. */
   --acme-color-canvas: var(--acme-gray-0);
   --acme-color-surface: var(--acme-gray-50);
   --acme-color-surface-raised: var(--acme-gray-0);
@@ -133,35 +111,40 @@
   --acme-color-text: var(--acme-gray-900);
   --acme-color-text-muted: var(--acme-gray-600);
   --acme-color-text-subtle: var(--acme-gray-500);
-  --acme-color-primary: var(--acme-red-600);
-  --acme-color-primary-hover: var(--acme-red-700);
-  --acme-color-primary-active: var(--acme-red-800);
+  --acme-color-primary: var(--acme-gray-800);
+  --acme-color-primary-hover: var(--acme-gray-900);
+  --acme-color-primary-active: var(--acme-gray-950);
   --acme-color-on-primary: var(--acme-gray-0);
-  --acme-color-link: var(--acme-red-700);
-  --acme-color-focus: var(--acme-blue-500);
-  --acme-color-success: var(--acme-green-600);
-  --acme-color-success-soft: var(--acme-green-50);
-  --acme-color-success-soft-text: var(--acme-green-700);
-  --acme-color-warning: var(--acme-amber-700);
-  --acme-color-warning-soft: var(--acme-amber-50);
-  --acme-color-warning-soft-text: var(--acme-amber-800);
-  --acme-color-danger: var(--acme-red-700);
-  --acme-color-danger-emphasis: var(--acme-red-700);
-  --acme-color-danger-soft: var(--acme-red-50);
-  --acme-color-danger-soft-text: var(--acme-red-700);
-  --acme-color-info: var(--acme-blue-600);
-  --acme-color-info-soft: var(--acme-blue-50);
-  --acme-color-info-soft-text: var(--acme-blue-700);
-  /* Chart marks: Blueprint carries data, red marks the single takeaway.
-     Pair is CVD-validated per surface — change only in step. */
-  --acme-color-data: var(--acme-blue-600);
-  --acme-color-data-highlight: var(--acme-red-600);
+  --acme-color-link: var(--acme-gray-900);
+  --acme-color-focus: var(--acme-gray-950);
+  --acme-color-success: var(--acme-gray-700);
+  --acme-color-success-soft: var(--acme-gray-100);
+  --acme-color-success-soft-text: var(--acme-gray-800);
+  --acme-color-warning: var(--acme-gray-700);
+  --acme-color-warning-soft: var(--acme-gray-100);
+  --acme-color-warning-soft-text: var(--acme-gray-800);
+  --acme-color-danger: var(--acme-gray-700);
+  --acme-color-danger-emphasis: var(--acme-gray-900);
+  --acme-color-danger-soft: var(--acme-gray-100);
+  --acme-color-danger-soft-text: var(--acme-gray-800);
+  --acme-color-info: var(--acme-gray-700);
+  --acme-color-info-soft: var(--acme-gray-100);
+  --acme-color-info-soft-text: var(--acme-gray-800);
+  /* Chart marks: value carries data, not hue — luminance contrast reads
+     correctly under every color-vision deficiency. Verified ≥ 3:1 against
+     canvas; see foundations/color.md. */
+  --acme-color-data: var(--acme-gray-500);
+  --acme-color-data-highlight: var(--acme-gray-900);
 
   accent-color: var(--acme-color-primary);
 }
 
 /* Semantic aliases — dark theme. Follows the system preference unless the
-   host pins a theme with data-theme="light" | "dark" on <html>. */
+   host pins a theme with data-theme="light" | "dark" on <html>. Primary and
+   danger-emphasis flip to a LIGHT fill here (not a darker one) — on a near-
+   black canvas that's what keeps a "solid action" fill legible and gives it
+   the same header-to-toe contrast it has in light mode. on-primary flips
+   with it, from white text to near-black text. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --acme-color-canvas: var(--acme-gray-950);
@@ -172,27 +155,27 @@
     --acme-color-text: var(--acme-gray-100);
     --acme-color-text-muted: var(--acme-gray-400);
     --acme-color-text-subtle: var(--acme-gray-400);
-    --acme-color-primary: var(--acme-red-500);
-    --acme-color-primary-hover: var(--acme-red-400);
-    --acme-color-primary-active: var(--acme-red-600);
-    --acme-color-link: var(--acme-red-300);
-    --acme-color-focus: var(--acme-blue-400);
-    --acme-color-success: var(--acme-green-400);
-    --acme-color-success-soft: color-mix(in oklab, var(--acme-green-500) 16%, var(--acme-gray-900));
-    --acme-color-success-soft-text: var(--acme-green-300);
-    --acme-color-warning: var(--acme-amber-500);
-    --acme-color-warning-soft: color-mix(in oklab, var(--acme-amber-500) 16%, var(--acme-gray-900));
-    --acme-color-warning-soft-text: var(--acme-amber-300);
-    --acme-color-danger: var(--acme-red-400);
-    /* danger-emphasis is a fill under white text — red-400 would fail AA */
-    --acme-color-danger-emphasis: var(--acme-red-500);
-    --acme-color-danger-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
-    --acme-color-danger-soft-text: var(--acme-red-300);
-    --acme-color-info: var(--acme-blue-400);
-    --acme-color-info-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
-    --acme-color-info-soft-text: var(--acme-blue-300);
-    --acme-color-data: var(--acme-blue-400);
-    --acme-color-data-highlight: var(--acme-red-500);
+    --acme-color-primary: var(--acme-gray-200);
+    --acme-color-primary-hover: var(--acme-gray-300);
+    --acme-color-primary-active: var(--acme-gray-400);
+    --acme-color-on-primary: var(--acme-gray-900);
+    --acme-color-link: var(--acme-gray-100);
+    --acme-color-focus: var(--acme-gray-0);
+    --acme-color-success: var(--acme-gray-300);
+    --acme-color-success-soft: var(--acme-gray-800);
+    --acme-color-success-soft-text: var(--acme-gray-200);
+    --acme-color-warning: var(--acme-gray-300);
+    --acme-color-warning-soft: var(--acme-gray-800);
+    --acme-color-warning-soft-text: var(--acme-gray-200);
+    --acme-color-danger: var(--acme-gray-300);
+    --acme-color-danger-emphasis: var(--acme-gray-100);
+    --acme-color-danger-soft: var(--acme-gray-800);
+    --acme-color-danger-soft-text: var(--acme-gray-200);
+    --acme-color-info: var(--acme-gray-300);
+    --acme-color-info-soft: var(--acme-gray-800);
+    --acme-color-info-soft-text: var(--acme-gray-200);
+    --acme-color-data: var(--acme-gray-500);
+    --acme-color-data-highlight: var(--acme-gray-100);
     --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
     --acme-shadow-md: 0 2px 8px -2px rgb(0 0 0 / 0.45);
     --acme-shadow-lg: 0 8px 24px -6px rgb(0 0 0 / 0.55);
@@ -208,26 +191,27 @@
   --acme-color-text: var(--acme-gray-100);
   --acme-color-text-muted: var(--acme-gray-400);
   --acme-color-text-subtle: var(--acme-gray-400);
-  --acme-color-primary: var(--acme-red-500);
-  --acme-color-primary-hover: var(--acme-red-400);
-  --acme-color-primary-active: var(--acme-red-600);
-  --acme-color-link: var(--acme-red-300);
-  --acme-color-focus: var(--acme-blue-400);
-  --acme-color-success: var(--acme-green-400);
-  --acme-color-success-soft: color-mix(in oklab, var(--acme-green-500) 16%, var(--acme-gray-900));
-  --acme-color-success-soft-text: var(--acme-green-300);
-  --acme-color-warning: var(--acme-amber-500);
-  --acme-color-warning-soft: color-mix(in oklab, var(--acme-amber-500) 16%, var(--acme-gray-900));
-  --acme-color-warning-soft-text: var(--acme-amber-300);
-  --acme-color-danger: var(--acme-red-400);
-  --acme-color-danger-emphasis: var(--acme-red-500);
-  --acme-color-danger-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
-  --acme-color-danger-soft-text: var(--acme-red-300);
-  --acme-color-info: var(--acme-blue-400);
-  --acme-color-info-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
-  --acme-color-info-soft-text: var(--acme-blue-300);
-  --acme-color-data: var(--acme-blue-400);
-  --acme-color-data-highlight: var(--acme-red-500);
+  --acme-color-primary: var(--acme-gray-200);
+  --acme-color-primary-hover: var(--acme-gray-300);
+  --acme-color-primary-active: var(--acme-gray-400);
+  --acme-color-on-primary: var(--acme-gray-900);
+  --acme-color-link: var(--acme-gray-100);
+  --acme-color-focus: var(--acme-gray-0);
+  --acme-color-success: var(--acme-gray-300);
+  --acme-color-success-soft: var(--acme-gray-800);
+  --acme-color-success-soft-text: var(--acme-gray-200);
+  --acme-color-warning: var(--acme-gray-300);
+  --acme-color-warning-soft: var(--acme-gray-800);
+  --acme-color-warning-soft-text: var(--acme-gray-200);
+  --acme-color-danger: var(--acme-gray-300);
+  --acme-color-danger-emphasis: var(--acme-gray-100);
+  --acme-color-danger-soft: var(--acme-gray-800);
+  --acme-color-danger-soft-text: var(--acme-gray-200);
+  --acme-color-info: var(--acme-gray-300);
+  --acme-color-info-soft: var(--acme-gray-800);
+  --acme-color-info-soft-text: var(--acme-gray-200);
+  --acme-color-data: var(--acme-gray-500);
+  --acme-color-data-highlight: var(--acme-gray-100);
   --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
   --acme-shadow-md: 0 2px 8px -2px rgb(0 0 0 / 0.45);
   --acme-shadow-lg: 0 8px 24px -6px rgb(0 0 0 / 0.55);
@@ -722,7 +706,9 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-slide__footer .acme-wordmark { font-size: 1.4cqi; }
 .acme-slide__footer-num { margin-inline-start: auto; font-variant-numeric: tabular-nums; }
 
-/* Dark bookends (title & closing) keep Graphite regardless of theme */
+/* Dark bookends (title & closing) keep Graphite regardless of theme. Fixed
+   (non-theme-flipping) values throughout — this background never lightens
+   with the page, so nothing on it may key off a token that would. */
 .acme-slide--dark {
   background: var(--acme-gray-950);
   color: var(--acme-gray-100);
@@ -730,22 +716,20 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-slide--dark :is(.acme-slide__meta, .acme-slide__body) { color: var(--acme-gray-400); }
 .acme-slide--dark .acme-slide__footer { color: var(--acme-gray-500); }
 .acme-slide--dark .acme-wordmark { color: var(--acme-gray-0); }
+.acme-slide--dark .acme-slide__kicker { color: var(--acme-gray-300); }
 
-/* Section divider — the one sanctioned full-bleed red moment */
-.acme-slide--section {
-  background: var(--acme-red-600);
-  color: var(--acme-gray-0);
-}
-.acme-slide--section .acme-slide__kicker { color: var(--acme-red-200); }
+/* Section divider — pairs with .acme-slide--dark in markup (same field as
+   the bookends); the giant numeral is what marks it as a divider, not a
+   second color. */
 .acme-slide--section .acme-slide__num {
   font: 800 12cqi/1 var(--acme-font-display);
   font-style: italic;
-  color: var(--acme-red-300);
+  color: var(--acme-gray-700);
   margin: 0 0 1cqi;
 }
 .acme-slide--section .acme-slide__title { margin: 0; }
 
-/* Data slide chart — Blueprint carries data, red marks the single takeaway */
+/* Data slide chart — value carries data, not hue */
 .acme-slide__chart {
   flex: 1;
   min-block-size: 0;
@@ -783,8 +767,9 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 
 /* --------------------------------------------------------------------------
    14. Report document
-   Long-form editorial styles. Red appears in exactly three places: the cover
-   rule, heading numerals, and the key-finding callout accent.
+   Long-form editorial styles. The cover rule, heading numerals, and the
+   key-finding callout accent all key off --acme-color-primary — the same
+   ink as everything else, not a separate accent color.
    -------------------------------------------------------------------------- */
 .acme-doc {
   max-inline-size: 65ch;
@@ -816,7 +801,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   block-size: 4px;
   border: none;
   border-radius: 2px;
-  background: var(--acme-red-600);
+  background: var(--acme-color-primary);
   margin: var(--acme-space-4) 0;
 }
 .acme-doc-meta {
@@ -878,7 +863,7 @@ body { padding: var(--acme-space-6); }
 </style>
 </head>
 <body>
-  <p class="spec">Five masters — decks open dark, breathe light, punctuate red · cqi-sized, any width</p>
+  <p class="spec">Five masters — decks open dark, breathe light · cqi-sized, any width</p>
   <div class="deck">
 
     <!-- 1 · Title -->
@@ -893,14 +878,15 @@ body { padding: var(--acme-space-6); }
       </div>
     </section>
 
-    <!-- 2 · Section divider -->
-    <section class="acme-slide acme-slide--section" aria-label="Section divider slide">
+    <!-- 2 · Section divider — pairs --section with --dark: same field as
+         the bookends, the giant numeral is the differentiator -->
+    <section class="acme-slide acme-slide--dark acme-slide--section" aria-label="Section divider slide">
       <div class="acme-slide__frame">
         <div style="margin-block: auto;">
           <p class="acme-slide__num" aria-hidden="true">02</p>
           <h2 class="acme-slide__title">Logistics</h2>
         </div>
-        <footer class="acme-slide__footer" style="color: var(--acme-red-200);">
+        <footer class="acme-slide__footer">
           <span>Q2 2026 review</span>
           <span class="acme-slide__footer-num">6</span>
         </footer>
