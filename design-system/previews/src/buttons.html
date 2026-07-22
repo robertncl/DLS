@@ -15,12 +15,15 @@ body { padding: var(--acme-space-6); }
 </style>
 </head>
 <body>
-  <p class="spec">Variants — primary red fill, secondary outlined, ghost quiet; one primary per view</p>
+  <p class="spec">Variants — primary graphite fill, secondary outlined, ghost quiet; one primary per view. Danger shares the primary fill — the icon marks it, not color.</p>
   <div class="row">
     <button class="acme-btn acme-btn--primary">Add to order</button>
     <button class="acme-btn acme-btn--secondary">Save draft</button>
     <button class="acme-btn acme-btn--ghost">Cancel</button>
-    <button class="acme-btn acme-btn--danger">Delete 12 products</button>
+    <button class="acme-btn acme-btn--danger">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5 1 14h14L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 6.25v3.25M8 11.75h.007" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Delete 12 products
+    </button>
   </div>
 
   <p class="spec">Sizes — sm 32 (dense toolbars) · md 40 (default) · lg 48 (checkout)</p>

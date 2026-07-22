@@ -57,14 +57,18 @@ Never edit `previews/*.html` directly — the build overwrites them.
 
 ## Non-negotiables (the short list)
 
-1. One ACME Red primary action per view; extra red means danger.
+1. One solid (primary) action per view; the product is monochrome, so a
+   second solid fill reads as a second primary, not emphasis.
 2. Semantic tokens only; no hex values in product code.
 3. 4 px spacing grid; if it isn't a token, it isn't a size.
 4. Sentence case everywhere; buttons are verb-first and specific.
 5. All text meets WCAG AA (the palette is pre-verified — see
    [foundations/color.md](foundations/color.md)).
-6. Focus rings are Blueprint Blue, never red; `prefers-reduced-motion` is
-   always honored.
+6. Status (success/warning/danger/info) shares one ink — the icon and label
+   are what carry meaning now, never color alone. Focus rings are the
+   neutral extreme, never the wordmark's red.
 7. Surfaces are opaque and bordered: raised surfaces take a 1 px hairline,
    shadows only say how high, and nothing is translucent or bounces (see
    [foundations/shape-elevation.md](foundations/shape-elevation.md)).
+8. ACME Red appears in exactly one place: the wordmark mark (see
+   [brand/identity.md](brand/identity.md)). Nowhere else in product code.

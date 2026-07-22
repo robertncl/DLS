@@ -34,8 +34,9 @@ page (that's a link) and never trigger actions (that's a button).
 - A hairline baseline runs under the whole set; the **selected tab carries a
   2 px neutral underline** (`--acme-color-text`) and darkens to full text
   color. Unselected tabs are muted; hover darkens text only.
-- The indicator is neutral, not red — red stays rationed for the primary
-  action and danger.
+- The indicator is neutral — same ink as the rest of the interface. The
+  wordmark mark is the only red left in the system; everything else,
+  including the primary action, is Graphite.
 - 2–6 tabs, one-word labels preferred, counts allowed ("Orders 12").
 - Proper ARIA: `role="tablist"` / `role="tab"` / `aria-selected`, arrow-key
   navigation between tabs.
