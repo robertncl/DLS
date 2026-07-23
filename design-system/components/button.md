@@ -10,10 +10,10 @@ the `:active` color step — buttons never scale or bounce.
 
 | Variant | Class | Surface | Use |
 | --- | --- | --- | --- |
-| Primary | `.acme-btn--primary` | ACME Red fill | The single most important action on the view — **one per view**. |
+| Primary | `.acme-btn--primary` | ACME Red fill, white label (both themes) | The single most important action on the view — **one per view**. |
 | Secondary | `.acme-btn--secondary` | Raised surface + `border-strong` outline | Alternative or companion actions. Hover fills with `--acme-color-surface`. |
 | Ghost | `.acme-btn--ghost` | Transparent → surface fill on hover | Low-emphasis actions in toolbars, cards, table rows. |
-| Danger | `.acme-btn--danger` | danger-emphasis fill | Destructive, irreversible actions. Always paired with a confirmation step. |
+| Danger | `.acme-btn--danger` | danger-emphasis fill (deeper red) + warning icon | Destructive, irreversible actions. Red marks it, the icon and verb confirm it — always paired with a confirmation step. |
 
 ## Sizes
 
@@ -37,6 +37,9 @@ adjacent help text instead.
 - Never "OK", "Yes", "Submit", or "Click here".
 - Icon + label preferred over icon-only; icon-only buttons require an
   `aria-label`.
+- **Danger buttons always lead with a warning icon.** Primary and danger
+  share one fill color now, so the icon — not the color — is what tells a
+  reader "this one is destructive."
 
 ## Accessibility
 

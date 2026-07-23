@@ -63,20 +63,21 @@ The brand is **grey with two highlights**. Graphite builds everything; ACME
 Red (`#C8102E`) and Blueprint Blue (`#2563EB`) are the only colors allowed to
 interrupt it, and each says one thing:
 
-- **Red — act & attend.** The mark, the single primary action, danger, and
-  editorial marks (kickers, rules, heading numerals). Rationed: a screen more
-  than ~10% red is off-brand.
+- **Red — act & attend.** The wordmark mark, the single primary action,
+  danger, and editorial marks (kickers, rules, heading numerals). Rationed:
+  a screen more than ~10% red is off-brand.
 - **Blue — orient & inform.** Links, focus, the current page, selected rows,
   checked controls, and data. Blue may repeat; orientation isn't scarce.
 
 The rule that keeps them honest: **red is where you act, blue is where you
-are.** A control that isn't an action never turns red. See
+are.** A control that isn't an action never turns red, and success and
+warning stay in Graphite entirely. See
 [foundations/color.md](../foundations/color.md).
 
 ## Imagery & illustration
 
 - Product photography on plain `--acme-color-surface` backgrounds, hard light,
   visible shadows. Objects look heavy.
-- Illustration style: blueprint linework in Blueprint Blue on Graphite,
-  single-weight strokes, no gradients.
+- Illustration style: Graphite linework on Graphite, single-weight strokes,
+  no gradients.
 - No stock-photo people shaking hands. Ever.
