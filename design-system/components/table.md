@@ -23,8 +23,9 @@ markup only — no div grids.
   cap at one line.
 - Empty state: keep the header row, show a short message + the action that
   fills the table ("No orders yet. Share your catalog link.").
-- Sorting: clickable `<th>` with `aria-sort`; sorted column header darkens to
-  `--acme-color-text`.
+- Sorting: clickable `<th>` with `aria-sort`; the sorted header and its
+  bottom border take `--acme-color-selected`, so the blue points at the
+  column ordering the data.
 - Pagination beyond ~50 rows; virtualize beyond ~500.
 - Column headers describe data ("Ship date"), not actions.
 
@@ -32,4 +33,7 @@ markup only — no div grids.
 
 - `<caption>` (visually hidden if needed) names every table.
 - `scope="col"` / `scope="row"` on header cells.
-- Row hover is decoration only; selection uses a leading checkbox column.
+- Row hover is decoration only (grey fill); selection uses a leading checkbox
+  column plus `aria-selected="true"` on the `<tr>`, which tints the row
+  `--acme-color-selected-soft`. Selection state must never be carried by the
+  tint alone.

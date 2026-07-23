@@ -59,10 +59,19 @@ rules live in
 
 ## Color in the brand
 
-ACME Red (`#C8102E`) is the signature — and it is **rationed**. Red is for the
-mark, the single primary action on a screen, links, and genuinely destructive
-or urgent moments. Everything else is Graphite neutrals. A screen that is more
-than ~10% red is off-brand. See [foundations/color.md](../foundations/color.md).
+The brand is **grey with two highlights**. Graphite builds everything; ACME
+Red (`#C8102E`) and Blueprint Blue (`#2563EB`) are the only colors allowed to
+interrupt it, and each says one thing:
+
+- **Red — act & attend.** The mark, the single primary action, danger, and
+  editorial marks (kickers, rules, heading numerals). Rationed: a screen more
+  than ~10% red is off-brand.
+- **Blue — orient & inform.** Links, focus, the current page, selected rows,
+  checked controls, and data. Blue may repeat; orientation isn't scarce.
+
+The rule that keeps them honest: **red is where you act, blue is where you
+are.** A control that isn't an action never turns red. See
+[foundations/color.md](../foundations/color.md).
 
 ## Imagery & illustration
 

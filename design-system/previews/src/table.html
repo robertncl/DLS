@@ -15,12 +15,13 @@ caption { position: absolute; clip-path: inset(50%); }
 </style>
 </head>
 <body>
-  <p class="spec">.acme-table — text left, numbers right (tabular-nums), one badge per row</p>
+  <p class="spec">.acme-table — text left, numbers right (tabular-nums), one badge per row ·
+  sorted column and selected row are marked in Blueprint</p>
   <table class="acme-table">
     <caption>Recent orders</caption>
     <thead>
       <tr>
-        <th scope="col">Order</th>
+        <th scope="col" aria-sort="descending">Order</th>
         <th scope="col">Product</th>
         <th scope="col">Status</th>
         <th scope="col" class="acme-table__num">Qty</th>
@@ -29,7 +30,7 @@ caption { position: absolute; clip-path: inset(50%); }
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr aria-selected="true">
         <td style="font-family: var(--acme-font-mono);">#4421</td>
         <td>Anvil, 10-ton</td>
         <td><span class="acme-badge acme-badge--success">Shipped</span></td>

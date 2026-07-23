@@ -11,7 +11,7 @@ describes a real company.
 | --- | --- |
 | [brand/identity.md](brand/identity.md) | Who ACME is, the wordmark, brand pillars |
 | [brand/voice-and-tone.md](brand/voice-and-tone.md) | How ACME writes |
-| [foundations/color.md](foundations/color.md) | Palette, semantic tokens, verified contrast |
+| [foundations/color.md](foundations/color.md) | Monochrome base + red/blue highlights, semantic tokens, verified contrast |
 | [foundations/typography.md](foundations/typography.md) | Families, scale, weights |
 | [foundations/spacing-layout.md](foundations/spacing-layout.md) | 4 px grid, breakpoints, containers |
 | [foundations/shape-elevation.md](foundations/shape-elevation.md) | Surfaces, radius, borders, shadows |
@@ -57,7 +57,10 @@ Never edit `previews/*.html` directly — the build overwrites them.
 
 ## Non-negotiables (the short list)
 
-1. One ACME Red primary action per view; extra red means danger.
+1. Grey base, two highlights: **red is where you act, blue is where you
+   are.** One ACME Red primary action per view (extra red means danger);
+   Blueprint carries links, focus, selection, and the current page. Selection
+   is never red.
 2. Semantic tokens only; no hex values in product code.
 3. 4 px spacing grid; if it isn't a token, it isn't a size.
 4. Sentence case everywhere; buttons are verb-first and specific.

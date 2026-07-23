@@ -47,7 +47,7 @@
   --acme-gray-900: #16191F;
   --acme-gray-950: #0C0E12;
 
-  /* Blueprint Blue — info & focus */
+  /* Blueprint Blue — orientation, links, focus, data */
   --acme-blue-50: #EFF4FE;
   --acme-blue-100: #DEE9FD;
   --acme-blue-200: #BCD2FA;
@@ -56,6 +56,7 @@
   --acme-blue-500: #3B82F6;
   --acme-blue-600: #2563EB;
   --acme-blue-700: #1D4ED8;
+  --acme-blue-800: #1E40AF;
 
   /* Go Green — success */
   --acme-green-50: #F0FBF4;
@@ -137,7 +138,15 @@
   --acme-color-primary-hover: var(--acme-red-700);
   --acme-color-primary-active: var(--acme-red-800);
   --acme-color-on-primary: var(--acme-gray-0);
-  --acme-color-link: var(--acme-red-700);
+  /* Red highlight — non-interactive marks: kickers, rules, numerals,
+     callout accents, the one takeaway in a chart. */
+  --acme-color-accent: var(--acme-red-600);
+  --acme-color-accent-soft: var(--acme-red-50);
+  /* Blue highlight — orientation: where you are, what's selected. */
+  --acme-color-selected: var(--acme-blue-600);
+  --acme-color-selected-soft: var(--acme-blue-50);
+  --acme-color-link: var(--acme-blue-700);
+  --acme-color-link-hover: var(--acme-blue-800);
   --acme-color-focus: var(--acme-blue-500);
   --acme-color-success: var(--acme-green-600);
   --acme-color-success-soft: var(--acme-green-50);
@@ -157,7 +166,9 @@
   --acme-color-data: var(--acme-blue-600);
   --acme-color-data-highlight: var(--acme-red-600);
 
-  accent-color: var(--acme-color-primary);
+  /* Selection is orientation, not action — checkboxes, radios and switches
+     are Blueprint, never red. */
+  accent-color: var(--acme-color-selected);
 }
 
 /* Semantic aliases — dark theme. Follows the system preference unless the
@@ -175,7 +186,14 @@
     --acme-color-primary: var(--acme-red-500);
     --acme-color-primary-hover: var(--acme-red-400);
     --acme-color-primary-active: var(--acme-red-600);
-    --acme-color-link: var(--acme-red-300);
+    /* Accent is red-300 in dark (not red-500): accent marks are small text
+       and must hold AA on raised surfaces too. */
+    --acme-color-accent: var(--acme-red-300);
+    --acme-color-accent-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
+    --acme-color-selected: var(--acme-blue-300);
+    --acme-color-selected-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
+    --acme-color-link: var(--acme-blue-300);
+    --acme-color-link-hover: var(--acme-blue-200);
     --acme-color-focus: var(--acme-blue-400);
     --acme-color-success: var(--acme-green-400);
     --acme-color-success-soft: color-mix(in oklab, var(--acme-green-500) 16%, var(--acme-gray-900));
@@ -211,7 +229,14 @@
   --acme-color-primary: var(--acme-red-500);
   --acme-color-primary-hover: var(--acme-red-400);
   --acme-color-primary-active: var(--acme-red-600);
-  --acme-color-link: var(--acme-red-300);
+  /* Accent is red-300 in dark (not red-500): accent marks are small text
+     and must hold AA on raised surfaces too. */
+  --acme-color-accent: var(--acme-red-300);
+  --acme-color-accent-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
+  --acme-color-selected: var(--acme-blue-300);
+  --acme-color-selected-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
+  --acme-color-link: var(--acme-blue-300);
+  --acme-color-link-hover: var(--acme-blue-200);
   --acme-color-focus: var(--acme-blue-400);
   --acme-color-success: var(--acme-green-400);
   --acme-color-success-soft: color-mix(in oklab, var(--acme-green-500) 16%, var(--acme-gray-900));
@@ -270,7 +295,9 @@ a {
   color: var(--acme-color-link);
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
+  transition: color var(--acme-duration-fast) var(--acme-ease-out);
 }
+a:hover { color: var(--acme-color-link-hover); }
 
 code, pre {
   font-family: var(--acme-font-mono);
@@ -443,7 +470,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   box-shadow: var(--acme-shadow-sm);
   transition: translate var(--acme-duration-base) var(--acme-ease-out);
 }
-.acme-switch input:checked { background: var(--acme-color-primary); }
+.acme-switch input:checked { background: var(--acme-color-selected); }
 .acme-switch input:checked::before { translate: 1rem 0; }
 
 /* --------------------------------------------------------------------------
@@ -546,6 +573,16 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-table tbody tr:hover { background: var(--acme-color-surface); }
 .acme-table .acme-table__num { text-align: end; font-variant-numeric: tabular-nums; }
 
+/* Blue marks orientation: which column orders the data, which rows are held */
+.acme-table th:is([aria-sort="ascending"], [aria-sort="descending"]) {
+  color: var(--acme-color-selected);
+  border-block-end-color: var(--acme-color-selected);
+}
+.acme-table tbody tr[aria-selected="true"],
+.acme-table tbody tr[aria-selected="true"]:hover {
+  background: var(--acme-color-selected-soft);
+}
+
 /* --------------------------------------------------------------------------
    10. Tabs
    -------------------------------------------------------------------------- */
@@ -571,8 +608,8 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 }
 .acme-tab:hover { color: var(--acme-color-text); }
 .acme-tab[aria-selected="true"] {
-  border-block-end-color: var(--acme-color-text);
-  color: var(--acme-color-text);
+  border-block-end-color: var(--acme-color-selected);
+  color: var(--acme-color-selected);
   font-weight: 600;
 }
 
@@ -604,8 +641,8 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 }
 .acme-topbar__link:hover { color: var(--acme-color-text); background: var(--acme-color-surface); }
 .acme-topbar__link[aria-current="page"] {
-  background: var(--acme-color-surface);
-  color: var(--acme-color-text);
+  background: var(--acme-color-selected-soft);
+  color: var(--acme-color-selected);
   font-weight: 600;
 }
 
@@ -679,7 +716,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   font: 700 1.8cqi/1.2 var(--acme-font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--acme-color-primary);
+  color: var(--acme-color-accent);
   margin: 0 0 1.5cqi;
 }
 .acme-slide__title {
@@ -709,7 +746,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   line-height: var(--acme-leading-snug);
   max-inline-size: 66cqi;
 }
-.acme-slide__bullets li::marker { color: var(--acme-color-primary); }
+.acme-slide__bullets li::marker { color: var(--acme-color-accent); }
 .acme-slide__footer {
   margin-block-start: auto;
   padding-block-start: 2cqi;
@@ -722,10 +759,13 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-slide__footer .acme-wordmark { font-size: 1.4cqi; }
 .acme-slide__footer-num { margin-inline-start: auto; font-variant-numeric: tabular-nums; }
 
-/* Dark bookends (title & closing) keep Graphite regardless of theme */
+/* Dark bookends (title & closing) keep Graphite regardless of theme — so
+   they pin the accent too: red-600 on Graphite 950 is only 3.3:1, while the
+   dark-theme accent clears 8.5:1. */
 .acme-slide--dark {
   background: var(--acme-gray-950);
   color: var(--acme-gray-100);
+  --acme-color-accent: var(--acme-red-300);
 }
 .acme-slide--dark :is(.acme-slide__meta, .acme-slide__body) { color: var(--acme-gray-400); }
 .acme-slide--dark .acme-slide__footer { color: var(--acme-gray-500); }
@@ -801,14 +841,14 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   counter-increment: doc-h3;
   margin-block: var(--acme-space-6) var(--acme-space-2);
 }
-.acme-doc h2::before { content: counter(doc-h2) ".\2002"; color: var(--acme-color-primary); }
-.acme-doc h3::before { content: counter(doc-h2) "." counter(doc-h3) "\2002"; color: var(--acme-color-primary); }
+.acme-doc h2::before { content: counter(doc-h2) ".\2002"; color: var(--acme-color-accent); }
+.acme-doc h3::before { content: counter(doc-h2) "." counter(doc-h3) "\2002"; color: var(--acme-color-accent); }
 
 .acme-doc-kicker {
   font: 700 var(--acme-text-xs)/1.2 var(--acme-font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--acme-color-primary);
+  color: var(--acme-color-accent);
   margin: 0 0 var(--acme-space-2);
 }
 .acme-doc-rule {
@@ -816,7 +856,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   block-size: 4px;
   border: none;
   border-radius: 2px;
-  background: var(--acme-red-600);
+  background: var(--acme-color-accent);
   margin: var(--acme-space-4) 0;
 }
 .acme-doc-meta {
@@ -826,7 +866,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 }
 
 .acme-callout {
-  border-inline-start: 3px solid var(--acme-color-primary);
+  border-inline-start: 3px solid var(--acme-color-accent);
   border-radius: var(--acme-radius-md);
   background: var(--acme-color-surface);
   padding: var(--acme-space-4) var(--acme-space-5);
@@ -836,7 +876,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   font: 700 var(--acme-text-xs)/1.2 var(--acme-font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--acme-color-primary);
+  color: var(--acme-color-accent);
   margin: 0 0 var(--acme-space-1);
 }
 .acme-callout p:last-child { margin: 0; }
@@ -884,7 +924,7 @@ figure { margin: 0; }
 </style>
 </head>
 <body>
-  <p class="spec">ACME Red — brand · anchor 600 #C8102E</p>
+  <p class="spec">ACME Red — brand, primary action, danger, editorial marks · anchor 600 #C8102E</p>
   <div class="scale">
     <figure><div class="chip" style="background:var(--acme-red-50)"></div><figcaption>50</figcaption></figure>
     <figure><div class="chip" style="background:var(--acme-red-100)"></div><figcaption>100</figcaption></figure>
@@ -915,7 +955,7 @@ figure { margin: 0; }
     <figure><div class="chip" style="background:var(--acme-gray-950)"></div><figcaption>950</figcaption></figure>
   </div>
 
-  <p class="spec">Blueprint Blue — info &amp; focus</p>
+  <p class="spec">Blueprint Blue — links, selection, focus, info, data · anchor 600 #2563EB</p>
   <div class="scale">
     <figure><div class="chip" style="background:var(--acme-blue-50)"></div><figcaption>50</figcaption></figure>
     <figure><div class="chip" style="background:var(--acme-blue-100)"></div><figcaption>100</figcaption></figure>
@@ -925,6 +965,7 @@ figure { margin: 0; }
     <figure><div class="chip" style="background:var(--acme-blue-500)"></div><figcaption>500</figcaption></figure>
     <figure><div class="chip" style="background:var(--acme-blue-600)"></div><figcaption>600</figcaption></figure>
     <figure><div class="chip" style="background:var(--acme-blue-700)"></div><figcaption>700</figcaption></figure>
+    <figure><div class="chip" style="background:var(--acme-blue-800)"></div><figcaption>800</figcaption></figure>
   </div>
 
   <p class="spec">Status — Go Green &amp; Caution Amber</p>
@@ -946,6 +987,10 @@ figure { margin: 0; }
     <div class="sem-chip"><i style="background:var(--acme-color-text)"></i>--acme-color-text</div>
     <div class="sem-chip"><i style="background:var(--acme-color-text-muted)"></i>--acme-color-text-muted</div>
     <div class="sem-chip"><i style="background:var(--acme-color-primary)"></i>--acme-color-primary</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-accent)"></i>--acme-color-accent</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-accent-soft)"></i>--acme-color-accent-soft</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-selected)"></i>--acme-color-selected</div>
+    <div class="sem-chip"><i style="background:var(--acme-color-selected-soft)"></i>--acme-color-selected-soft</div>
     <div class="sem-chip"><i style="background:var(--acme-color-link)"></i>--acme-color-link</div>
     <div class="sem-chip"><i style="background:var(--acme-color-focus)"></i>--acme-color-focus</div>
     <div class="sem-chip"><i style="background:var(--acme-color-success)"></i>--acme-color-success</div>

@@ -24,7 +24,7 @@ entire design language — decks open dark, breathe light, and punctuate red.
 
 ## Typography on slides
 
-At a 1280 px reference width: kicker 23 px uppercase red · titles 51 px
+At a 1280 px reference width: kicker 23 px uppercase accent red · titles 51 px
 (hero 77 px) display face · body/bullets 28 px (~21 pt) · footer 18 px. Body
 text never renders below the 2.2cqi baseline — if it doesn't fit, the slide
 has too many words.

@@ -6,8 +6,9 @@ Classes: `.acme-doc`, `.acme-doc-kicker`, `.acme-doc-rule`, `.acme-doc-meta`,
 
 Long-form documents: quarterly reports, white papers, incident reports.
 Single column, `65ch` measure, relaxed leading (1.65). In documents, red
-appears in **exactly three places**: the cover rule, heading numerals, and
-the key-finding callout accent. Nothing else.
+(`--acme-color-accent`) appears in **exactly three places**: the cover rule,
+heading numerals, and the key-finding callout accent. Blue appears only as
+links and chart marks. Nothing else is colored.
 
 ## Structure
 
