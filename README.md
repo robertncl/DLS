@@ -6,8 +6,8 @@ built as a test fixture for design tooling (e.g. Claude Design / `/design-sync`)
 Everything lives in [design-system/](design-system/):
 
 - **Brand** — identity, wordmark, voice & tone
-- **Foundations** — color, typography, spacing, surfaces / shape & elevation,
-  motion
+- **Foundations** — color (Graphite base with ACME Red and Blueprint Blue
+  highlights), typography, spacing, surfaces / shape & elevation, motion
 - **Tokens** — [tokens.json](design-system/tokens/tokens.json) (DTCG) and
   [acme.css](design-system/tokens/acme.css) (custom properties + component styles)
 - **Components** — button, forms, card, badge, alert, table, navigation, modal

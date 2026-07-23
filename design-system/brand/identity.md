@@ -59,12 +59,20 @@ rules live in
 
 ## Color in the brand
 
-ACME Red (`#C8102E`) lives in exactly one place now: the wordmark mark. The
-product itself is monochrome — the primary action, links, status, and data
-all speak in Graphite alone, differentiated by value and weight instead of
-hue. Red stays legible precisely because it's rationed to a single fixed
-spot; the moment it appears twice, it stops meaning "ACME" and starts meaning
-nothing. See [foundations/color.md](../foundations/color.md).
+The brand is **grey with two highlights**. Graphite builds everything; ACME
+Red (`#C8102E`) and Blueprint Blue (`#2563EB`) are the only colors allowed to
+interrupt it, and each says one thing:
+
+- **Red — act & attend.** The wordmark mark, the single primary action,
+  danger, and editorial marks (kickers, rules, heading numerals). Rationed:
+  a screen more than ~10% red is off-brand.
+- **Blue — orient & inform.** Links, focus, the current page, selected rows,
+  checked controls, and data. Blue may repeat; orientation isn't scarce.
+
+The rule that keeps them honest: **red is where you act, blue is where you
+are.** A control that isn't an action never turns red, and success and
+warning stay in Graphite entirely. See
+[foundations/color.md](../foundations/color.md).
 
 ## Imagery & illustration
 

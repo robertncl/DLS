@@ -27,7 +27,7 @@ one slide whose number runs full-bleed at 12cqi. Pair `--section` with
 
 ## Typography on slides
 
-At a 1280 px reference width: kicker 23 px uppercase · titles 51 px (hero
+At a 1280 px reference width: kicker 23 px uppercase accent red · titles 51 px (hero
 77 px) display face · body/bullets 28 px (~21 pt) · footer 18 px. Body text
 never renders below the 2.2cqi baseline — if it doesn't fit, the slide has
 too many words.

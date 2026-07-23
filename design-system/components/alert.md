@@ -28,10 +28,11 @@ title.
 ```
 
 Title (one line, bold, no period) + body (1–2 sentences, what + next step).
-**The leading icon is required, not optional:** info/success/warning/danger
-all render in the same ink (see [color.md](../foundations/color.md)), so the
-icon shape — info circle, check, triangle, x-circle — is what tells them
-apart, alongside the word itself.
+**The leading icon is required, not optional:** danger carries the red
+highlight and info the blue one, but success and warning render in the *same*
+neutral ink (see [color.md](../foundations/color.md)), so the icon shape —
+info circle, check, triangle, x-circle — is what tells them apart, alongside
+the word itself.
 
 ## Rules
 

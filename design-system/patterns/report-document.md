@@ -5,10 +5,10 @@ Classes: `.acme-doc`, `.acme-doc-kicker`, `.acme-doc-rule`, `.acme-doc-meta`,
 [previews/report.html](../previews/report.html)
 
 Long-form documents: quarterly reports, white papers, incident reports.
-Single column, `65ch` measure, relaxed leading (1.65). The cover rule, heading
-numerals, and key-finding callout accent all key off `--acme-color-primary`
-— the same Graphite ink used everywhere else in the system, not a separate
-accent color.
+Single column, `65ch` measure, relaxed leading (1.65). In documents red
+appears in **exactly three places**, all via `--acme-color-accent`: the cover
+rule, heading numerals, and the key-finding callout accent. Blue appears only
+as links and chart marks. Nothing else is colored.
 
 ## Structure
 
@@ -20,7 +20,7 @@ e.g. "Quarterly report"), rule (`.acme-doc-rule`), title (4xl display), and
 `.acme-doc-meta` (authors · date · classification).
 
 **Body:** wrap in `.acme-doc`. `h2`/`h3` self-number via CSS counters
-("3.", "3.1") with ink-colored numerals — don't hand-number headings. Body
+("3.", "3.1") with red numerals — don't hand-number headings. Body
 text is 16 px/1.65; captions and footers 12 px.
 
 ## Callouts

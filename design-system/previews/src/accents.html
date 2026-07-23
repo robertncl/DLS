@@ -1,0 +1,134 @@
+<!-- @dsCard name="Accents — red & blue" group="Foundations" subtitle="Monochrome base, two highlights: red acts, blue orients" width="880" height="760" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ACME DLS — Accents</title>
+<!-- @acme:styles -->
+<style>
+body { padding: var(--acme-space-6); }
+.spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
+.spec:first-child { margin-block-start: 0; }
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: var(--acme-space-5); }
+.lane { border: 1px solid var(--acme-color-border); border-radius: var(--acme-radius-lg); padding: var(--acme-space-5); }
+.lane__head { display: flex; align-items: baseline; gap: var(--acme-space-2); margin-block-end: var(--acme-space-1); }
+.lane__swatch { inline-size: 0.875rem; block-size: 0.875rem; border-radius: var(--acme-radius-sm); flex: none; align-self: center; }
+.lane__title { font-family: var(--acme-font-display); font-size: var(--acme-text-lg); font-weight: 700; margin: 0; }
+.lane__job { font-size: var(--acme-text-xs); color: var(--acme-color-text-subtle); font-family: var(--acme-font-mono); }
+.lane p.lede { font-size: var(--acme-text-sm); color: var(--acme-color-text-muted); margin: 0 0 var(--acme-space-4); }
+.demo { display: flex; flex-wrap: wrap; gap: var(--acme-space-3); align-items: center; margin-block-end: var(--acme-space-4); }
+.demo:last-child { margin-block-end: 0; }
+.base-strip { display: flex; gap: var(--acme-space-1); }
+.base-strip i { flex: 1; block-size: 2.5rem; border-radius: var(--acme-radius-sm); border: 1px solid var(--acme-color-border); }
+.ratio { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); }
+</style>
+</head>
+<body>
+  <p class="spec">The base — Graphite does every surface, border and word</p>
+  <div class="base-strip" aria-hidden="true">
+    <i style="background:var(--acme-gray-0)"></i>
+    <i style="background:var(--acme-gray-50)"></i>
+    <i style="background:var(--acme-gray-100)"></i>
+    <i style="background:var(--acme-gray-200)"></i>
+    <i style="background:var(--acme-gray-300)"></i>
+    <i style="background:var(--acme-gray-400)"></i>
+    <i style="background:var(--acme-gray-500)"></i>
+    <i style="background:var(--acme-gray-600)"></i>
+    <i style="background:var(--acme-gray-700)"></i>
+    <i style="background:var(--acme-gray-800)"></i>
+    <i style="background:var(--acme-gray-900)"></i>
+    <i style="background:var(--acme-gray-950)"></i>
+  </div>
+
+  <p class="spec">Two highlights, one job each — red is where you act, blue is where you are</p>
+  <div class="split">
+
+    <section class="lane">
+      <div class="lane__head">
+        <span class="lane__swatch" style="background: var(--acme-color-accent)"></span>
+        <h3 class="lane__title">ACME Red</h3>
+        <span class="lane__job">act &amp; attend</span>
+      </div>
+      <p class="lede">The one primary action, danger, and editorial marks. Rationed —
+      one red action per view.</p>
+
+      <div class="demo">
+        <button class="acme-btn acme-btn--primary">Add to order</button>
+        <button class="acme-btn acme-btn--danger">Delete</button>
+      </div>
+
+      <div class="demo" style="display: block;">
+        <p class="acme-doc-kicker">Quarterly report</p>
+        <hr class="acme-doc-rule">
+      </div>
+
+      <div class="acme-callout" style="margin: 0;">
+        <p class="acme-callout__label">Key finding</p>
+        <p style="font-size: var(--acme-text-sm); margin: 0;">Orders rose 12% after
+        instant freight launched.</p>
+      </div>
+    </section>
+
+    <section class="lane">
+      <div class="lane__head">
+        <span class="lane__swatch" style="background: var(--acme-color-selected)"></span>
+        <h3 class="lane__title">Blueprint Blue</h3>
+        <span class="lane__job">orient &amp; inform</span>
+      </div>
+      <p class="lede">Links, focus, selection, current location, data. Blue may
+      repeat — orientation isn't scarce.</p>
+
+      <div class="demo">
+        <a href="#">Track order #4417</a>
+        <label class="acme-choice" style="margin: 0;"><input type="checkbox" checked> Insured</label>
+        <label class="acme-switch" style="margin: 0;"><input type="checkbox" role="switch" checked> Alerts</label>
+      </div>
+
+      <div class="acme-tabs" role="tablist" aria-label="Accent demo">
+        <button class="acme-tab" role="tab" aria-selected="true">Overview</button>
+        <button class="acme-tab" role="tab" aria-selected="false" tabindex="-1">Specs</button>
+      </div>
+
+      <div class="demo" style="margin-block-start: var(--acme-space-4);">
+        <div class="acme-alert" role="status" style="margin: 0;">
+          <div><p style="margin: 0;">Prices update nightly at 02:00 UTC.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <p class="spec">Selection is never red — state is blue, action is red</p>
+  <table class="acme-table" style="max-inline-size: 34rem;">
+    <caption style="position:absolute; clip-path:inset(50%);">Accent demonstration</caption>
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col" aria-sort="descending">Orders</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr aria-selected="true">
+        <td>Anvil, 10-ton <span class="acme-badge acme-badge--info">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 7.25v4M8 5.25h.007" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Selected</span></td>
+        <td class="acme-table__num">1,204</td>
+        <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Track</button></td>
+      </tr>
+      <tr>
+        <td>Rocket skates</td>
+        <td class="acme-table__num">862</td>
+        <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Track</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="spec">Verified — accent and selected clear AA on every surface in both themes
+  (see foundations/color.md)</p>
+  <p class="ratio">accent 5.9:1 light · 8.5:1 dark &nbsp;·&nbsp; selected 5.2:1 light · 8.9:1 dark
+  &nbsp;·&nbsp; link 6.7:1 light · 8.9:1 dark</p>
+</body>
+</html>

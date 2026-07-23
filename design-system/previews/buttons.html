@@ -20,8 +20,8 @@
 :root {
   color-scheme: light dark;
 
-  /* ACME Red — reserved for the wordmark mark only; no semantic token
-     below resolves to this scale. See brand/identity.md. */
+  /* ACME Red — highlight 1: act & attend. The primary action, danger, the
+     wordmark mark, and editorial marks. See foundations/color.md. */
   --acme-red-50: #FDF3F4;
   --acme-red-100: #FAE3E6;
   --acme-red-200: #F5C2C9;
@@ -34,7 +34,7 @@
   --acme-red-900: #741122;
   --acme-red-950: #43060F;
 
-  /* Graphite — the entire product palette */
+  /* Graphite — the monochrome base: every surface, border and word */
   --acme-gray-0: #FFFFFF;
   --acme-gray-50: #F8F9FA;
   --acme-gray-100: #F1F3F5;
@@ -47,6 +47,18 @@
   --acme-gray-800: #262B33;
   --acme-gray-900: #16191F;
   --acme-gray-950: #0C0E12;
+
+  /* Blueprint Blue — highlight 2: orient & inform. Links, focus, selection,
+     current location, info, data. */
+  --acme-blue-50: #EFF4FE;
+  --acme-blue-100: #DEE9FD;
+  --acme-blue-200: #BCD2FA;
+  --acme-blue-300: #8FB0F5;
+  --acme-blue-400: #5F88EE;
+  --acme-blue-500: #3B82F6;
+  --acme-blue-600: #2563EB;
+  --acme-blue-700: #1D4ED8;
+  --acme-blue-800: #1E40AF;
 
   /* Typography */
   --acme-font-sans: "Inter", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
@@ -100,9 +112,8 @@
   --acme-ease-out: cubic-bezier(0.2, 0.8, 0.4, 1);
   --acme-ease-in-out: cubic-bezier(0.45, 0, 0.25, 1);
 
-  /* Semantic aliases — light theme (default). Monochrome: every token is a
-     graphite stop; a solid fill darkens toward black for rest → hover →
-     active. */
+  /* Semantic aliases — light theme (default). Graphite is the base; red and
+     blue are the only two highlights, and each carries one job. */
   --acme-color-canvas: var(--acme-gray-0);
   --acme-color-surface: var(--acme-gray-50);
   --acme-color-surface-raised: var(--acme-gray-0);
@@ -111,40 +122,51 @@
   --acme-color-text: var(--acme-gray-900);
   --acme-color-text-muted: var(--acme-gray-600);
   --acme-color-text-subtle: var(--acme-gray-500);
-  --acme-color-primary: var(--acme-gray-800);
-  --acme-color-primary-hover: var(--acme-gray-900);
-  --acme-color-primary-active: var(--acme-gray-950);
+  /* Red — act & attend. Primary is a fixed hue, so unlike a graphite fill it
+     needs no light/dark flip: red reads on white and on near-black alike. */
+  --acme-color-primary: var(--acme-red-600);
+  --acme-color-primary-hover: var(--acme-red-700);
+  --acme-color-primary-active: var(--acme-red-800);
   --acme-color-on-primary: var(--acme-gray-0);
-  --acme-color-link: var(--acme-gray-900);
-  --acme-color-focus: var(--acme-gray-950);
+  /* Non-interactive red marks: kickers, rules, numerals, callout accents. */
+  --acme-color-accent: var(--acme-red-600);
+  --acme-color-accent-soft: var(--acme-red-50);
+  /* Blue — orient & inform: where you are, what's selected, what's known. */
+  --acme-color-selected: var(--acme-blue-600);
+  --acme-color-selected-soft: var(--acme-blue-50);
+  --acme-color-link: var(--acme-blue-700);
+  --acme-color-link-hover: var(--acme-blue-800);
+  --acme-color-focus: var(--acme-blue-500);
+  /* Success and warning have no highlight assigned — they keep the shared
+     graphite ink, so their icon and label stay load-bearing. */
   --acme-color-success: var(--acme-gray-700);
   --acme-color-success-soft: var(--acme-gray-100);
   --acme-color-success-soft-text: var(--acme-gray-800);
   --acme-color-warning: var(--acme-gray-700);
   --acme-color-warning-soft: var(--acme-gray-100);
   --acme-color-warning-soft-text: var(--acme-gray-800);
-  --acme-color-danger: var(--acme-gray-700);
-  --acme-color-danger-emphasis: var(--acme-gray-900);
-  --acme-color-danger-soft: var(--acme-gray-100);
-  --acme-color-danger-soft-text: var(--acme-gray-800);
-  --acme-color-info: var(--acme-gray-700);
-  --acme-color-info-soft: var(--acme-gray-100);
-  --acme-color-info-soft-text: var(--acme-gray-800);
-  /* Chart marks: value carries data, not hue — luminance contrast reads
-     correctly under every color-vision deficiency. Verified ≥ 3:1 against
-     canvas; see foundations/color.md. */
-  --acme-color-data: var(--acme-gray-500);
-  --acme-color-data-highlight: var(--acme-gray-900);
+  --acme-color-danger: var(--acme-red-700);
+  --acme-color-danger-emphasis: var(--acme-red-700);
+  --acme-color-danger-soft: var(--acme-red-50);
+  --acme-color-danger-soft-text: var(--acme-red-700);
+  --acme-color-info: var(--acme-blue-600);
+  --acme-color-info-soft: var(--acme-blue-50);
+  --acme-color-info-soft-text: var(--acme-blue-700);
+  /* Chart marks: Blueprint carries data, red marks the single takeaway.
+     Pair is CVD-validated per surface — change only in step. */
+  --acme-color-data: var(--acme-blue-600);
+  --acme-color-data-highlight: var(--acme-red-600);
 
-  accent-color: var(--acme-color-primary);
+  /* Selection is orientation, not action — checkboxes, radios and switches
+     are Blueprint, never red. */
+  accent-color: var(--acme-color-selected);
 }
 
 /* Semantic aliases — dark theme. Follows the system preference unless the
-   host pins a theme with data-theme="light" | "dark" on <html>. Primary and
-   danger-emphasis flip to a LIGHT fill here (not a darker one) — on a near-
-   black canvas that's what keeps a "solid action" fill legible and gives it
-   the same header-to-toe contrast it has in light mode. on-primary flips
-   with it, from white text to near-black text. */
+   host pins a theme with data-theme="light" | "dark" on <html>. The two
+   highlights lighten here so they stay legible on a near-black canvas, but
+   they do not invert: a red fill stays a red fill with white text in both
+   themes, which a graphite fill could not do. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --acme-color-canvas: var(--acme-gray-950);
@@ -155,27 +177,34 @@
     --acme-color-text: var(--acme-gray-100);
     --acme-color-text-muted: var(--acme-gray-400);
     --acme-color-text-subtle: var(--acme-gray-400);
-    --acme-color-primary: var(--acme-gray-200);
-    --acme-color-primary-hover: var(--acme-gray-300);
-    --acme-color-primary-active: var(--acme-gray-400);
-    --acme-color-on-primary: var(--acme-gray-900);
-    --acme-color-link: var(--acme-gray-100);
-    --acme-color-focus: var(--acme-gray-0);
+    --acme-color-primary: var(--acme-red-500);
+    --acme-color-primary-hover: var(--acme-red-400);
+    --acme-color-primary-active: var(--acme-red-600);
+    --acme-color-on-primary: var(--acme-gray-0);
+    /* Accent is red-300, not red-500: accent marks are small text and must
+       hold AA on raised surfaces too. */
+    --acme-color-accent: var(--acme-red-300);
+    --acme-color-accent-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
+    --acme-color-selected: var(--acme-blue-300);
+    --acme-color-selected-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
+    --acme-color-link: var(--acme-blue-300);
+    --acme-color-link-hover: var(--acme-blue-200);
+    --acme-color-focus: var(--acme-blue-400);
     --acme-color-success: var(--acme-gray-300);
     --acme-color-success-soft: var(--acme-gray-800);
     --acme-color-success-soft-text: var(--acme-gray-200);
     --acme-color-warning: var(--acme-gray-300);
     --acme-color-warning-soft: var(--acme-gray-800);
     --acme-color-warning-soft-text: var(--acme-gray-200);
-    --acme-color-danger: var(--acme-gray-300);
-    --acme-color-danger-emphasis: var(--acme-gray-100);
-    --acme-color-danger-soft: var(--acme-gray-800);
-    --acme-color-danger-soft-text: var(--acme-gray-200);
-    --acme-color-info: var(--acme-gray-300);
-    --acme-color-info-soft: var(--acme-gray-800);
-    --acme-color-info-soft-text: var(--acme-gray-200);
-    --acme-color-data: var(--acme-gray-500);
-    --acme-color-data-highlight: var(--acme-gray-100);
+    --acme-color-danger: var(--acme-red-400);
+    --acme-color-danger-emphasis: var(--acme-red-500);
+    --acme-color-danger-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
+    --acme-color-danger-soft-text: var(--acme-red-300);
+    --acme-color-info: var(--acme-blue-300);
+    --acme-color-info-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
+    --acme-color-info-soft-text: var(--acme-blue-300);
+    --acme-color-data: var(--acme-blue-400);
+    --acme-color-data-highlight: var(--acme-red-500);
     --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
     --acme-shadow-md: 0 2px 8px -2px rgb(0 0 0 / 0.45);
     --acme-shadow-lg: 0 8px 24px -6px rgb(0 0 0 / 0.55);
@@ -191,27 +220,34 @@
   --acme-color-text: var(--acme-gray-100);
   --acme-color-text-muted: var(--acme-gray-400);
   --acme-color-text-subtle: var(--acme-gray-400);
-  --acme-color-primary: var(--acme-gray-200);
-  --acme-color-primary-hover: var(--acme-gray-300);
-  --acme-color-primary-active: var(--acme-gray-400);
-  --acme-color-on-primary: var(--acme-gray-900);
-  --acme-color-link: var(--acme-gray-100);
-  --acme-color-focus: var(--acme-gray-0);
+  --acme-color-primary: var(--acme-red-500);
+  --acme-color-primary-hover: var(--acme-red-400);
+  --acme-color-primary-active: var(--acme-red-600);
+  --acme-color-on-primary: var(--acme-gray-0);
+  /* Accent is red-300, not red-500: accent marks are small text and must
+     hold AA on raised surfaces too. */
+  --acme-color-accent: var(--acme-red-300);
+  --acme-color-accent-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
+  --acme-color-selected: var(--acme-blue-300);
+  --acme-color-selected-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
+  --acme-color-link: var(--acme-blue-300);
+  --acme-color-link-hover: var(--acme-blue-200);
+  --acme-color-focus: var(--acme-blue-400);
   --acme-color-success: var(--acme-gray-300);
   --acme-color-success-soft: var(--acme-gray-800);
   --acme-color-success-soft-text: var(--acme-gray-200);
   --acme-color-warning: var(--acme-gray-300);
   --acme-color-warning-soft: var(--acme-gray-800);
   --acme-color-warning-soft-text: var(--acme-gray-200);
-  --acme-color-danger: var(--acme-gray-300);
-  --acme-color-danger-emphasis: var(--acme-gray-100);
-  --acme-color-danger-soft: var(--acme-gray-800);
-  --acme-color-danger-soft-text: var(--acme-gray-200);
-  --acme-color-info: var(--acme-gray-300);
-  --acme-color-info-soft: var(--acme-gray-800);
-  --acme-color-info-soft-text: var(--acme-gray-200);
-  --acme-color-data: var(--acme-gray-500);
-  --acme-color-data-highlight: var(--acme-gray-100);
+  --acme-color-danger: var(--acme-red-400);
+  --acme-color-danger-emphasis: var(--acme-red-500);
+  --acme-color-danger-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
+  --acme-color-danger-soft-text: var(--acme-red-300);
+  --acme-color-info: var(--acme-blue-300);
+  --acme-color-info-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
+  --acme-color-info-soft-text: var(--acme-blue-300);
+  --acme-color-data: var(--acme-blue-400);
+  --acme-color-data-highlight: var(--acme-red-500);
   --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
   --acme-shadow-md: 0 2px 8px -2px rgb(0 0 0 / 0.45);
   --acme-shadow-lg: 0 8px 24px -6px rgb(0 0 0 / 0.55);
@@ -254,7 +290,9 @@ a {
   color: var(--acme-color-link);
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
+  transition: color var(--acme-duration-fast) var(--acme-ease-out);
 }
+a:hover { color: var(--acme-color-link-hover); }
 
 code, pre {
   font-family: var(--acme-font-mono);
@@ -427,7 +465,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   box-shadow: var(--acme-shadow-sm);
   transition: translate var(--acme-duration-base) var(--acme-ease-out);
 }
-.acme-switch input:checked { background: var(--acme-color-primary); }
+.acme-switch input:checked { background: var(--acme-color-selected); }
 .acme-switch input:checked::before { translate: 1rem 0; }
 
 /* --------------------------------------------------------------------------
@@ -530,11 +568,21 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-table tbody tr:hover { background: var(--acme-color-surface); }
 .acme-table .acme-table__num { text-align: end; font-variant-numeric: tabular-nums; }
 
+/* Blue marks orientation: which column orders the data, which rows are held */
+.acme-table th:is([aria-sort="ascending"], [aria-sort="descending"]) {
+  color: var(--acme-color-selected);
+  border-block-end-color: var(--acme-color-selected);
+}
+.acme-table tbody tr[aria-selected="true"],
+.acme-table tbody tr[aria-selected="true"]:hover {
+  background: var(--acme-color-selected-soft);
+}
+
 /* --------------------------------------------------------------------------
    10. Tabs
    -------------------------------------------------------------------------- */
 /* Underline tabs: a hairline baseline across the set; the selected tab
-   carries a 2 px neutral indicator that sits on the baseline. */
+   carries a 2 px Blueprint indicator that sits on the baseline. */
 .acme-tabs {
   display: flex;
   gap: var(--acme-space-2);
@@ -555,8 +603,8 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 }
 .acme-tab:hover { color: var(--acme-color-text); }
 .acme-tab[aria-selected="true"] {
-  border-block-end-color: var(--acme-color-text);
-  color: var(--acme-color-text);
+  border-block-end-color: var(--acme-color-selected);
+  color: var(--acme-color-selected);
   font-weight: 600;
 }
 
@@ -588,8 +636,8 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 }
 .acme-topbar__link:hover { color: var(--acme-color-text); background: var(--acme-color-surface); }
 .acme-topbar__link[aria-current="page"] {
-  background: var(--acme-color-surface);
-  color: var(--acme-color-text);
+  background: var(--acme-color-selected-soft);
+  color: var(--acme-color-selected);
   font-weight: 600;
 }
 
@@ -663,7 +711,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   font: 700 1.8cqi/1.2 var(--acme-font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--acme-color-primary);
+  color: var(--acme-color-accent);
   margin: 0 0 1.5cqi;
 }
 .acme-slide__title {
@@ -693,7 +741,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   line-height: var(--acme-leading-snug);
   max-inline-size: 66cqi;
 }
-.acme-slide__bullets li::marker { color: var(--acme-color-primary); }
+.acme-slide__bullets li::marker { color: var(--acme-color-accent); }
 .acme-slide__footer {
   margin-block-start: auto;
   padding-block-start: 2cqi;
@@ -706,17 +754,18 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-slide__footer .acme-wordmark { font-size: 1.4cqi; }
 .acme-slide__footer-num { margin-inline-start: auto; font-variant-numeric: tabular-nums; }
 
-/* Dark bookends (title & closing) keep Graphite regardless of theme. Fixed
-   (non-theme-flipping) values throughout — this background never lightens
-   with the page, so nothing on it may key off a token that would. */
+/* Dark bookends (title & closing) keep Graphite regardless of theme. This
+   background never lightens with the page, so nothing on it may key off a
+   token that would — hence the pinned accent: the light-theme red-600 would
+   sit at 3.3:1 here, while the dark accent clears 8.5:1. */
 .acme-slide--dark {
   background: var(--acme-gray-950);
   color: var(--acme-gray-100);
+  --acme-color-accent: var(--acme-red-300);
 }
 .acme-slide--dark :is(.acme-slide__meta, .acme-slide__body) { color: var(--acme-gray-400); }
 .acme-slide--dark .acme-slide__footer { color: var(--acme-gray-500); }
 .acme-slide--dark .acme-wordmark { color: var(--acme-gray-0); }
-.acme-slide--dark .acme-slide__kicker { color: var(--acme-gray-300); }
 
 /* Section divider — pairs with .acme-slide--dark in markup (same field as
    the bookends); the giant numeral is what marks it as a divider, not a
@@ -767,9 +816,10 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 
 /* --------------------------------------------------------------------------
    14. Report document
-   Long-form editorial styles. The cover rule, heading numerals, and the
-   key-finding callout accent all key off --acme-color-primary — the same
-   ink as everything else, not a separate accent color.
+   Long-form editorial styles. Red appears in exactly three places, all via
+   --acme-color-accent: the cover rule, heading numerals, and the key-finding
+   callout accent. Accent is a mark, never an action — it is a separate token
+   from --acme-color-primary for that reason.
    -------------------------------------------------------------------------- */
 .acme-doc {
   max-inline-size: 65ch;
@@ -786,14 +836,14 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   counter-increment: doc-h3;
   margin-block: var(--acme-space-6) var(--acme-space-2);
 }
-.acme-doc h2::before { content: counter(doc-h2) ".\2002"; color: var(--acme-color-primary); }
-.acme-doc h3::before { content: counter(doc-h2) "." counter(doc-h3) "\2002"; color: var(--acme-color-primary); }
+.acme-doc h2::before { content: counter(doc-h2) ".\2002"; color: var(--acme-color-accent); }
+.acme-doc h3::before { content: counter(doc-h2) "." counter(doc-h3) "\2002"; color: var(--acme-color-accent); }
 
 .acme-doc-kicker {
   font: 700 var(--acme-text-xs)/1.2 var(--acme-font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--acme-color-primary);
+  color: var(--acme-color-accent);
   margin: 0 0 var(--acme-space-2);
 }
 .acme-doc-rule {
@@ -801,7 +851,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   block-size: 4px;
   border: none;
   border-radius: 2px;
-  background: var(--acme-color-primary);
+  background: var(--acme-color-accent);
   margin: var(--acme-space-4) 0;
 }
 .acme-doc-meta {
@@ -811,7 +861,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 }
 
 .acme-callout {
-  border-inline-start: 3px solid var(--acme-color-primary);
+  border-inline-start: 3px solid var(--acme-color-accent);
   border-radius: var(--acme-radius-md);
   background: var(--acme-color-surface);
   padding: var(--acme-space-4) var(--acme-space-5);
@@ -821,7 +871,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   font: 700 var(--acme-text-xs)/1.2 var(--acme-font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--acme-color-primary);
+  color: var(--acme-color-accent);
   margin: 0 0 var(--acme-space-1);
 }
 .acme-callout p:last-child { margin: 0; }
@@ -862,7 +912,7 @@ body { padding: var(--acme-space-6); }
 </style>
 </head>
 <body>
-  <p class="spec">Variants — primary graphite fill, secondary outlined, ghost quiet; one primary per view. Danger shares the primary fill — the icon marks it, not color.</p>
+  <p class="spec">Variants — primary red fill, secondary outlined, ghost quiet; one primary per view. Danger is a deeper red plus a warning icon.</p>
   <div class="row">
     <button class="acme-btn acme-btn--primary">Add to order</button>
     <button class="acme-btn acme-btn--secondary">Save draft</button>

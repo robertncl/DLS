@@ -10,10 +10,10 @@ the `:active` color step — buttons never scale or bounce.
 
 | Variant | Class | Surface | Use |
 | --- | --- | --- | --- |
-| Primary | `.acme-btn--primary` | Graphite fill (near-black on light, near-white on dark) | The single most important action on the view — **one per view**. |
+| Primary | `.acme-btn--primary` | ACME Red fill, white label (both themes) | The single most important action on the view — **one per view**. |
 | Secondary | `.acme-btn--secondary` | Raised surface + `border-strong` outline | Alternative or companion actions. Hover fills with `--acme-color-surface`. |
 | Ghost | `.acme-btn--ghost` | Transparent → surface fill on hover | Low-emphasis actions in toolbars, cards, table rows. |
-| Danger | `.acme-btn--danger` | danger-emphasis fill (same value as primary) + required warning icon | Destructive, irreversible actions. Icon-first — color no longer marks danger, see [color.md](../foundations/color.md) — always paired with a confirmation step. |
+| Danger | `.acme-btn--danger` | danger-emphasis fill (deeper red) + warning icon | Destructive, irreversible actions. Red marks it, the icon and verb confirm it — always paired with a confirmation step. |
 
 ## Sizes
 
@@ -26,8 +26,8 @@ the `:active` color step — buttons never scale or bounce.
 ## States
 
 Rest → hover (one shade deeper / surface fill) → active (two shades deeper)
-→ focus-visible (neutral ring — near-black on light, near-white on dark —
-2 px offset) → disabled (50% opacity, `not-allowed` cursor).
+→ focus-visible (Blueprint ring, 2 px offset) → disabled (50% opacity,
+`not-allowed` cursor).
 Disabled buttons never show tooltips explaining why — put the reason in
 adjacent help text instead.
 
