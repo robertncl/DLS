@@ -20,9 +20,8 @@ tinted background. Read-only — a badge is never a button or a filter chip.
 - One or two words, sentence case, no punctuation. Numbers allowed
   (`3 pending`).
 - Color pairs are fixed soft/soft-text tokens — never put custom colors on
-  badges. Danger takes the red highlight and info the blue one; **success and
-  warning share the same neutral ink** (see
-  [color.md](../foundations/color.md)).
+  badges. Danger takes Brick and info takes Sky; **success and warning share
+  the same neutral Oat ink** (see [color.md](../foundations/color.md)).
 - **A leading icon is required, not optional.** Success and warning are
   indistinguishable by color alone, so the icon is the only non-text
   differentiator they have — status must still be legible from the word

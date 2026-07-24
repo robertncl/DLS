@@ -20,49 +20,53 @@
 :root {
   color-scheme: light dark;
 
-  /* ACME Red — highlight 1: act & attend. The primary action, danger, the
-     wordmark mark, and editorial marks. See foundations/color.md. */
-  --acme-red-50: #FDF3F4;
-  --acme-red-100: #FAE3E6;
-  --acme-red-200: #F5C2C9;
-  --acme-red-300: #EC93A0;
-  --acme-red-400: #E05C70;
-  --acme-red-500: #D22F4C;
-  --acme-red-600: #C8102E;
-  --acme-red-700: #A60D26;
-  --acme-red-800: #8A0F23;
-  --acme-red-900: #741122;
-  --acme-red-950: #43060F;
+  /* Clay — the single highlight: primary action, links, selection, editorial
+     marks, the wordmark mark, the chart takeaway. A warm coral over paper. */
+  --acme-clay-50:  #FAF0EB;
+  --acme-clay-100: #F3DDD0;
+  --acme-clay-200: #E9C3AF;
+  --acme-clay-300: #DDA588;
+  --acme-clay-400: #D18B6A;
+  --acme-clay-500: #CC785C;
+  --acme-clay-600: #B4573C;
+  --acme-clay-700: #93422B;
+  --acme-clay-800: #75341F;
+  --acme-clay-900: #5A2818;
 
-  /* Graphite — the monochrome base: every surface, border and word */
-  --acme-gray-0: #FFFFFF;
-  --acme-gray-50: #F8F9FA;
-  --acme-gray-100: #F1F3F5;
-  --acme-gray-200: #E4E7EB;
-  --acme-gray-300: #CDD2D9;
-  --acme-gray-400: #9AA1AC;
-  --acme-gray-500: #6C7480;
-  --acme-gray-600: #4E5560;
-  --acme-gray-700: #3A404A;
-  --acme-gray-800: #262B33;
-  --acme-gray-900: #16191F;
-  --acme-gray-950: #0C0E12;
+  /* Oat — the warm neutral base: paper canvas, ink text, quiet borders */
+  --acme-gray-0:   #FCFBF7;
+  --acme-gray-50:  #F3F0E7;
+  --acme-gray-100: #EBE7D9;
+  --acme-gray-200: #E0DBC9;
+  --acme-gray-300: #CFC8B2;
+  --acme-gray-400: #A8A08B;
+  --acme-gray-500: #6B6554;
+  --acme-gray-600: #5C5648;
+  --acme-gray-700: #454034;
+  --acme-gray-800: #2C291F;
+  --acme-gray-900: #1B1911;
+  --acme-gray-950: #12100B;
 
-  /* Blueprint Blue — highlight 2: orient & inform. Links, focus, selection,
-     current location, info, data. */
-  --acme-blue-50: #EFF4FE;
-  --acme-blue-100: #DEE9FD;
-  --acme-blue-200: #BCD2FA;
-  --acme-blue-300: #8FB0F5;
-  --acme-blue-400: #5F88EE;
-  --acme-blue-500: #3B82F6;
-  --acme-blue-600: #2563EB;
-  --acme-blue-700: #1D4ED8;
-  --acme-blue-800: #1E40AF;
+  /* Brick — danger only. A true red, kept distinct from Clay's coral. */
+  --acme-red-50:  #FBEEEC;
+  --acme-red-300: #E8A99E;
+  --acme-red-400: #D65C4A;
+  --acme-red-500: #C4432F;
+  --acme-red-600: #B23423;
+  --acme-red-700: #97291B;
+  --acme-red-800: #7A2116;
 
-  /* Typography */
-  --acme-font-sans: "Inter", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
-  --acme-font-display: "Archivo", "Inter", "Segoe UI", system-ui, sans-serif;
+  /* Sky — info only. A muted slate blue. */
+  --acme-sky-50:  #EDF1F4;
+  --acme-sky-300: #8DB0C9;
+  --acme-sky-500: #5C87A6;
+  --acme-sky-600: #3E6B8C;
+  --acme-sky-700: #305875;
+  --acme-sky-800: #274860;
+
+  /* Typography — editorial serif display over a neutral grotesque body */
+  --acme-font-sans: "Styrene B", "Inter", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  --acme-font-display: "Tiempos Headline", "Copernicus", Georgia, "Times New Roman", ui-serif, serif;
   --acme-font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
   --acme-text-xs: 0.75rem;
   --acme-text-sm: 0.875rem;
@@ -100,9 +104,9 @@
   --acme-radius-full: 999px;
 
   /* Elevation — quiet, structural; borders carry most of the separation */
-  --acme-shadow-sm: 0 1px 2px rgb(12 14 18 / 0.06);
-  --acme-shadow-md: 0 2px 8px -2px rgb(12 14 18 / 0.10);
-  --acme-shadow-lg: 0 8px 24px -6px rgb(12 14 18 / 0.14);
+  --acme-shadow-sm: 0 1px 2px rgb(28 25 17 / 0.06);
+  --acme-shadow-md: 0 2px 8px -2px rgb(28 25 17 / 0.09);
+  --acme-shadow-lg: 0 8px 24px -6px rgb(28 25 17 / 0.13);
 
   /* Motion — calm and precise; nothing overshoots */
   --acme-duration-fast: 100ms;
@@ -112,53 +116,52 @@
   --acme-ease-out: cubic-bezier(0.2, 0.8, 0.4, 1);
   --acme-ease-in-out: cubic-bezier(0.45, 0, 0.25, 1);
 
-  /* Semantic aliases — light theme (default). Graphite is the base; red and
-     blue are the only two highlights, and each carries one job. */
-  --acme-color-canvas: var(--acme-gray-0);
-  --acme-color-surface: var(--acme-gray-50);
+  /* Semantic aliases — light theme (default). Warm Oat base; Clay is the one
+     highlight; Brick (danger) and Sky (info) are the only functional hues. */
+  --acme-color-canvas: var(--acme-gray-50);
+  --acme-color-surface: var(--acme-gray-100);
   --acme-color-surface-raised: var(--acme-gray-0);
   --acme-color-border: var(--acme-gray-200);
   --acme-color-border-strong: var(--acme-gray-300);
   --acme-color-text: var(--acme-gray-900);
   --acme-color-text-muted: var(--acme-gray-600);
   --acme-color-text-subtle: var(--acme-gray-500);
-  /* Red — act & attend. Primary is a fixed hue, so unlike a graphite fill it
-     needs no light/dark flip: red reads on white and on near-black alike. */
-  --acme-color-primary: var(--acme-red-600);
-  --acme-color-primary-hover: var(--acme-red-700);
-  --acme-color-primary-active: var(--acme-red-800);
+  /* Clay — the accent. A fixed hue, so unlike a neutral fill it needs no
+     light/dark flip: the primary fill is clay with white text in both. */
+  --acme-color-primary: var(--acme-clay-600);
+  --acme-color-primary-hover: var(--acme-clay-700);
+  --acme-color-primary-active: var(--acme-clay-800);
   --acme-color-on-primary: var(--acme-gray-0);
-  /* Non-interactive red marks: kickers, rules, numerals, callout accents. */
-  --acme-color-accent: var(--acme-red-600);
-  --acme-color-accent-soft: var(--acme-red-50);
-  /* Blue — orient & inform: where you are, what's selected, what's known. */
-  --acme-color-selected: var(--acme-blue-600);
-  --acme-color-selected-soft: var(--acme-blue-50);
-  --acme-color-link: var(--acme-blue-700);
-  --acme-color-link-hover: var(--acme-blue-800);
-  --acme-color-focus: var(--acme-blue-500);
-  /* Success and warning have no highlight assigned — they keep the shared
-     graphite ink, so their icon and label stay load-bearing. */
-  --acme-color-success: var(--acme-gray-700);
+  /* Editorial marks: kickers, rules, numerals, callout accents. */
+  --acme-color-accent: var(--acme-clay-700);
+  --acme-color-accent-soft: var(--acme-clay-50);
+  /* Orientation: current page, active tab, selected rows, checked controls. */
+  --acme-color-selected: var(--acme-clay-600);
+  --acme-color-selected-soft: var(--acme-clay-50);
+  --acme-color-link: var(--acme-clay-700);
+  --acme-color-link-hover: var(--acme-clay-800);
+  --acme-color-focus: var(--acme-clay-600);
+  /* Success and warning share the warm neutral ink — icon + label carry the
+     meaning; only danger (Brick) and info (Sky) take a functional hue. */
+  --acme-color-success: var(--acme-gray-600);
   --acme-color-success-soft: var(--acme-gray-100);
   --acme-color-success-soft-text: var(--acme-gray-800);
-  --acme-color-warning: var(--acme-gray-700);
+  --acme-color-warning: var(--acme-gray-600);
   --acme-color-warning-soft: var(--acme-gray-100);
   --acme-color-warning-soft-text: var(--acme-gray-800);
   --acme-color-danger: var(--acme-red-700);
   --acme-color-danger-emphasis: var(--acme-red-700);
   --acme-color-danger-soft: var(--acme-red-50);
   --acme-color-danger-soft-text: var(--acme-red-700);
-  --acme-color-info: var(--acme-blue-600);
-  --acme-color-info-soft: var(--acme-blue-50);
-  --acme-color-info-soft-text: var(--acme-blue-700);
-  /* Chart marks: Blueprint carries data, red marks the single takeaway.
-     Pair is CVD-validated per surface — change only in step. */
-  --acme-color-data: var(--acme-blue-600);
-  --acme-color-data-highlight: var(--acme-red-600);
+  --acme-color-info: var(--acme-sky-700);
+  --acme-color-info-soft: var(--acme-sky-50);
+  --acme-color-info-soft-text: var(--acme-sky-800);
+  /* Chart marks: neutral bars carry the data, Clay marks the one takeaway
+     (with a direct label). Both clear 3:1 on the surface. */
+  --acme-color-data: var(--acme-gray-600);
+  --acme-color-data-highlight: var(--acme-clay-600);
 
-  /* Selection is orientation, not action — checkboxes, radios and switches
-     are Blueprint, never red. */
+  /* Selection is orientation, not action — checked controls are Clay. */
   accent-color: var(--acme-color-selected);
 }
 
@@ -177,19 +180,21 @@
     --acme-color-text: var(--acme-gray-100);
     --acme-color-text-muted: var(--acme-gray-400);
     --acme-color-text-subtle: var(--acme-gray-400);
-    --acme-color-primary: var(--acme-red-500);
-    --acme-color-primary-hover: var(--acme-red-400);
-    --acme-color-primary-active: var(--acme-red-600);
+    /* Clay is a fixed hue: the primary fill stays clay with white text in both
+       themes, deepening on hover rather than inverting. */
+    --acme-color-primary: var(--acme-clay-600);
+    --acme-color-primary-hover: var(--acme-clay-700);
+    --acme-color-primary-active: var(--acme-clay-800);
     --acme-color-on-primary: var(--acme-gray-0);
-    /* Accent is red-300, not red-500: accent marks are small text and must
+    /* Accent & selected lighten to clay-300: these are small marks and must
        hold AA on raised surfaces too. */
-    --acme-color-accent: var(--acme-red-300);
-    --acme-color-accent-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
-    --acme-color-selected: var(--acme-blue-300);
-    --acme-color-selected-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
-    --acme-color-link: var(--acme-blue-300);
-    --acme-color-link-hover: var(--acme-blue-200);
-    --acme-color-focus: var(--acme-blue-400);
+    --acme-color-accent: var(--acme-clay-300);
+    --acme-color-accent-soft: color-mix(in oklab, var(--acme-clay-500) 20%, var(--acme-gray-900));
+    --acme-color-selected: var(--acme-clay-300);
+    --acme-color-selected-soft: color-mix(in oklab, var(--acme-clay-500) 18%, var(--acme-gray-900));
+    --acme-color-link: var(--acme-clay-300);
+    --acme-color-link-hover: var(--acme-clay-200);
+    --acme-color-focus: var(--acme-clay-400);
     --acme-color-success: var(--acme-gray-300);
     --acme-color-success-soft: var(--acme-gray-800);
     --acme-color-success-soft-text: var(--acme-gray-200);
@@ -198,13 +203,13 @@
     --acme-color-warning-soft-text: var(--acme-gray-200);
     --acme-color-danger: var(--acme-red-400);
     --acme-color-danger-emphasis: var(--acme-red-500);
-    --acme-color-danger-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
+    --acme-color-danger-soft: color-mix(in oklab, var(--acme-red-500) 20%, var(--acme-gray-900));
     --acme-color-danger-soft-text: var(--acme-red-300);
-    --acme-color-info: var(--acme-blue-300);
-    --acme-color-info-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
-    --acme-color-info-soft-text: var(--acme-blue-300);
-    --acme-color-data: var(--acme-blue-400);
-    --acme-color-data-highlight: var(--acme-red-500);
+    --acme-color-info: var(--acme-sky-300);
+    --acme-color-info-soft: color-mix(in oklab, var(--acme-sky-500) 20%, var(--acme-gray-900));
+    --acme-color-info-soft-text: var(--acme-sky-300);
+    --acme-color-data: var(--acme-gray-400);
+    --acme-color-data-highlight: var(--acme-clay-300);
     --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
     --acme-shadow-md: 0 2px 8px -2px rgb(0 0 0 / 0.45);
     --acme-shadow-lg: 0 8px 24px -6px rgb(0 0 0 / 0.55);
@@ -220,19 +225,21 @@
   --acme-color-text: var(--acme-gray-100);
   --acme-color-text-muted: var(--acme-gray-400);
   --acme-color-text-subtle: var(--acme-gray-400);
-  --acme-color-primary: var(--acme-red-500);
-  --acme-color-primary-hover: var(--acme-red-400);
-  --acme-color-primary-active: var(--acme-red-600);
+  /* Clay is a fixed hue: the primary fill stays clay with white text in both
+     themes, deepening on hover rather than inverting. */
+  --acme-color-primary: var(--acme-clay-600);
+  --acme-color-primary-hover: var(--acme-clay-700);
+  --acme-color-primary-active: var(--acme-clay-800);
   --acme-color-on-primary: var(--acme-gray-0);
-  /* Accent is red-300, not red-500: accent marks are small text and must
+  /* Accent & selected lighten to clay-300: these are small marks and must
      hold AA on raised surfaces too. */
-  --acme-color-accent: var(--acme-red-300);
-  --acme-color-accent-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
-  --acme-color-selected: var(--acme-blue-300);
-  --acme-color-selected-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
-  --acme-color-link: var(--acme-blue-300);
-  --acme-color-link-hover: var(--acme-blue-200);
-  --acme-color-focus: var(--acme-blue-400);
+  --acme-color-accent: var(--acme-clay-300);
+  --acme-color-accent-soft: color-mix(in oklab, var(--acme-clay-500) 20%, var(--acme-gray-900));
+  --acme-color-selected: var(--acme-clay-300);
+  --acme-color-selected-soft: color-mix(in oklab, var(--acme-clay-500) 18%, var(--acme-gray-900));
+  --acme-color-link: var(--acme-clay-300);
+  --acme-color-link-hover: var(--acme-clay-200);
+  --acme-color-focus: var(--acme-clay-400);
   --acme-color-success: var(--acme-gray-300);
   --acme-color-success-soft: var(--acme-gray-800);
   --acme-color-success-soft-text: var(--acme-gray-200);
@@ -241,13 +248,13 @@
   --acme-color-warning-soft-text: var(--acme-gray-200);
   --acme-color-danger: var(--acme-red-400);
   --acme-color-danger-emphasis: var(--acme-red-500);
-  --acme-color-danger-soft: color-mix(in oklab, var(--acme-red-500) 18%, var(--acme-gray-900));
+  --acme-color-danger-soft: color-mix(in oklab, var(--acme-red-500) 20%, var(--acme-gray-900));
   --acme-color-danger-soft-text: var(--acme-red-300);
-  --acme-color-info: var(--acme-blue-300);
-  --acme-color-info-soft: color-mix(in oklab, var(--acme-blue-500) 16%, var(--acme-gray-900));
-  --acme-color-info-soft-text: var(--acme-blue-300);
-  --acme-color-data: var(--acme-blue-400);
-  --acme-color-data-highlight: var(--acme-red-500);
+  --acme-color-info: var(--acme-sky-300);
+  --acme-color-info-soft: color-mix(in oklab, var(--acme-sky-500) 20%, var(--acme-gray-900));
+  --acme-color-info-soft-text: var(--acme-sky-300);
+  --acme-color-data: var(--acme-gray-400);
+  --acme-color-data-highlight: var(--acme-clay-300);
   --acme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
   --acme-shadow-md: 0 2px 8px -2px rgb(0 0 0 / 0.45);
   --acme-shadow-lg: 0 8px 24px -6px rgb(0 0 0 / 0.55);
@@ -279,7 +286,7 @@ h1, h2, h3, h4 {
   margin: 0 0 var(--acme-space-3);
   font-weight: 700;
 }
-h1 { font-size: var(--acme-text-4xl); letter-spacing: -0.02em; }
+h1 { font-size: var(--acme-text-4xl); letter-spacing: -0.015em; }
 h2 { font-size: var(--acme-text-3xl); letter-spacing: -0.01em; }
 h3 { font-size: var(--acme-text-xl); }
 h4 { font-size: var(--acme-text-lg); }
@@ -319,9 +326,9 @@ code, pre {
   display: inline-flex;
   align-items: center;
   gap: 0.45em;
-  font-family: var(--acme-font-display);
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-family: var(--acme-font-sans);
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--acme-color-text);
   text-decoration: none;
@@ -332,8 +339,8 @@ code, pre {
   inline-size: 1.6em;
   block-size: 1.6em;
   border-radius: var(--acme-radius-sm);
-  background: var(--acme-red-600);
-  color: var(--acme-gray-0);
+  background: var(--acme-color-primary);
+  color: var(--acme-color-on-primary);
   font-style: italic;
   letter-spacing: 0;
 }
@@ -754,26 +761,26 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-slide__footer .acme-wordmark { font-size: 1.4cqi; }
 .acme-slide__footer-num { margin-inline-start: auto; font-variant-numeric: tabular-nums; }
 
-/* Dark bookends (title & closing) keep Graphite regardless of theme. This
-   background never lightens with the page, so nothing on it may key off a
-   token that would — hence the pinned accent: the light-theme red-600 would
-   sit at 3.3:1 here, while the dark accent clears 8.5:1. */
+/* Dark bookends (title & closing) keep the dark Oat ground regardless of
+   theme. This background never lightens with the page, so nothing on it may
+   key off a token that would — hence the pinned accent: the light-theme
+   clay-700 would sit at ~2.5:1 here, while clay-300 clears 8.8:1. */
 .acme-slide--dark {
   background: var(--acme-gray-950);
   color: var(--acme-gray-100);
-  --acme-color-accent: var(--acme-red-300);
+  --acme-color-accent: var(--acme-clay-300);
 }
 .acme-slide--dark :is(.acme-slide__meta, .acme-slide__body) { color: var(--acme-gray-400); }
 .acme-slide--dark .acme-slide__footer { color: var(--acme-gray-500); }
 .acme-slide--dark .acme-wordmark { color: var(--acme-gray-0); }
 
-/* Section divider — pairs with .acme-slide--dark in markup (same field as
-   the bookends); the giant numeral is what marks it as a divider, not a
-   second color. */
+/* Section divider — pairs with .acme-slide--dark in markup. The giant serif
+   numeral is the divider's signal; it takes the pinned Clay accent as the
+   one warm editorial moment in the deck. */
 .acme-slide--section .acme-slide__num {
-  font: 800 12cqi/1 var(--acme-font-display);
+  font: 700 12cqi/1 var(--acme-font-display);
   font-style: italic;
-  color: var(--acme-gray-700);
+  color: var(--acme-color-accent);
   margin: 0 0 1cqi;
 }
 .acme-slide--section .acme-slide__title { margin: 0; }
@@ -962,7 +969,7 @@ body { padding: var(--acme-space-6); }
 
   </div>
 
-  <p class="spec">Body styles at actual size — numbered headings, callout, red in 3 places only</p>
+  <p class="spec">Body styles at actual size — numbered headings, callout, Clay is the only color</p>
   <div class="acme-doc">
     <h2 style="margin-block-start: 0;">Incident review</h2>
     <p>Two delivery incidents were recorded in Q2, both involving the same

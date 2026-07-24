@@ -24,7 +24,7 @@ markup only — no div grids.
 - Empty state: keep the header row, show a short message + the action that
   fills the table ("No orders yet. Share your catalog link.").
 - Sorting: clickable `<th>` with `aria-sort`; the sorted header and its
-  bottom border take `--acme-color-selected`, so the blue points at the
+  bottom border take `--acme-color-selected`, so the Clay accent marks the
   column ordering the data.
 - Pagination beyond ~50 rows; virtualize beyond ~500.
 - Column headers describe data ("Ship date"), not actions.
