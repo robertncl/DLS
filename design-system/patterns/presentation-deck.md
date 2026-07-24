@@ -13,21 +13,21 @@ editor, or on a projector. Every slide is `.acme-slide` wrapping a single
 
 | Master | Class | Background | Use |
 | --- | --- | --- | --- |
-| Title | `--dark --hero` | Graphite 950, both themes | First slide: wordmark, deck title, presenter + date |
-| Section divider | `--dark --section` | Graphite 950 — same field as the bookends | Chapter breaks: giant italic number + one-line title |
+| Title | `--dark --hero` | Dark Oat 950, both themes | First slide: wordmark, deck title, presenter + date |
+| Section divider | `--dark --section` | Dark Oat 950 — same ground as the bookends | Chapter breaks: giant italic Clay numeral + one-line title |
 | Content | *(default)* | Canvas | Kicker, title, ≤ 4 bullets or one short paragraph |
 | Data | *(default)* | Canvas | Kicker, takeaway headline, exactly one chart |
-| Closing | `--dark` | Graphite 950 | Tagline + contact; bookends the deck with the title slide |
+| Closing | `--dark` | Dark Oat 950 | Tagline + contact; bookends the deck with the title slide |
 
-Decks now breathe between exactly **two** fields — dark (bookends and section
-dividers) and light (content and data) — instead of three. The section
-divider no longer gets its own color; it's marked out by scale instead, the
-one slide whose number runs full-bleed at 12cqi. Pair `--section` with
-`--dark` in markup; it only supplies the numeral treatment.
+Decks breathe between **two grounds** — dark Oat (bookends and section
+dividers) and light paper (content and data). The section divider is marked
+out by scale *and* the one warm accent: its giant 12cqi numeral runs in Clay,
+the single sanctioned pop of color in the deck. Pair `--section` with `--dark`
+in markup; it supplies the Clay numeral treatment.
 
 ## Typography on slides
 
-At a 1280 px reference width: kicker 23 px uppercase accent red · titles 51 px (hero
+At a 1280 px reference width: kicker 23 px uppercase accent clay · titles 51 px (hero
 77 px) display face · body/bullets 28 px (~21 pt) · footer 18 px. Body text
 never renders below the 2.2cqi baseline — if it doesn't fit, the slide has
 too many words.

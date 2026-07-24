@@ -7,12 +7,11 @@ Classes: `.acme-topbar`, `.acme-tabs`, `.acme-breadcrumbs` · Preview:
 
 The global bar is **part of the page frame**: full-width, opaque canvas,
 capped by a `--acme-color-border` hairline. It sits at zero elevation — no
-shadow, no float. The brand anchor is the wordmark itself (the red mark never
+shadow, no float. The brand anchor is the wordmark itself (the clay mark never
 changes). Wordmark left, primary destinations right (max 5); the current page
-is marked in Blueprint — `--acme-color-selected` text on a
+is marked in Clay — `--acme-color-selected` text on a
 `--acme-color-selected-soft` fill via `aria-current="page"`. Hover on the
-other links is a neutral grey fill, so the blue reads as position, not
-hover.
+other links is a neutral fill, so the clay reads as position, not hover.
 
 ```html
 <header class="acme-topbar">
@@ -35,10 +34,11 @@ Tabs switch **views of the same thing**; they never navigate to a different
 page (that's a link) and never trigger actions (that's a button).
 
 - A hairline baseline runs under the whole set; the **selected tab carries a
-  2 px Blueprint underline** and its label turns `--acme-color-selected` at
-  weight 600. Unselected tabs are muted; hover darkens text to graphite only.
-- The indicator is blue, never red: a tab reports where you are, and
-  orientation is blue's job. Red on a tab would read as an action.
+  2 px Clay underline** and its label turns `--acme-color-selected` at
+  weight 600. Unselected tabs are muted; hover darkens text to ink only.
+- Selection is one of Clay's jobs (orientation); the underline plus
+  `aria-selected` — not hue alone — is what tells the active tab apart, since
+  Clay is also the primary-action color.
 - 2–6 tabs, one-word labels preferred, counts allowed ("Orders 12").
 - Proper ARIA: `role="tablist"` / `role="tab"` / `aria-selected`, arrow-key
   navigation between tabs.

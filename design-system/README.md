@@ -11,8 +11,8 @@ describes a real company.
 | --- | --- |
 | [brand/identity.md](brand/identity.md) | Who ACME is, the wordmark, brand pillars |
 | [brand/voice-and-tone.md](brand/voice-and-tone.md) | How ACME writes |
-| [foundations/color.md](foundations/color.md) | Palette, semantic tokens, verified contrast |
-| [foundations/typography.md](foundations/typography.md) | Families, scale, weights |
+| [foundations/color.md](foundations/color.md) | Warm-paper base + clay highlight, semantic tokens, verified contrast |
+| [foundations/typography.md](foundations/typography.md) | Serif display + grotesque body, scale, weights |
 | [foundations/spacing-layout.md](foundations/spacing-layout.md) | 4 px grid, breakpoints, containers |
 | [foundations/shape-elevation.md](foundations/shape-elevation.md) | Surfaces, radius, borders, shadows |
 | [foundations/motion.md](foundations/motion.md) | Durations, easings, reduced-motion |
@@ -57,18 +57,18 @@ Never edit `previews/*.html` directly — the build overwrites them.
 
 ## Non-negotiables (the short list)
 
-1. Grey base, two highlights: **red is where you act, blue is where you
-   are.** One ACME Red primary action per view (extra red means danger);
-   Blueprint carries links, focus, selection, and the current page.
+1. Warm paper base, one clay highlight: **clay means act, attend, or
+   you-are-here; everything else is paper and ink.** One clay primary action
+   per view; clay also carries links, focus, selection, and the current page.
 2. Semantic tokens only; no hex values in product code.
 3. 4 px spacing grid; if it isn't a token, it isn't a size.
-4. Sentence case everywhere; buttons are verb-first and specific.
+4. Sentence case everywhere; headings are the serif display face, buttons are
+   verb-first and specific.
 5. All text meets WCAG AA (the palette is pre-verified — see
    [foundations/color.md](foundations/color.md)).
-6. Selection is never red — checked controls, selected rows, the current
-   page, the active tab, and the sorted column are Blueprint. Focus rings are
-   Blueprint too, never the wordmark's red.
-7. Success and warning still share one graphite ink, so their icon and label
+6. Danger is Brick, never Clay, and always carries an icon + verb. Focus rings
+   are Clay, never restyled per component.
+7. Success and warning share the neutral Oat ink, so their icon and label
    carry the meaning, never color alone.
 8. Surfaces are opaque and bordered: raised surfaces take a 1 px hairline,
    shadows only say how high, and nothing is translucent or bounces (see

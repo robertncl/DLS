@@ -1,9 +1,9 @@
 # Surfaces, Shape & Elevation
 
-ACME surfaces are **pressed steel**: opaque, flat, and precisely edged.
-Structure comes from honest 1 px borders; shadows are quiet and say only
-*how high* a surface sits. Nothing is translucent — what you read never
-depends on what's behind it.
+ACME surfaces are **warm paper**: opaque, flat, and precisely edged, in a warm
+Oat neutral. Structure comes from honest 1 px borders and generous space;
+shadows are quiet, warm-tinted, and say only *how high* a surface sits.
+Nothing is translucent — what you read never depends on what's behind it.
 
 ## Surfaces
 
