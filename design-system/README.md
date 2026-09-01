@@ -24,6 +24,7 @@ describes a real company.
 | [previews/](previews/) | **Built**, self-contained HTML previews (one per card) |
 | [previews/src/](previews/src/) | Preview sources — edit these, then rebuild |
 | [scripts/build-previews.sh](scripts/build-previews.sh) | Inlines `acme.css` into each preview |
+| [scripts/check-contrast.py](scripts/check-contrast.py) | Verifies every colour pairing against WCAG AA in both themes |
 
 ## Using the tokens
 
@@ -64,8 +65,9 @@ Never edit `previews/*.html` directly — the build overwrites them.
 3. 4 px spacing grid; if it isn't a token, it isn't a size.
 4. Sentence case everywhere; headings are the serif display face, buttons are
    verb-first and specific.
-5. All text meets WCAG AA (the palette is pre-verified — see
-   [foundations/color.md](foundations/color.md)).
+5. All text meets WCAG AA and control boundaries meet 1.4.11 — the palette is
+   verified by [scripts/check-contrast.py](scripts/check-contrast.py); run it
+   after any token change (see [foundations/color.md](foundations/color.md)).
 6. Danger is Brick, never Clay, and always carries an icon + verb. Focus rings
    are Clay, never restyled per component.
 7. Success and warning share the neutral Oat ink, so their icon and label
