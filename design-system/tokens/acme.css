@@ -19,31 +19,31 @@
   --acme-clay-300: #DDA588;
   --acme-clay-400: #D18B6A;
   --acme-clay-500: #CC785C;
-  --acme-clay-600: #B4573C;
-  --acme-clay-700: #93422B;
-  --acme-clay-800: #75341F;
-  --acme-clay-900: #5A2818;
+  --acme-clay-600: #94513B;
+  --acme-clay-700: #80432F;
+  --acme-clay-800: #6B3624;
+  --acme-clay-900: #552818;
 
   /* Oat — the warm neutral base: paper canvas, ink text, quiet borders */
   --acme-gray-0:   #FCFBF7;
   --acme-gray-50:  #F3F0E7;
-  --acme-gray-100: #EBE7D9;
-  --acme-gray-200: #E0DBC9;
-  --acme-gray-300: #CFC8B2;
-  --acme-gray-400: #A8A08B;
-  --acme-gray-500: #6B6554;
-  --acme-gray-600: #5C5648;
-  --acme-gray-700: #454034;
-  --acme-gray-800: #2C291F;
-  --acme-gray-900: #1B1911;
-  --acme-gray-950: #12100B;
+  --acme-gray-100: #E9E4D5;
+  --acme-gray-200: #C4BDA4;
+  --acme-gray-300: #A29B89;
+  --acme-gray-400: #7E7764;
+  --acme-gray-500: #5C5747;
+  --acme-gray-600: #554F41;
+  --acme-gray-700: #433F32;
+  --acme-gray-800: #2F2B21;
+  --acme-gray-900: #1E1B13;
+  --acme-gray-950: #100E08;
 
   /* Brick — danger only. A true red, kept distinct from Clay's coral. */
   --acme-red-50:  #FBEEEC;
-  --acme-red-300: #E8A99E;
-  --acme-red-400: #D65C4A;
-  --acme-red-500: #C4432F;
-  --acme-red-600: #B23423;
+  --acme-red-300: #F3A395;
+  --acme-red-400: #EF7361;
+  --acme-red-500: #AC4334;
+  --acme-red-600: #A82E1E;
   --acme-red-700: #97291B;
   --acme-red-800: #7A2116;
 
@@ -113,7 +113,7 @@
   --acme-color-surface: var(--acme-gray-100);
   --acme-color-surface-raised: var(--acme-gray-0);
   --acme-color-border: var(--acme-gray-200);
-  --acme-color-border-strong: var(--acme-gray-300);
+  --acme-color-border-strong: var(--acme-gray-400);
   --acme-color-text: var(--acme-gray-900);
   --acme-color-text-muted: var(--acme-gray-600);
   --acme-color-text-subtle: var(--acme-gray-500);
@@ -127,7 +127,7 @@
   --acme-color-accent: var(--acme-clay-700);
   --acme-color-accent-soft: var(--acme-clay-50);
   /* Orientation: current page, active tab, selected rows, checked controls. */
-  --acme-color-selected: var(--acme-clay-600);
+  --acme-color-selected: var(--acme-clay-700);
   --acme-color-selected-soft: var(--acme-clay-50);
   --acme-color-link: var(--acme-clay-700);
   --acme-color-link-hover: var(--acme-clay-800);
@@ -149,7 +149,7 @@
   --acme-color-info-soft-text: var(--acme-sky-800);
   /* Chart marks: neutral bars carry the data, Clay marks the one takeaway
      (with a direct label). Both clear 3:1 on the surface. */
-  --acme-color-data: var(--acme-gray-600);
+  --acme-color-data: var(--acme-gray-400);
   --acme-color-data-highlight: var(--acme-clay-600);
 
   /* Selection is orientation, not action — checked controls are Clay. */
@@ -167,10 +167,10 @@
     --acme-color-surface: var(--acme-gray-900);
     --acme-color-surface-raised: var(--acme-gray-800);
     --acme-color-border: var(--acme-gray-700);
-    --acme-color-border-strong: var(--acme-gray-600);
+    --acme-color-border-strong: var(--acme-gray-400);
     --acme-color-text: var(--acme-gray-100);
-    --acme-color-text-muted: var(--acme-gray-400);
-    --acme-color-text-subtle: var(--acme-gray-400);
+    --acme-color-text-muted: var(--acme-gray-300);
+    --acme-color-text-subtle: var(--acme-gray-300);
     /* Clay is a fixed hue: the primary fill stays clay with white text in both
        themes, deepening on hover rather than inverting. */
     --acme-color-primary: var(--acme-clay-600);
@@ -212,10 +212,10 @@
   --acme-color-surface: var(--acme-gray-900);
   --acme-color-surface-raised: var(--acme-gray-800);
   --acme-color-border: var(--acme-gray-700);
-  --acme-color-border-strong: var(--acme-gray-600);
+  --acme-color-border-strong: var(--acme-gray-400);
   --acme-color-text: var(--acme-gray-100);
-  --acme-color-text-muted: var(--acme-gray-400);
-  --acme-color-text-subtle: var(--acme-gray-400);
+  --acme-color-text-muted: var(--acme-gray-300);
+  --acme-color-text-subtle: var(--acme-gray-300);
   /* Clay is a fixed hue: the primary fill stays clay with white text in both
      themes, deepening on hover rather than inverting. */
   --acme-color-primary: var(--acme-clay-600);

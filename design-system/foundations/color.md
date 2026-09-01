@@ -47,7 +47,7 @@ functional color, because only those two need to shout or to cross-reference.
 
 | Scale | Anchor | Role |
 | --- | --- | --- |
-| Oat `--acme-gray-*` | `900 #1B1911` | The base: paper, ink, borders, neutral status |
+| Oat `--acme-gray-*` | `900 #1E1B13` | The base: paper, ink, borders, neutral status |
 | Clay `--acme-clay-*` | `500 #CC785C` | The one highlight: action, orientation, editorial, data takeaway |
 | Brick `--acme-red-*` | `700 #97291B` | Danger only — a true red, distinct from Clay |
 | Sky `--acme-sky-*` | `700 #305875` | Info only — a muted slate blue |
@@ -64,15 +64,15 @@ Full values live in [tokens/tokens.json](../tokens/tokens.json) and
 | `--acme-color-surface` | oat-100 | oat-900 | Recessed areas, hover fills |
 | `--acme-color-surface-raised` | oat-0 (warm white) | oat-800 | Cards, inputs, modals |
 | `--acme-color-border` | oat-200 | oat-700 | Dividers, card borders |
-| `--acme-color-border-strong` | oat-300 | oat-600 | Input borders |
+| `--acme-color-border-strong` | **oat-400** | **oat-400** | Input/control boundaries — one shared stop, ≥3:1 either side |
 | `--acme-color-text` | oat-900 (ink) | oat-100 | Default text |
-| `--acme-color-text-muted` | oat-600 | oat-400 | Secondary text |
-| `--acme-color-text-subtle` | oat-500 | oat-400 | Placeholders, captions |
+| `--acme-color-text-muted` | oat-600 | **oat-300** | Secondary text |
+| `--acme-color-text-subtle` | oat-500 | **oat-300** | Placeholders, captions |
 | `--acme-color-primary` (+hover/active) | clay-600/700/800 | clay-600/700/800 | The one primary action |
 | `--acme-color-on-primary` | warm white | warm white | Text/icon on a primary or danger fill |
 | `--acme-color-accent` | clay-700 | clay-**300** | Editorial marks: kickers, rules, numerals, callout accents |
 | `--acme-color-accent-soft` | clay-50 | mixed on surface | Tinted highlight blocks |
-| `--acme-color-selected` | clay-600 | clay-300 | Current page, active tab, sorted column |
+| `--acme-color-selected` | **clay-700** | clay-300 | Current page, active tab, sorted column |
 | `--acme-color-selected-soft` | clay-50 | mixed on surface | Selected rows, current nav item |
 | `--acme-color-link` / `-link-hover` | clay-700 / clay-800 | clay-300 / clay-200 | Inline links |
 | `--acme-color-focus` | clay-600 | clay-400 | Focus ring only |
@@ -80,14 +80,32 @@ Full values live in [tokens/tokens.json](../tokens/tokens.json) and
 | `--acme-color-danger` | brick-700 | brick-400 | Danger status text & icons |
 | `--acme-color-danger-emphasis` | brick-700 | brick-500 | Danger button fills (AA under white text) |
 | `--acme-color-info` | sky-700 | sky-300 | Info status text & icons |
-| `--acme-color-data` / `-data-highlight` | oat-600 / clay-600 | oat-400 / clay-300 | Chart marks: neutral bars, Clay marks the one takeaway |
+| `--acme-color-data` / `-data-highlight` | oat-400 / clay-600 | oat-400 / clay-300 | Chart marks: neutral bars, Clay marks the one takeaway (the takeaway is the *strongest* mark in both themes) |
 | `--acme-color-*-soft` / `-soft-text` | tinted pairs | mixed on surface | Badges, alerts |
 
 **Why `--acme-color-accent` lightens to clay-300 in dark:** accent marks are
 small text (12 px kickers, heading numerals), so they must clear AA on canvas,
 surface, *and* raised surfaces. Clay-600 manages only ~2.5:1 on the dark
-canvas; clay-300 clears 6.8:1 even on a raised surface. Primary is a *fill*
+canvas; clay-300 clears 6.6:1 even on a raised surface. Primary is a *fill*
 under white text, so it keeps the deeper clay-600 in both themes.
+
+**Why `selected` is clay-700 (light).** `--acme-color-selected` is rendered as
+**text** — the active tab label, the sorted column header, the current nav
+item — so it needs the 4.5:1 text threshold, not the 3:1 UI threshold. It
+therefore shares clay-700 with `link` and `accent` (6.7:1 on canvas, 6.0:1 on
+surface). The 2 px tab underline drawn from the same token is a non-text
+indicator and clears 3:1 comfortably.
+
+> Earlier revisions pointed `selected` at a lighter clay-600 (`#B4573C`), which
+> measured 4.2:1 on canvas and 3.9:1 on surface — **below AA for the text it
+> was painting**. That is why the checker now asserts the text threshold for
+> this token rather than the UI one.
+
+**Why `border-strong` is one shared stop.** Field and control boundaries are
+UI components under WCAG 1.4.11 and need 3:1 against *both* the control fill
+and the page behind it. Oat-400 is the single value that clears 3:1 on the
+light canvas (3.9:1) and on the dark raised surface (3.3:1), so both themes
+point at the same stop instead of drifting apart.
 
 **Why `--acme-color-on-primary` doesn't flip.** A neutral fill would have to
 invert between themes to stay legible; a fixed-hue clay fill does not.
@@ -117,31 +135,42 @@ warning icon and verb, a destructive action never hides among primary ones.
 
 ## Contrast (verified)
 
-All combinations below are measured, not aspirational. AA normal text needs
-≥ 4.5:1; UI components/graphics need ≥ 3:1.
+All combinations below are measured, not aspirational — they are generated
+from the tokens themselves. AA normal text needs ≥ 4.5:1 (WCAG 1.4.3); UI
+component boundaries and meaningful graphics need ≥ 3:1 (1.4.11).
+
+Re-verify after any token change (exits non-zero on a regression):
+
+```sh
+design-system/scripts/check-contrast.py
+```
 
 | Pair | Ratio |
 | --- | --- |
-| Text (oat-900) on canvas (oat-50) | 15.4:1 |
-| Muted (oat-600) on canvas / surface | 6.4 / 5.9:1 |
-| Subtle (oat-500) on canvas / surface / raised | 5.1 / 4.7 / 5.6:1 |
-| White on primary (clay-600) | 4.8:1 |
-| White on primary hover (clay-700) | 6.9:1 |
-| Accent / link (clay-700) on canvas / raised | 6.0 / 6.6:1 |
-| Link hover (clay-800) on canvas | 8.1:1 |
-| Selected (clay-600) on canvas / selected-soft | 4.2 / 4.3:1 |
-| Danger (brick-700) on canvas · white on danger-emphasis | 7.0 · 7.9:1 |
-| Info (sky-700) on canvas · info-soft-text (sky-800) on info-soft | 6.6 · 8.5:1 |
-| Neutral status (oat-600) on canvas · badge soft-text (oat-800) on soft | 6.4 · 11.8:1 |
-| Data (oat-600) · data-highlight (clay-600) on canvas (≥3) | 6.4 · 4.2:1 |
-| Dark: text (oat-100) on canvas / raised | 15.4 / 11.8:1 |
-| Dark: muted (oat-400) on canvas / raised | 7.3 / 5.6:1 |
-| Dark: white on primary (clay-600) | 4.8:1 |
-| Dark: accent / link (clay-300) on canvas / surface / raised | 8.9 / 8.2 / 6.8:1 |
+| Text (oat-900) on canvas / surface / raised | 15.1 / 13.5 / 16.6:1 |
+| Muted (oat-600) on canvas / surface / raised | 7.1 / 6.4 / 7.9:1 |
+| Subtle (oat-500) on canvas / surface / raised | 6.3 / 5.7 / 7.0:1 |
+| White on primary (clay-600) / primary-hover (clay-700) | 5.8 / 7.3:1 |
+| Accent / link / selected (clay-700) on canvas | 6.7:1 |
+| Accent / link / selected (clay-700) on surface / raised | 6.0 / 7.3:1 |
+| Link hover (clay-800) on canvas | 8.5:1 |
+| Selected (clay-700) on selected-soft | 6.8:1 |
+| Danger (brick-700) on canvas · white on danger-emphasis | 7.0 · 7.7:1 |
+| Info (sky-700) on canvas · info-soft-text on info-soft | 6.6 · 8.5:1 |
+| Neutral status (oat-600) on canvas · badge soft-text on soft | 7.1 · 11.1:1 |
+| **Focus ring** (clay-600) vs canvas / raised *(needs 3)* | 5.3 / 5.8:1 |
+| **Input border** (oat-400) vs raised / canvas *(needs 3)* | 4.3 / 3.9:1 |
+| **Switch track** (oat-400) vs surface *(needs 3)* | 3.5:1 |
+| Data (oat-400) · data-highlight (clay-600) vs canvas *(needs 3)* | 3.9 · 5.3:1 |
+| Dark: text (oat-100) on canvas / raised | 15.2 / 11.1:1 |
+| Dark: muted & subtle (oat-300) on canvas / surface / raised | 7.0 / 6.2 / 5.1:1 |
+| Dark: white on primary (clay-600) | 5.8:1 |
+| Dark: accent / link / selected (clay-300) on canvas / surface / raised | 9.0 / 8.0 / 6.6:1 |
 | Dark: selected (clay-300) on selected-soft | 6.4:1 |
-| Dark: danger (brick-400) on canvas · white on danger-emphasis (brick-500) | 5.0 · 5.0:1 |
-| Dark: info (sky-300) on canvas | 8.3:1 |
-| Dark: data (oat-400) · data-highlight (clay-300) on canvas (≥3) | 7.3 · 6.9:1 |
+| Dark: danger (brick-400) on canvas / raised · white on danger-emphasis | 6.7 / 4.9 · 5.6:1 |
+| Dark: info (sky-300) on canvas · neutral status (oat-300) on canvas | 8.4 · 7.0:1 |
+| Dark: **input border** (oat-400) vs raised / surface *(needs 3)* | 3.2 / 3.9:1 |
+| Dark: data (oat-400) · data-highlight (clay-300) vs canvas *(needs 3)* | 4.3 · 9.0:1 |
 
 **Charts and color-vision deficiency.** The data pair is a neutral bar plus a
 Clay takeaway, differentiated by hue *and* a mandatory direct label on the
