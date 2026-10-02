@@ -28,8 +28,8 @@ title.
 ```
 
 Title (one line, bold, no period) + body (1–2 sentences, what + next step).
-**The leading icon is required, not optional:** danger carries Brick and info
-carries Sky, but success and warning render in the *same* neutral Oat ink (see
+**The leading icon is required, not optional:** danger carries Red and info
+carries Teal, but success and warning render in the *same* neutral Slate ink (see
 [color.md](../foundations/color.md)), so the icon shape —
 info circle, check, triangle, x-circle — is what tells them apart, alongside
 the word itself.

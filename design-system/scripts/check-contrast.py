@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Verify every ACME colour pairing against WCAG AA.
 
-Resolves the semantic tokens straight out of tokens/acme.css (including the
+Resolves the semantic tokens straight out of tokens/acme.css (including any
 color-mix() soft tokens) and checks the pairings the components actually
-render, in both themes. Exits non-zero if any pairing regresses, so the
-ratios published in foundations/color.md can't drift from the tokens.
+render in the light theme, plus the pinned navy deck slides. Exits non-zero
+if any pairing regresses, so the ratios published in foundations/color.md
+can't drift from the tokens.
 
     design-system/scripts/check-contrast.py [--all]
 
@@ -75,7 +76,7 @@ def mix_oklab(c1, c2, pct):
 
 # ------------------------------------------------------------- token resolver
 PRIMITIVES = dict(re.findall(
-    r'(--acme-(?:clay|gray|red|sky)-\d+)\s*:\s*(#[0-9A-Fa-f]{6})', CSS))
+    r'(--acme-(?:blue|gray|red|teal)-\d+)\s*:\s*(#[0-9A-Fa-f]{6})', CSS))
 
 
 def _block(pattern):
@@ -106,8 +107,29 @@ def _resolve(src):
 
 THEMES = {
     'light': _resolve(_block(r'/\* Semantic aliases — light theme.*?\*/(.*?)\n\s*accent-color')),
-    'dark':  _resolve(_block(r':root\[data-theme="dark"\]\s*\{(.*?)\n\}')),
 }
+
+# The navy deck bookends pin their own colours (.acme-slide--dark), so they
+# are checked as raw primitives rather than through a theme.
+SLIDE = dict(re.findall(
+    r'\s(color|background|--acme-color-accent):\s*var\((--acme-[\w-]+)\)',
+    _block(r'\.acme-slide--dark \{(.*?)\}')))
+SLIDE_META = re.search(
+    r'\.acme-slide--dark :is\(\.acme-slide__meta, \.acme-slide__body\) \{ color: var\((--acme-[\w-]+)\)',
+    CSS).group(1)
+SLIDE_FOOTER = re.search(
+    r'\.acme-slide--dark \.acme-slide__footer \{ color: var\((--acme-[\w-]+)\)',
+    CSS).group(1)
+
+
+def slide_pairings():
+    bg = PRIMITIVES[SLIDE['background']]
+    return [
+        ('slide title on navy', PRIMITIVES[SLIDE['color']], bg, T_TEXT, 'deck bookend'),
+        ('slide accent on navy', PRIMITIVES[SLIDE['--acme-color-accent']], bg, T_TEXT, 'kicker / numeral'),
+        ('slide meta/body on navy', PRIMITIVES[SLIDE_META], bg, T_TEXT, 'presenter, date'),
+        ('slide footer on navy', PRIMITIVES[SLIDE_FOOTER], bg, T_TEXT, 'footer, page no.'),
+    ]
 
 
 def token(theme, key):
@@ -162,7 +184,7 @@ def pairings():
 def main():
     show_all = '--all' in sys.argv
     failures = []
-    for theme in ('light', 'dark'):
+    for theme in THEMES:
         print(f"\n{theme.upper()}")
         for label, fg, bg, need, note in pairings():
             r = ratio(token(theme, fg), token(theme, bg))
@@ -176,8 +198,21 @@ def main():
         if not show_all and not failures:
             print("  all pairings pass")
 
+    print("\nNAVY DECK SLIDES")
+    slide_failures = 0
+    for label, fg, bg, need, note in slide_pairings():
+        r = ratio(fg, bg)
+        ok = r >= need
+        if not ok:
+            failures.append(('slide', label, r, need, note))
+            slide_failures += 1
+        if show_all or not ok:
+            print(f"  {r:6.2f}:1  min {need:.1f}  {'ok  ' if ok else 'FAIL'}  {label:38s} {note}")
+    if not show_all and not slide_failures:
+        print("  all pairings pass")
+
     # the takeaway must be the most prominent mark on a chart
-    for theme in ('light', 'dark'):
+    for theme in THEMES:
         d = ratio(token(theme, 'data'), token(theme, 'canvas'))
         h = ratio(token(theme, 'data-highlight'), token(theme, 'canvas'))
         if h <= d:
@@ -189,7 +224,7 @@ def main():
         for theme, label, r, need, note in failures:
             print(f"  {theme:5s} {r:6.2f}:1 (min {need:.1f})  {label} — {note}")
         return 1
-    print("\nAll colour pairings meet WCAG AA in both themes.")
+    print("\nAll colour pairings meet WCAG AA.")
     return 0
 
 
