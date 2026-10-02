@@ -39,8 +39,8 @@ Classes: `.acme-field`, `.acme-label`, `.acme-input`, `.acme-help`,
 
 - Checkboxes and radios are **native inputs** in an `.acme-choice` row —
   themed by `accent-color`, never rebuilt from divs.
-- Checked controls are **Clay** — `accent-color` is set to
-  `--acme-color-selected` at the root, and the switch track matches. Clay is
+- Checked controls are **Cobalt** — `accent-color` is set to
+  `--acme-color-selected` at the root, and the switch track matches. Cobalt is
   the one accent, so the check glyph, not hue, is what distinguishes a checked
   box from a primary action — see [color.md](../foundations/color.md).
 - Radios need 2–5 options and a default; more options → use a select.

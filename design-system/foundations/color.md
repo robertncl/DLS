@@ -1,136 +1,147 @@
 # Color
 
-ACME's palette is **warm paper with a single clay highlight**. Oat — a warm
-neutral — builds every surface, border, and word; **Clay**, a warm coral, is
-the one accent that carries emphasis and orientation. Two functional hues sit
-underneath for status only: **Brick** (danger) and **Sky** (info). Everything
-else, including success and warning, stays in the neutral base and leans on
+ACME's palette is **a cool blue-white page with a single Cobalt highlight**,
+and it ships as a **light theme only**. Slate — a blue-tinted neutral — builds
+every surface, border, and word; **Cobalt**, a clear confident blue, is the
+one accent that carries emphasis and orientation. Two functional hues sit
+underneath for status only: **Red** (danger) and **Teal** (info). Everything
+else, including success and warning, stays in the Slate base and leans on
 icon and label. Components reference **semantic tokens** (`--acme-color-*`);
 primitive scales are for defining tokens, not for direct use in product code.
 
 ## The idea
 
-The system is modernist and editorial: a paper canvas, ink text, a serif
-display face, and one warm accent used sparingly. Restraint is the point —
-color appears where it means something, and the rest is warm neutral.
+The system is modernist and editorial: a light blue-white canvas, navy ink
+text, a serif display face, and one blue accent used with intent. The whole
+interface sits in one cool hue family — the base is blue-tinted, the accent is
+saturated blue — so color only has to change *intensity* to signal meaning.
 
 | Role | Color | Where |
 | --- | --- | --- |
-| Base | **Oat** (warm neutral) | Canvas, surfaces, borders, body text, success/warning |
-| Highlight | **Clay** (coral) | Primary action, links, selection, focus, editorial marks, the wordmark mark, the chart takeaway |
-| Danger | **Brick** (true red) | Destructive actions, error status — kept visibly distinct from Clay |
-| Info | **Sky** (muted slate blue) | Informational status only |
+| Base | **Slate** (blue-tinted neutral) | Canvas, surfaces, borders, body text, success/warning |
+| Highlight | **Cobalt** (blue) | Primary action, links, selection, focus, editorial marks, the wordmark mark, the chart takeaway |
+| Danger | **Red** (true red) | Destructive actions, error status — the one warm hue, so it can't be missed |
+| Info | **Teal** (green-leaning) | Informational status only — kept off Cobalt so info never reads as an action |
 
-Clay is the whole personality of the interface, so it is **rationed**: one
-primary (clay) action per view, and orientation cues (current page, selected
-row, active tab). If a screen is more than roughly 10–15% clay, it has stopped
-being editorial. Danger and info are functional, never decorative.
+Cobalt is the whole personality of the interface, so it is **rationed**: one
+primary (cobalt) action per view, and orientation cues (current page, selected
+row, active tab). If a screen is more than roughly 10–15% saturated cobalt, it
+has stopped being editorial. The pale Slate surfaces are already blue; let
+them do the atmosphere and keep Cobalt for meaning. Danger and info are
+functional, never decorative.
 
-### Clay does double duty — action *and* orientation
+### Cobalt does double duty — action *and* orientation
 
-Earlier ACME palettes split emphasis across two hues. The modernist system
-collapses to one: Clay marks both **where you act** (primary button, links)
-and **where you are** (current page, selected row, checked control, active
-tab). With a single accent, meaning never travels by hue alone anyway, so
-selection also carries a non-color cue — an underline, a fill, `aria-current`,
-or `aria-selected`.
+Cobalt marks both **where you act** (primary button, links) and **where you
+are** (current page, selected row, checked control, active tab). With a single
+accent, meaning never travels by hue alone, so selection also carries a
+non-color cue — an underline, a fill, `aria-current`, or `aria-selected`.
+
+### Why info is Teal, not blue
+
+In most systems info is blue. Here blue already means "act" and "you are
+here", so a blue info alert would read as a call to action. Teal is close
+enough to sit comfortably in the cool palette and far enough — green-leaning,
+lower chroma — to be told apart from Cobalt next to it.
 
 ### What stays neutral
 
-Success and warning have **no hue** — they render in the warm neutral ink
-(`--acme-color-success` / `-warning` = oat-600 / oat-300), so the icon and the
-label carry the meaning (see [badge](../components/badge.md),
-[alert](../components/alert.md)). Only danger (Brick) and info (Sky) earn a
+Success and warning have **no hue** — they render in the Slate ink
+(`--acme-color-success` / `-warning` = slate-600), so the icon and the label
+carry the meaning (see [badge](../components/badge.md),
+[alert](../components/alert.md)). Only danger (Red) and info (Teal) earn a
 functional color, because only those two need to shout or to cross-reference.
 
 ## Primitive scales
 
 | Scale | Anchor | Role |
 | --- | --- | --- |
-| Oat `--acme-gray-*` | `900 #1E1B13` | The base: paper, ink, borders, neutral status |
-| Clay `--acme-clay-*` | `500 #CC785C` | The one highlight: action, orientation, editorial, data takeaway |
-| Brick `--acme-red-*` | `700 #97291B` | Danger only — a true red, distinct from Clay |
-| Sky `--acme-sky-*` | `700 #305875` | Info only — a muted slate blue |
+| Slate `--acme-gray-*` | `900 #111A2B` | The base: blue-white canvas, navy ink, borders, neutral status |
+| Cobalt `--acme-blue-*` | `500 #2F6BE4` | The one highlight: action, orientation, editorial, data takeaway |
+| Red `--acme-red-*` | `700 #A42222` | Danger only |
+| Teal `--acme-teal-*` | `700 #105C58` | Info only |
 
 Full values live in [tokens/tokens.json](../tokens/tokens.json) and
 [tokens/acme.css](../tokens/acme.css). (The neutral scale keeps the
-`--acme-gray-*` custom-property names; the values are warm.)
+`--acme-gray-*` custom-property names; the values are blue-tinted.)
 
 ## Semantic tokens
 
-| Token | Light | Dark | Use for |
-| --- | --- | --- | --- |
-| `--acme-color-canvas` | oat-50 (paper) | oat-950 | Page background |
-| `--acme-color-surface` | oat-100 | oat-900 | Recessed areas, hover fills |
-| `--acme-color-surface-raised` | oat-0 (warm white) | oat-800 | Cards, inputs, modals |
-| `--acme-color-border` | oat-200 | oat-700 | Dividers, card borders |
-| `--acme-color-border-strong` | **oat-400** | **oat-400** | Input/control boundaries — one shared stop, ≥3:1 either side |
-| `--acme-color-text` | oat-900 (ink) | oat-100 | Default text |
-| `--acme-color-text-muted` | oat-600 | **oat-300** | Secondary text |
-| `--acme-color-text-subtle` | oat-500 | **oat-300** | Placeholders, captions |
-| `--acme-color-primary` (+hover/active) | clay-600/700/800 | clay-600/700/800 | The one primary action |
-| `--acme-color-on-primary` | warm white | warm white | Text/icon on a primary or danger fill |
-| `--acme-color-accent` | clay-700 | clay-**300** | Editorial marks: kickers, rules, numerals, callout accents |
-| `--acme-color-accent-soft` | clay-50 | mixed on surface | Tinted highlight blocks |
-| `--acme-color-selected` | **clay-700** | clay-300 | Current page, active tab, sorted column |
-| `--acme-color-selected-soft` | clay-50 | mixed on surface | Selected rows, current nav item |
-| `--acme-color-link` / `-link-hover` | clay-700 / clay-800 | clay-300 / clay-200 | Inline links |
-| `--acme-color-focus` | clay-600 | clay-400 | Focus ring only |
-| `--acme-color-success` / `-warning` | oat-600 | oat-300 | Status text & icon — **neutral ink**, icon + label carry meaning |
-| `--acme-color-danger` | brick-700 | brick-400 | Danger status text & icons |
-| `--acme-color-danger-emphasis` | brick-700 | brick-500 | Danger button fills (AA under white text) |
-| `--acme-color-info` | sky-700 | sky-300 | Info status text & icons |
-| `--acme-color-data` / `-data-highlight` | oat-400 / clay-600 | oat-400 / clay-300 | Chart marks: neutral bars, Clay marks the one takeaway (the takeaway is the *strongest* mark in both themes) |
-| `--acme-color-*-soft` / `-soft-text` | tinted pairs | mixed on surface | Badges, alerts |
+| Token | Value | Use for |
+| --- | --- | --- |
+| `--acme-color-canvas` | slate-50 `#F5F8FC` | Page background — a cool blue-white |
+| `--acme-color-surface` | slate-100 `#E9EFF7` | Recessed areas, hover fills |
+| `--acme-color-surface-raised` | slate-0 (white) | Cards, inputs, modals |
+| `--acme-color-border` | slate-200 | Dividers, card borders |
+| `--acme-color-border-strong` | slate-400 | Input/control boundaries — ≥3:1 on every surface |
+| `--acme-color-text` | slate-900 (navy ink) | Default text |
+| `--acme-color-text-muted` | slate-600 | Secondary text |
+| `--acme-color-text-subtle` | slate-500 | Placeholders, captions |
+| `--acme-color-primary` (+hover/active) | cobalt-600/700/800 | The one primary action |
+| `--acme-color-on-primary` | white | Text/icon on a primary or danger fill |
+| `--acme-color-accent` | cobalt-700 | Editorial marks: kickers, rules, numerals, callout accents |
+| `--acme-color-accent-soft` | cobalt-50 | Tinted highlight blocks |
+| `--acme-color-selected` | cobalt-700 | Current page, active tab, sorted column |
+| `--acme-color-selected-soft` | cobalt-50 | Selected rows, current nav item |
+| `--acme-color-link` / `-link-hover` | cobalt-700 / cobalt-800 | Inline links |
+| `--acme-color-focus` | cobalt-600 | Focus ring only |
+| `--acme-color-success` / `-warning` | slate-600 | Status text & icon — **neutral ink**, icon + label carry meaning |
+| `--acme-color-danger` / `-danger-emphasis` | red-700 | Danger status text, icons, and button fills |
+| `--acme-color-info` | teal-700 | Info status text & icons |
+| `--acme-color-data` / `-data-highlight` | slate-400 / cobalt-600 | Chart marks: slate bars, Cobalt marks the one takeaway |
+| `--acme-color-*-soft` / `-soft-text` | tinted pairs | Badges, alerts |
 
-**Why `--acme-color-accent` lightens to clay-300 in dark:** accent marks are
-small text (12 px kickers, heading numerals), so they must clear AA on canvas,
-surface, *and* raised surfaces. Clay-600 manages only ~2.5:1 on the dark
-canvas; clay-300 clears 6.6:1 even on a raised surface. Primary is a *fill*
-under white text, so it keeps the deeper clay-600 in both themes.
+**Why the fill is cobalt-600 but text marks are cobalt-700.** Primary is a
+*fill* under white text, and cobalt-600 clears 6.4:1 there while still reading
+as bright, saturated blue. Accent, link, and selected are *text* — often 12 px
+kickers or an active tab label — so they step down to cobalt-700, which holds
+≥7:1 on every surface including the recessed slate-100.
 
-**Why `selected` is clay-700 (light).** `--acme-color-selected` is rendered as
-**text** — the active tab label, the sorted column header, the current nav
-item — so it needs the 4.5:1 text threshold, not the 3:1 UI threshold. It
-therefore shares clay-700 with `link` and `accent` (6.7:1 on canvas, 6.0:1 on
-surface). The 2 px tab underline drawn from the same token is a non-text
-indicator and clears 3:1 comfortably.
+**Why `selected` is held to the text threshold.** `--acme-color-selected` is
+rendered as **text** — the active tab label, the sorted column header, the
+current nav item — so it needs 4.5:1, not the 3:1 UI threshold. The checker
+asserts the text threshold for this token. The 2 px tab underline drawn from
+the same token is a non-text indicator and clears 3:1 comfortably.
 
-> Earlier revisions pointed `selected` at a lighter clay-600 (`#B4573C`), which
-> measured 4.2:1 on canvas and 3.9:1 on surface — **below AA for the text it
-> was painting**. That is why the checker now asserts the text threshold for
-> this token rather than the UI one.
+**Why `border-strong` is slate-400.** Field and control boundaries are UI
+components under WCAG 1.4.11 and need 3:1 against *both* the control fill and
+the page behind it. Slate-400 is the lightest stop that clears 3:1 on the
+canvas, the recessed surface (the switch track), and white.
 
-**Why `border-strong` is one shared stop.** Field and control boundaries are
-UI components under WCAG 1.4.11 and need 3:1 against *both* the control fill
-and the page behind it. Oat-400 is the single value that clears 3:1 on the
-light canvas (3.9:1) and on the dark raised surface (3.3:1), so both themes
-point at the same stop instead of drifting apart.
+**Why Red is the only warm hue.** Everything else in the system is cool. A
+true red against a blue-white page is the strongest contrast of *temperature*
+available, so a destructive action never hides among primary ones — and it
+still carries the mandatory warning icon and verb.
 
-**Why `--acme-color-on-primary` doesn't flip.** A neutral fill would have to
-invert between themes to stay legible; a fixed-hue clay fill does not.
-Clay-600 reads under white text on any canvas, so primary and danger-emphasis
-are clay/brick with white text in both themes. Still reference the token
-rather than hardcoding white.
+## Light theme only
 
-**Why Brick is separate from Clay.** Danger must not read as "the accent."
-Brick is a truer, cooler red than Clay's coral; paired with the mandatory
-warning icon and verb, a destructive action never hides among primary ones.
+`acme.css` declares `color-scheme: light` and ships no dark theme: there are
+no `prefers-color-scheme` overrides and no `data-theme` switch. Native
+controls, scrollbars, and form widgets render in their light variants on
+every OS setting.
+
+The one dark surface in the system is deliberate and local: the **navy deck
+bookends** (`.acme-slide--dark`, slate-950) used for title, section, and
+closing slides. They pin their own colors — text slate-100, meta slate-300,
+footer slate-400, accent cobalt-300 — because the page's cobalt-700 accent
+would sit at only 2.2:1 on navy. Those pins are checked too.
 
 ## Rules
 
-1. **One highlight.** Clay is the only accent — action and orientation both.
-   If a color choice isn't "this is the action / this is where you are / this
-   is the editorial mark," the answer is neutral.
-2. **Clay is rationed.** One primary (clay) action per view; orientation cues
-   may repeat but stay quiet. Screens washed in clay are off-brand.
-3. **Danger is Brick, never Clay**, and always carries an icon + verb.
-4. **Success and warning are neutral ink** — the icon plus the word are the
+1. **One highlight.** Cobalt is the only accent — action and orientation
+   both. If a color choice isn't "this is the action / this is where you are /
+   this is the editorial mark," the answer is Slate.
+2. **Cobalt is rationed.** One primary (cobalt) action per view; orientation
+   cues may repeat but stay quiet. Screens washed in saturated blue are
+   off-brand — the pale Slate surfaces already carry the blue mood.
+3. **Danger is Red, never Cobalt**, and always carries an icon + verb.
+4. **Info is Teal, never Cobalt**, so it can't be mistaken for an action.
+5. **Success and warning are neutral ink** — the icon plus the word are the
    only differentiators (WCAG 1.4.1). A badge or alert without one fails review.
-5. **Soft pairs stay together.** `*-soft` backgrounds take only their matching
+6. **Soft pairs stay together.** `*-soft` backgrounds take only their matching
    `*-soft-text`; `selected-soft` takes `selected`.
-6. **Focus is Clay** at `--acme-color-focus`, never restyled per component.
-7. **Don't hardcode hex values** in product code; add a semantic token if one
+7. **Focus is Cobalt** at `--acme-color-focus`, never restyled per component.
+8. **Don't hardcode hex values** in product code; add a semantic token if one
    is missing.
 
 ## Contrast (verified)
@@ -147,46 +158,25 @@ design-system/scripts/check-contrast.py
 
 | Pair | Ratio |
 | --- | --- |
-| Text (oat-900) on canvas / surface / raised | 15.1 / 13.5 / 16.6:1 |
-| Muted (oat-600) on canvas / surface / raised | 7.1 / 6.4 / 7.9:1 |
-| Subtle (oat-500) on canvas / surface / raised | 6.3 / 5.7 / 7.0:1 |
-| White on primary (clay-600) / primary-hover (clay-700) | 5.8 / 7.3:1 |
-| Accent / link / selected (clay-700) on canvas | 6.7:1 |
-| Accent / link / selected (clay-700) on surface / raised | 6.0 / 7.3:1 |
-| Link hover (clay-800) on canvas | 8.5:1 |
-| Selected (clay-700) on selected-soft | 6.8:1 |
-| Danger (brick-700) on canvas · white on danger-emphasis | 7.0 · 7.7:1 |
-| Info (sky-700) on canvas · info-soft-text on info-soft | 6.6 · 8.5:1 |
-| Neutral status (oat-600) on canvas · badge soft-text on soft | 7.1 · 11.1:1 |
-| **Focus ring** (clay-600) vs canvas / raised *(needs 3)* | 5.3 / 5.8:1 |
-| **Input border** (oat-400) vs raised / canvas *(needs 3)* | 4.3 / 3.9:1 |
-| **Switch track** (oat-400) vs surface *(needs 3)* | 3.5:1 |
-| Data (oat-400) · data-highlight (clay-600) vs canvas *(needs 3)* | 3.9 · 5.3:1 |
-| Dark: text (oat-100) on canvas / raised | 15.2 / 11.1:1 |
-| Dark: muted & subtle (oat-300) on canvas / surface / raised | 7.0 / 6.2 / 5.1:1 |
-| Dark: white on primary (clay-600) | 5.8:1 |
-| Dark: accent / link / selected (clay-300) on canvas / surface / raised | 9.0 / 8.0 / 6.6:1 |
-| Dark: selected (clay-300) on selected-soft | 6.4:1 |
-| Dark: danger (brick-400) on canvas / raised · white on danger-emphasis | 6.7 / 4.9 · 5.6:1 |
-| Dark: info (sky-300) on canvas · neutral status (oat-300) on canvas | 8.4 · 7.0:1 |
-| Dark: **input border** (oat-400) vs raised / surface *(needs 3)* | 3.2 / 3.9:1 |
-| Dark: data (oat-400) · data-highlight (clay-300) vs canvas *(needs 3)* | 4.3 · 9.0:1 |
+| Text (slate-900) on canvas / surface / raised | 16.3 / 15.1 / 17.4:1 |
+| Muted (slate-600) on canvas / surface / raised | 7.3 / 6.8 / 7.8:1 |
+| Subtle (slate-500) on canvas / surface / raised | 5.8 / 5.4 / 6.2:1 |
+| White on primary (cobalt-600) / primary-hover (cobalt-700) | 6.4 / 8.4:1 |
+| Accent / link / selected (cobalt-700) on canvas / surface / raised | 7.9 / 7.3 / 8.4:1 |
+| Link hover (cobalt-800) on canvas | 10.0:1 |
+| Selected (cobalt-700) on selected-soft | 7.6:1 |
+| Danger (red-700) on canvas · white on danger-emphasis | 7.0 · 7.4:1 |
+| Info (teal-700) on canvas · info-soft-text on info-soft | 7.3 · 9.3:1 |
+| Neutral status (slate-600) on canvas · badge soft-text on soft | 7.3 · 12.2:1 |
+| **Focus ring** (cobalt-600) vs canvas / raised *(needs 3)* | 6.0 / 6.4:1 |
+| **Input border** (slate-400) vs raised / canvas *(needs 3)* | 4.1 / 3.9:1 |
+| **Switch track** (slate-400) vs surface *(needs 3)* | 3.6:1 |
+| Data (slate-400) · data-highlight (cobalt-600) vs canvas *(needs 3)* | 3.9 · 6.0:1 |
+| Navy slide: title (slate-100) · accent (cobalt-300) · meta (slate-300) | 16.3 · 8.4 · 8.5:1 |
+| Navy slide: footer (slate-400) | 4.6:1 |
 
-**Charts and color-vision deficiency.** The data pair is a neutral bar plus a
-Clay takeaway, differentiated by hue *and* a mandatory direct label on the
-highlighted mark; both marks independently clear 3:1 on their surface. Because
-the takeaway is always labelled, the chart never relies on telling clay from
-grey — the label carries it under any CVD.
-
-## Theming
-
-`acme.css` declares `color-scheme: light dark` and follows the system
-preference by default. Hosts may pin a theme with
-`<html data-theme="light|dark">`. Both themes ship in one stylesheet; there is
-no separate dark build.
-
-Clay **lightens** in dark mode for text-weight marks (clay-700 → clay-300) so
-they stay legible on the dark Oat canvas, but the primary *fill* stays clay-600
-with white text in both themes — a fixed hue doesn't need to invert. The dark
-bookend slides in the deck pattern pin the dark accent explicitly, because
-their ground is fixed dark Oat regardless of the page theme.
+**Charts and color-vision deficiency.** The data pair is a slate bar plus a
+Cobalt takeaway, differentiated by hue, by lightness (the takeaway is the
+darker, stronger mark), *and* by a mandatory direct label on the highlighted
+mark. Both marks independently clear 3:1 on the canvas. Because the takeaway
+is always labelled, the chart never relies on telling blue from grey.

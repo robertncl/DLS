@@ -1,8 +1,9 @@
 # Surfaces, Shape & Elevation
 
-ACME surfaces are **warm paper**: opaque, flat, and precisely edged, in a warm
-Oat neutral. Structure comes from honest 1 px borders and generous space;
-shadows are quiet, warm-tinted, and say only *how high* a surface sits.
+ACME surfaces are a **cool blue-white page**: opaque, flat, and precisely
+edged, in a blue-tinted Slate neutral, with white raised surfaces. Structure
+comes from honest 1 px borders and generous space; shadows are quiet,
+navy-tinted, and say only *how high* a surface sits.
 Nothing is translucent — what you read never depends on what's behind it.
 
 ## Surfaces
@@ -58,8 +59,7 @@ above the page.
 | Floating | border + `--acme-shadow-lg` | Modals, command palettes |
 
 The app bar sits at zero elevation — it is part of the page frame, separated
-by its bottom hairline, not floating above content. In dark mode shadows
-deepen via the same tokens.
+by its bottom hairline, not floating above content.
 
 Don'ts: no colored shadows, no stacking shadow tokens, no shadow on static
 text content, no borderless "floating" panels.
