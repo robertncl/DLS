@@ -3,7 +3,7 @@
 
 Resolves the semantic tokens straight out of tokens/acme.css (including any
 color-mix() soft tokens) and checks the pairings the components actually
-render in the light theme, plus the pinned navy deck slides. Exits non-zero
+render in the light theme, plus the pinned dark deck slides. Exits non-zero
 if any pairing regresses, so the ratios published in foundations/color.md
 can't drift from the tokens.
 
@@ -76,7 +76,7 @@ def mix_oklab(c1, c2, pct):
 
 # ------------------------------------------------------------- token resolver
 PRIMITIVES = dict(re.findall(
-    r'(--acme-(?:blue|gray|red|teal)-\d+)\s*:\s*(#[0-9A-Fa-f]{6})', CSS))
+    r'(--acme-(?:red|gray|crimson|blue)-\d+)\s*:\s*(#[0-9A-Fa-f]{6})', CSS))
 
 
 def _block(pattern):
@@ -109,13 +109,16 @@ THEMES = {
     'light': _resolve(_block(r'/\* Semantic aliases — light theme.*?\*/(.*?)\n\s*accent-color')),
 }
 
-# The navy deck bookends pin their own colours (.acme-slide--dark), so they
+# The dark deck bookends pin their own colours (.acme-slide--dark), so they
 # are checked as raw primitives rather than through a theme.
 SLIDE = dict(re.findall(
     r'\s(color|background|--acme-color-accent):\s*var\((--acme-[\w-]+)\)',
     _block(r'\.acme-slide--dark \{(.*?)\}')))
 SLIDE_META = re.search(
     r'\.acme-slide--dark :is\(\.acme-slide__meta, \.acme-slide__body\) \{ color: var\((--acme-[\w-]+)\)',
+    CSS).group(1)
+SLIDE_MARK = re.search(
+    r'\.acme-slide--dark \.acme-wordmark__mark \{ background: var\((--acme-[\w-]+)\)',
     CSS).group(1)
 SLIDE_FOOTER = re.search(
     r'\.acme-slide--dark \.acme-slide__footer \{ color: var\((--acme-[\w-]+)\)',
@@ -125,10 +128,11 @@ SLIDE_FOOTER = re.search(
 def slide_pairings():
     bg = PRIMITIVES[SLIDE['background']]
     return [
-        ('slide title on navy', PRIMITIVES[SLIDE['color']], bg, T_TEXT, 'deck bookend'),
-        ('slide accent on navy', PRIMITIVES[SLIDE['--acme-color-accent']], bg, T_TEXT, 'kicker / numeral'),
-        ('slide meta/body on navy', PRIMITIVES[SLIDE_META], bg, T_TEXT, 'presenter, date'),
-        ('slide footer on navy', PRIMITIVES[SLIDE_FOOTER], bg, T_TEXT, 'footer, page no.'),
+        ('slide title on dark', PRIMITIVES[SLIDE['color']], bg, T_TEXT, 'deck bookend'),
+        ('slide accent on dark', PRIMITIVES[SLIDE['--acme-color-accent']], bg, T_TEXT, 'kicker / numeral'),
+        ('slide meta/body on dark', PRIMITIVES[SLIDE_META], bg, T_TEXT, 'presenter, date'),
+        ('slide footer on dark', PRIMITIVES[SLIDE_FOOTER], bg, T_TEXT, 'footer, page no.'),
+        ('wordmark mark vs dark', PRIMITIVES[SLIDE_MARK], bg, T_UI, 'brand mark shape'),
     ]
 
 
@@ -160,6 +164,7 @@ def pairings():
     add('on-primary on primary', 'on-primary', 'primary', T_TEXT, 'primary button label')
     add('on-primary on primary-hover', 'on-primary', 'primary-hover', T_TEXT, 'hover')
     add('on-primary on danger-emphasis', 'on-primary', 'danger-emphasis', T_TEXT, 'danger button')
+    add('on-primary on danger-emphasis-hover', 'on-primary', 'danger-emphasis-hover', T_TEXT, 'hover')
     # status
     for k in ('success', 'warning', 'danger', 'info'):
         add(f'{k} on canvas', k, 'canvas', T_TEXT, 'status text / icon')
@@ -198,7 +203,7 @@ def main():
         if not show_all and not failures:
             print("  all pairings pass")
 
-    print("\nNAVY DECK SLIDES")
+    print("\nDARK DECK SLIDES")
     slide_failures = 0
     for label, fg, bg, need, note in slide_pairings():
         r = ratio(fg, bg)

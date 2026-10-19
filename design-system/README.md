@@ -1,4 +1,4 @@
-# ACME Corp Design Language (v3.0.0)
+# ACME Corp Design Language (v4.0.0)
 
 The design language system for **ACME Corp** — a fictional industrial-catalog
 company ("Everything you need. Instantly."). This repo exists as a realistic
@@ -11,7 +11,7 @@ describes a real company.
 | --- | --- |
 | [brand/identity.md](brand/identity.md) | Who ACME is, the wordmark, brand pillars |
 | [brand/voice-and-tone.md](brand/voice-and-tone.md) | How ACME writes |
-| [foundations/color.md](foundations/color.md) | Blue-based light theme: Slate base + Cobalt highlight, semantic tokens, verified contrast |
+| [foundations/color.md](foundations/color.md) | Light theme: Stone base + Signal Red highlight, semantic tokens, verified contrast |
 | [foundations/typography.md](foundations/typography.md) | Serif display + grotesque body, scale, weights |
 | [foundations/spacing-layout.md](foundations/spacing-layout.md) | 4 px grid, breakpoints, containers |
 | [foundations/shape-elevation.md](foundations/shape-elevation.md) | Surfaces, radius, borders, shadows |
@@ -58,9 +58,9 @@ Never edit `previews/*.html` directly — the build overwrites them.
 
 ## Non-negotiables (the short list)
 
-1. Blue-white Slate base, one Cobalt highlight: **Cobalt means act, attend,
-   or you-are-here; everything else is Slate.** One Cobalt primary action per
-   view; Cobalt also carries links, focus, selection, and the current page.
+1. Quiet Stone base, one Signal Red highlight: **red means act, attend, or
+   you-are-here; everything else is Stone.** One red primary action per view;
+   red also carries links, focus, selection, and the current page.
 2. Semantic tokens only; no hex values in product code.
 3. 4 px spacing grid; if it isn't a token, it isn't a size.
 4. Sentence case everywhere; headings are the serif display face, buttons are
@@ -68,9 +68,10 @@ Never edit `previews/*.html` directly — the build overwrites them.
 5. All text meets WCAG AA and control boundaries meet 1.4.11 — the palette is
    verified by [scripts/check-contrast.py](scripts/check-contrast.py); run it
    after any token change (see [foundations/color.md](foundations/color.md)).
-6. Danger is Red, never Cobalt, and always carries an icon + verb. Info is
-   Teal, never Cobalt. Focus rings are Cobalt, never restyled per component.
-7. Success and warning share the neutral Slate ink, so their icon and label
+6. Danger is Crimson, never Signal Red, and always carries an icon + verb.
+   Info is Blue, never Signal Red. Focus rings are Signal Red, never restyled
+   per component.
+7. Success and warning share the neutral Stone ink, so their icon and label
    carry the meaning, never color alone.
 8. Surfaces are opaque and bordered: raised surfaces take a 1 px hairline,
    shadows only say how high, and nothing is translucent or bounces (see

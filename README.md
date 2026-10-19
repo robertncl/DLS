@@ -6,7 +6,7 @@ built as a test fixture for design tooling (e.g. Claude Design / `/design-sync`)
 Everything lives in [design-system/](design-system/):
 
 - **Brand** — identity, wordmark, voice & tone
-- **Foundations** — color (warm Oat paper with a single Clay highlight),
+- **Foundations** — color (a quiet Stone page with a single Signal Red highlight),
   typography (serif display + grotesque body), spacing, surfaces / shape &
   elevation, motion
 - **Tokens** — [tokens.json](design-system/tokens/tokens.json) (DTCG) and

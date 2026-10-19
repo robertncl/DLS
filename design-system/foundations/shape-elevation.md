@@ -1,9 +1,9 @@
 # Surfaces, Shape & Elevation
 
-ACME surfaces are a **cool blue-white page**: opaque, flat, and precisely
-edged, in a blue-tinted Slate neutral, with white raised surfaces. Structure
+ACME surfaces are a **quiet Stone page**: opaque, flat, and precisely
+edged, in a near-neutral Stone grey, with white raised surfaces. Structure
 comes from honest 1 px borders and generous space; shadows are quiet,
-navy-tinted, and say only *how high* a surface sits.
+ink-tinted, and say only *how high* a surface sits.
 Nothing is translucent — what you read never depends on what's behind it.
 
 ## Surfaces
