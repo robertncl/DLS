@@ -16,8 +16,10 @@ describes a real company.
 | [foundations/spacing-layout.md](foundations/spacing-layout.md) | 4 px grid, breakpoints, containers |
 | [foundations/shape-elevation.md](foundations/shape-elevation.md) | Surfaces, radius, borders, shadows |
 | [foundations/motion.md](foundations/motion.md) | Durations, easings, reduced-motion |
+| [styles.css](styles.css) | Entry stylesheet: imports `fonts.css`, then `acme.css` |
 | [tokens/tokens.json](tokens/tokens.json) | Canonical tokens (DTCG format) |
 | [tokens/acme.css](tokens/acme.css) | Tokens as CSS custom properties + core component styles |
+| [tokens/fonts.css](tokens/fonts.css) | Self-hosted `@font-face` rules: Inter + Source Serif 4 (files in `fonts/`, OFL) |
 | [components/](components/) | Specs: button, forms, card, badge, alert, table, navigation, modal |
 | [patterns/presentation-deck.md](patterns/presentation-deck.md) | 16:9 slide masters (title, section, content, data, closing) |
 | [patterns/report-document.md](patterns/report-document.md) | Long-form documents: cover, numbered headings, callouts, figures, print |
@@ -34,7 +36,7 @@ theme only** — `acme.css` declares `color-scheme: light` and has no dark
 variant or theme switch.
 
 ```html
-<link rel="stylesheet" href="tokens/acme.css">
+<link rel="stylesheet" href="styles.css">
 <button class="acme-btn acme-btn--primary">Add to order</button>
 ```
 

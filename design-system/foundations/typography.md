@@ -4,13 +4,16 @@ Two families, one job each — the modernist editorial pairing: a **serif
 display** for headlines and a **neutral grotesque** for everything else.
 **Tiempos Headline** (display) gives headings their warm, literary voice;
 **Styrene B** (sans) does body, UI, and the wordmark; **JetBrains Mono**
-appears only for code, SKUs, and tabular identifiers. All stacks fall back to
-system fonts — previews in this repo intentionally load no webfonts, so the
-serif renders as Georgia and the sans as a system grotesque.
+appears only for code, SKUs, and tabular identifiers. The brand faces are
+used only where installed; `styles.css` self-hosts open-licence stand-ins from
+[tokens/fonts.css](../tokens/fonts.css) — **Inter** (400, 500, 600, 700, 700
+italic) for the sans and **Source Serif 4** (700, 700 italic) for the display.
+Previews in this repo intentionally load no webfonts, so there the serif
+renders as Georgia and the sans as a system grotesque.
 
 | Token | Stack |
 | --- | --- |
-| `--acme-font-display` | Tiempos Headline, Copernicus, Georgia, Times New Roman, ui-serif, serif |
+| `--acme-font-display` | Tiempos Headline, Copernicus, Source Serif 4, Georgia, Times New Roman, ui-serif, serif |
 | `--acme-font-sans` | Styrene B, Inter, Helvetica Neue, Segoe UI, system-ui, sans-serif |
 | `--acme-font-mono` | JetBrains Mono, ui-monospace, Cascadia Code, Consolas, monospace |
 
