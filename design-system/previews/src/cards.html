@@ -12,8 +12,10 @@ body { padding: var(--acme-space-6); background: var(--acme-color-surface); }
 .spec { font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-subtle); margin: var(--acme-space-8) 0 var(--acme-space-3); }
 .spec:first-child { margin-block-start: 0; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--acme-space-6); align-items: stretch; }
-.stat-label { font-size: var(--acme-text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--acme-color-text-muted); margin: 0 0 var(--acme-space-1); }
-.stat-value { font-family: var(--acme-font-display); font-size: var(--acme-text-2xl); font-weight: 700; font-variant-numeric: tabular-nums; margin: 0; }
+.stat-label { font-size: var(--acme-text-sm); font-weight: 500; color: var(--acme-color-text-muted); margin: 0 0 var(--acme-space-1); }
+.stat-value { font-size: var(--acme-text-3xl); font-weight: 600; letter-spacing: var(--acme-tracking-tight); font-variant-numeric: tabular-nums; line-height: var(--acme-leading-tight); margin: 0; }
+.stat-delta { display: inline-flex; align-items: center; gap: var(--acme-space-1); font-size: var(--acme-text-xs); font-weight: 500; color: var(--acme-color-success); margin: var(--acme-space-2) 0 0; }
+.stat-delta span { color: var(--acme-color-text-subtle); font-weight: 400; }
 </style>
 </head>
 <body>
@@ -48,7 +50,7 @@ body { padding: var(--acme-space-6); background: var(--acme-color-surface); }
       <div class="acme-card__body">
         <p class="stat-label">Orders today</p>
         <p class="stat-value">1,204</p>
-        <p style="font-size: var(--acme-text-xs); color: var(--acme-color-success); margin: var(--acme-space-1) 0 0;">▲ 12% vs yesterday</p>
+        <p class="stat-delta"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13V3m0 0L3.5 7.5M8 3l4.5 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>12% <span>vs yesterday</span></p>
       </div>
     </article>
   </div>

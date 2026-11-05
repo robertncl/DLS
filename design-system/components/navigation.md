@@ -7,11 +7,13 @@ Classes: `.acme-topbar`, `.acme-tabs`, `.acme-breadcrumbs` · Preview:
 
 The global bar is **part of the page frame**: full-width, opaque canvas,
 capped by a `--acme-color-border` hairline. It sits at zero elevation — no
-shadow, no float. The brand anchor is the wordmark itself (the Signal Red mark never
-changes). Wordmark left, primary destinations right (max 5); the current page
-is marked in Signal Red — `--acme-color-selected` text on a
-`--acme-color-selected-soft` fill via `aria-current="page"`. Hover on the
-other links is a neutral fill, so the red reads as position, not hover.
+shadow, no float, 56 px tall. The brand anchor is the wordmark itself (the
+Signal Red mark never changes). Layout: wordmark, then primary destinations
+(max 5) beside it, then `.acme-topbar__actions` pushed right (search, account,
+at most one small primary). The current page is ink text on a
+`--acme-color-surface-hover` fill via `aria-current="page"`; hover on the
+other links is the lighter `surface` fill, so position reads stronger than
+hover.
 
 ```html
 <header class="acme-topbar">
@@ -21,6 +23,7 @@ other links is a neutral fill, so the red reads as position, not hover.
     <a class="acme-topbar__link" aria-current="page" href="#">Catalog</a>
     …
   </nav>
+  <div class="acme-topbar__actions">…</div>
 </header>
 ```
 
@@ -34,12 +37,13 @@ Tabs switch **views of the same thing**; they never navigate to a different
 page (that's a link) and never trigger actions (that's a button).
 
 - A hairline baseline runs under the whole set; the **selected tab carries a
-  2 px Signal Red underline** and its label turns `--acme-color-selected` at
-  weight 600. Unselected tabs are muted; hover darkens text to ink only.
-- Selection is one of Signal Red's jobs (orientation); the underline plus
-  `aria-selected` — not hue alone — is what tells the active tab apart, since
-  Signal Red is also the primary-action color.
-- 2–6 tabs, one-word labels preferred, counts allowed ("Orders 12").
+  2 px ink underline** and its label turns ink. Unselected tabs are muted;
+  hover darkens text to ink only. Weight stays 500 in every state, so labels
+  never shift.
+- The underline plus `aria-selected` — not colour — is what marks the active
+  tab.
+- 2–6 tabs, one-word labels preferred. Counts go in a quiet pill:
+  `Orders<span class="acme-tab__count">12</span>`.
 - Proper ARIA: `role="tablist"` / `role="tab"` / `aria-selected`, arrow-key
   navigation between tabs.
 - The first tab is selected by default — never render a tabless state.

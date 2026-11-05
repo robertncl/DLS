@@ -23,10 +23,16 @@
       <a class="acme-topbar__link" href="#">Logistics</a>
       <a class="acme-topbar__link" href="#">Account</a>
     </nav>
+    <div class="acme-topbar__actions">
+      <button class="acme-btn acme-btn--ghost acme-btn--sm" aria-label="Search catalog">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="m10.5 10.5 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button class="acme-btn acme-btn--primary acme-btn--sm">New order</button>
+    </div>
   </header>
 
   <div class="content">
-    <p class="spec">App bar (above) — full-width, zero elevation, hairline base; current page marked in Signal Red</p>
+    <p class="spec">App bar (above) — full-width, zero elevation, hairline base; nav sits beside the wordmark, actions right; current page is a neutral fill</p>
 
     <p class="spec">Breadcrumbs — hierarchies ≥ 3 levels; current page is plain text</p>
     <nav class="acme-breadcrumbs" aria-label="Breadcrumb">
@@ -35,12 +41,12 @@
       <span aria-current="page">Rocket skates</span>
     </nav>
 
-    <p class="spec">Tabs — underline style; selected tab carries a 2 px Signal Red indicator</p>
+    <p class="spec">Tabs — underline style; selected tab carries a 2 px ink indicator; counts sit in a quiet pill</p>
     <div class="acme-tabs" role="tablist" aria-label="Product sections">
       <button class="acme-tab" role="tab" aria-selected="true" id="tab-1">Overview</button>
       <button class="acme-tab" role="tab" aria-selected="false" id="tab-2" tabindex="-1">Specs</button>
-      <button class="acme-tab" role="tab" aria-selected="false" id="tab-3" tabindex="-1">Reviews 128</button>
-      <button class="acme-tab" role="tab" aria-selected="false" id="tab-4" tabindex="-1">Incidents 3</button>
+      <button class="acme-tab" role="tab" aria-selected="false" id="tab-3" tabindex="-1">Reviews<span class="acme-tab__count">128</span></button>
+      <button class="acme-tab" role="tab" aria-selected="false" id="tab-4" tabindex="-1">Incidents<span class="acme-tab__count">3</span></button>
     </div>
     <div role="tabpanel" aria-labelledby="tab-1" style="padding-block: var(--acme-space-4); font-size: var(--acme-text-sm); color: var(--acme-color-text-muted); max-inline-size: 60ch;">
       Twin-turbine rocket skates with self-balancing gyros. Reaches highway

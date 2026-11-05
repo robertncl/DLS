@@ -5,10 +5,10 @@ Classes: `.acme-doc`, `.acme-doc-kicker`, `.acme-doc-rule`, `.acme-doc-meta`,
 [previews/report.html](../previews/report.html)
 
 Long-form documents: quarterly reports, white papers, incident reports.
-Single column, `65ch` measure, relaxed leading (1.65). In documents Signal Red
-is the only color: `--acme-color-accent` marks the cover rule, heading
-numerals, and the key-finding callout accent; links and the chart takeaway are
-Signal Red too. Body, figures, and neutral status stay in Stone ink.
+Single column, `65ch` measure, relaxed leading (1.65). Signal Red is the
+document's brand mark: `--acme-color-accent` sets the cover rule, heading
+numerals, and the callout accent. Links and the chart takeaway are Blue, as in
+the product. Body text and figures stay in Graphite ink.
 
 ## Structure
 
@@ -16,17 +16,17 @@ Cover → executive summary (one page, findings first) → table of contents
 (only if > 8 pages) → numbered body sections → appendices.
 
 **Cover:** wordmark top-left; bottom-anchored block of kicker (report type,
-e.g. "Quarterly report"), rule (`.acme-doc-rule`), title (4xl display), and
+e.g. "Quarterly report"), rule (`.acme-doc-rule`), title (4xl / 600), and
 `.acme-doc-meta` (authors · date · classification).
 
-**Body:** wrap in `.acme-doc`. `h2`/`h3` self-number via CSS counters
-("3.", "3.1") with Signal Red numerals — don't hand-number headings. Body
+**Body:** wrap in `.acme-doc`. `h2` (24 px) / `h3` (18 px) self-number via CSS
+counters ("3", "3.1") with tabular Signal Red numerals — don't hand-number headings. Body
 text is 16 px/1.65; captions and footers 12 px.
 
 ## Callouts
 
-`.acme-callout` is the editorial sibling of the UI alert: surface background,
-3 px Signal Red accent, uppercase label. Reserve it for **findings and decisions** —
+`.acme-callout` is the editorial sibling of the UI alert: recessed surface,
+hairline edge, 3 px Signal Red leading accent, small uppercase label. Reserve it for **findings and decisions** —
 one per section at most. The label states the kind: "Key finding",
 "Recommendation", "Risk".
 

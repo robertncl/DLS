@@ -2,9 +2,9 @@
 
 Class: `.acme-alert` · Preview: [previews/feedback.html](../previews/feedback.html)
 
-Inline message surface for page- or section-level status: soft tinted
-background, hairline border, 3 px accent on the leading edge, optional bold
-title.
+Inline message surface for page- or section-level status: a soft tinted panel
+with a matching tinted hairline, `--acme-radius-lg`, a leading icon in the
+status hue, and a semibold ink title over a muted body.
 
 ## Variants
 
@@ -28,11 +28,10 @@ title.
 ```
 
 Title (one line, bold, no period) + body (1–2 sentences, what + next step).
-**The leading icon is required, not optional:** danger carries Crimson and info
-carries Blue, but success and warning render in the *same* neutral Stone ink (see
-[color.md](../foundations/color.md)), so the icon shape —
-info circle, check, triangle, x-circle — is what tells them apart, alongside
-the word itself.
+**The leading icon is required.** It takes the status hue automatically (the
+first child `svg` reads `--acme-alert-icon`), and its shape — info circle,
+check, triangle, x-circle — keeps the status legible without colour (WCAG
+1.4.1). See [color.md](../foundations/color.md).
 
 ## Rules
 

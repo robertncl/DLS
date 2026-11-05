@@ -15,7 +15,7 @@ Classes: `.acme-field`, `.acme-label`, `.acme-input`, `.acme-help`,
 </div>
 ```
 
-- Labels sit **above** inputs, weight 600, always visible — placeholders are
+- Labels sit **above** inputs, 14 px / 500, always visible — placeholders are
   examples, never labels.
 - Mark **optional** fields, not required ones (most fields should be
   required).
@@ -23,8 +23,9 @@ Classes: `.acme-field`, `.acme-label`, `.acme-input`, `.acme-help`,
 
 ## Text inputs & selects
 
-- 40 px min height, `--acme-radius-md` (8 px, shared with buttons),
-  `--acme-color-border-strong` border on `--acme-color-surface-raised`.
+- 40 px min height, `--acme-radius-md` (6 px, shared with buttons),
+  `--acme-color-border-strong` border (≥ 3:1) on `--acme-color-surface-raised`,
+  resting `--acme-shadow-sm`.
 - `<select>` and `<textarea>` share `.acme-input`.
 
 ## Validation
@@ -39,10 +40,9 @@ Classes: `.acme-field`, `.acme-label`, `.acme-input`, `.acme-help`,
 
 - Checkboxes and radios are **native inputs** in an `.acme-choice` row —
   themed by `accent-color`, never rebuilt from divs.
-- Checked controls are **Signal Red** — `accent-color` is set to
-  `--acme-color-selected` at the root, and the switch track matches. Red is
-  the one accent, so the check glyph, not hue, is what distinguishes a checked
-  box from a primary action — see [color.md](../foundations/color.md).
+- Checked controls are **Blue** — `accent-color` is set to
+  `--acme-color-selected` at the root, and the switch track matches. Blue is
+  the interaction colour; see [color.md](../foundations/color.md).
 - Radios need 2–5 options and a default; more options → use a select.
 - Switch (`.acme-switch`, `role="switch"`) is for settings that take effect
   **immediately**. If a Save button applies the change, use a checkbox.

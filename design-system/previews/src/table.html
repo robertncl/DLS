@@ -15,13 +15,13 @@ caption { position: absolute; clip-path: inset(50%); }
 </style>
 </head>
 <body>
-  <p class="spec">.acme-table — text left, numbers right (tabular-nums), one badge per row ·
-  sorted column and selected row are marked in Signal Red</p>
+  <p class="spec">.acme-table — sentence-case header band, text left, numbers right (tabular-nums) ·
+  sorted column steps up to ink with an arrow, selected row takes the blue tint</p>
   <table class="acme-table">
     <caption>Recent orders</caption>
     <thead>
       <tr>
-        <th scope="col" aria-sort="descending">Order</th>
+        <th scope="col" aria-sort="descending">Order <span aria-hidden="true">↓</span></th>
         <th scope="col">Product</th>
         <th scope="col">Status</th>
         <th scope="col" class="acme-table__num">Qty</th>

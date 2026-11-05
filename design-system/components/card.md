@@ -20,17 +20,18 @@ can't title it with a noun, it isn't a card — it's a section.
 </article>
 ```
 
-Media (optional, 16:9) → body (20 px padding: title 18 px/700, supporting text
-muted 14 px) → footer (optional, separated by a hairline; actions and meta).
+Media (optional, 16:9, recessed `surface` band) → body (20 px padding: title
+16 px / 600, supporting text muted 14 px) → footer (optional, a recessed
+`surface` band under a hairline; actions and meta).
 
 ## Variants
 
 Cards are **bordered raised surfaces**: `--acme-color-surface-raised`, a
-`--acme-color-border` hairline, 12 px radius, resting `--acme-shadow-sm`.
+`--acme-color-border` hairline, 10 px radius, resting `--acme-shadow-sm`.
 
 - **Static** (default): no hover response.
 - **Interactive** (`.acme-card--interactive`): whole card is one link/button;
-  hover strengthens the border and raises to `--acme-shadow-md` — no scaling
+  hover firms the edge to `border-control` and raises to `--acme-shadow-md` — no scaling
   or lifting. One target per card — don't nest other clickables inside an
   interactive card.
 

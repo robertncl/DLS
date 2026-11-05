@@ -1,4 +1,4 @@
-# ACME Corp Design Language (v4.0.0)
+# ACME Corp Design Language (v5.0.0)
 
 The design language system for **ACME Corp** — a fictional industrial-catalog
 company ("Everything you need. Instantly."). This repo exists as a realistic
@@ -11,15 +11,15 @@ describes a real company.
 | --- | --- |
 | [brand/identity.md](brand/identity.md) | Who ACME is, the wordmark, brand pillars |
 | [brand/voice-and-tone.md](brand/voice-and-tone.md) | How ACME writes |
-| [foundations/color.md](foundations/color.md) | Light theme: Stone base + Signal Red highlight, semantic tokens, verified contrast |
-| [foundations/typography.md](foundations/typography.md) | Serif display + grotesque body, scale, weights |
+| [foundations/color.md](foundations/color.md) | Light theme: Graphite base, ink primary, Blue interaction, status hues, Signal Red brand; verified contrast |
+| [foundations/typography.md](foundations/typography.md) | One grotesque (Inter): scale, weights, tracking |
 | [foundations/spacing-layout.md](foundations/spacing-layout.md) | 4 px grid, breakpoints, containers |
 | [foundations/shape-elevation.md](foundations/shape-elevation.md) | Surfaces, radius, borders, shadows |
 | [foundations/motion.md](foundations/motion.md) | Durations, easings, reduced-motion |
 | [styles.css](styles.css) | Entry stylesheet: imports `fonts.css`, then `acme.css` |
 | [tokens/tokens.json](tokens/tokens.json) | Canonical tokens (DTCG format) |
 | [tokens/acme.css](tokens/acme.css) | Tokens as CSS custom properties + core component styles |
-| [tokens/fonts.css](tokens/fonts.css) | Self-hosted `@font-face` rules: Inter + Source Serif 4 (files in `fonts/`, OFL) |
+| [tokens/fonts.css](tokens/fonts.css) | Self-hosted `@font-face` rules for Inter (files in `fonts/`, OFL) |
 | [components/](components/) | Specs: button, forms, card, badge, alert, table, navigation, modal |
 | [patterns/presentation-deck.md](patterns/presentation-deck.md) | 16:9 slide masters (title, section, content, data, closing) |
 | [patterns/report-document.md](patterns/report-document.md) | Long-form documents: cover, numbered headings, callouts, figures, print |
@@ -60,21 +60,20 @@ Never edit `previews/*.html` directly — the build overwrites them.
 
 ## Non-negotiables (the short list)
 
-1. Quiet Stone base, one Signal Red highlight: **red means act, attend, or
-   you-are-here; everything else is Stone.** One red primary action per view;
-   red also carries links, focus, selection, and the current page.
-2. Semantic tokens only; no hex values in product code.
-3. 4 px spacing grid; if it isn't a token, it isn't a size.
-4. Sentence case everywhere; headings are the serif display face, buttons are
-   verb-first and specific.
-5. All text meets WCAG AA and control boundaries meet 1.4.11 — the palette is
+1. **Every colour has one job.** Ink acts (one primary per view), Blue
+   interacts (links, focus, checked, selected), Green / Amber / Red / Blue
+   report status, Signal Red signs the brand. Everything else is Graphite.
+2. **Red on a control means destructive** — nothing else clickable is red.
+   Editorial red (`--acme-color-accent`) stays in decks and reports.
+3. Semantic tokens only; no hex values in product code.
+4. 4 px spacing grid; if it isn't a token, it isn't a size.
+5. One typeface (Inter), sentence case everywhere; headings are 600 with tight
+   tracking; buttons are verb-first and specific.
+6. All text meets WCAG AA and control boundaries meet 1.4.11 — the palette is
    verified by [scripts/check-contrast.py](scripts/check-contrast.py); run it
    after any token change (see [foundations/color.md](foundations/color.md)).
-6. Danger is Crimson, never Signal Red, and always carries an icon + verb.
-   Info is Blue, never Signal Red. Focus rings are Signal Red, never restyled
-   per component.
-7. Success and warning share the neutral Stone ink, so their icon and label
-   carry the meaning, never color alone.
+7. Status never relies on hue alone: badges name the status, alerts carry an
+   icon and a title. Focus rings are Blue, never restyled per component.
 8. Surfaces are opaque and bordered: raised surfaces take a 1 px hairline,
    shadows only say how high, and nothing is translucent or bounces (see
    [foundations/shape-elevation.md](foundations/shape-elevation.md)).
