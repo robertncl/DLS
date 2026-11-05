@@ -14,7 +14,7 @@ body { padding: var(--acme-space-6); }
 .bar-row { display: grid; grid-template-columns: 7rem 1fr; gap: var(--acme-space-2); align-items: center; margin-block-end: var(--acme-space-1); font: 500 var(--acme-text-xs)/1.4 var(--acme-font-mono); color: var(--acme-color-text-muted); }
 .bar { block-size: 1rem; background: var(--acme-color-data); border-radius: 2px; }
 .row { display: flex; flex-wrap: wrap; gap: var(--acme-space-5); align-items: flex-end; }
-.shape { inline-size: 5.5rem; block-size: 4rem; background: var(--acme-color-surface); border: 1px solid var(--acme-color-border-strong); display: grid; place-items: center; font: 500 var(--acme-text-xs)/1 var(--acme-font-mono); color: var(--acme-color-text-muted); }
+.shape { inline-size: 5.5rem; block-size: 4rem; background: var(--acme-color-surface); border: 1px solid var(--acme-color-border-control); display: grid; place-items: center; font: 500 var(--acme-text-xs)/1 var(--acme-font-mono); color: var(--acme-color-text-muted); }
 .elev { inline-size: 9rem; block-size: 5.5rem; background: var(--acme-color-surface-raised); border: 1px solid var(--acme-color-border); border-radius: var(--acme-radius-lg); display: grid; place-items: center; font: 500 var(--acme-text-xs)/1 var(--acme-font-mono); color: var(--acme-color-text-muted); }
 </style>
 </head>
@@ -30,12 +30,12 @@ body { padding: var(--acme-space-6); }
   <div class="bar-row"><span>space-12 · 48</span><div class="bar" style="inline-size: var(--acme-space-12)"></div></div>
   <div class="bar-row"><span>space-16 · 64</span><div class="bar" style="inline-size: var(--acme-space-16)"></div></div>
 
-  <p class="spec">Radius — containers nest downward: modal 16 › card 12 › field 8 › checkbox 4 · pills for badges &amp; switches only</p>
+  <p class="spec">Radius — containers nest downward: modal 12 › card 10 › control 6 › badge 4 · pills for switches only</p>
   <div class="row">
     <div class="shape" style="border-radius: var(--acme-radius-sm)">sm 4</div>
-    <div class="shape" style="border-radius: var(--acme-radius-md)">md 8</div>
-    <div class="shape" style="border-radius: var(--acme-radius-lg)">lg 12</div>
-    <div class="shape" style="border-radius: var(--acme-radius-xl)">xl 16</div>
+    <div class="shape" style="border-radius: var(--acme-radius-md)">md 6</div>
+    <div class="shape" style="border-radius: var(--acme-radius-lg)">lg 10</div>
+    <div class="shape" style="border-radius: var(--acme-radius-xl)">xl 12</div>
     <div class="shape" style="border-radius: var(--acme-radius-full); inline-size: 4rem; block-size: 4rem;">full</div>
   </div>
 

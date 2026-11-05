@@ -1,65 +1,77 @@
 # Surfaces, Shape & Elevation
 
-ACME surfaces are a **quiet Stone page**: opaque, flat, and precisely
-edged, in a near-neutral Stone grey, with white raised surfaces. Structure
-comes from honest 1 px borders and generous space; shadows are quiet,
-ink-tinted, and say only *how high* a surface sits.
-Nothing is translucent — what you read never depends on what's behind it.
+ACME surfaces are a **crisp Graphite page**: a white canvas, opaque surfaces,
+and precise 1 px hairlines. Structure comes from borders, quiet tonal
+recesses, and generous space. Shadows are soft and neutral, and they say only
+*how high* a surface sits. Nothing is translucent, so what you read never
+depends on what's behind it.
 
 ## Surfaces
 
 | Surface | Token | Use |
 | --- | --- | --- |
-| Canvas | `--acme-color-canvas` | Page background, the app bar |
-| Surface | `--acme-color-surface` | Recessed areas, hover fills, selected nav |
-| Surface raised | `--acme-color-surface-raised` | Cards, inputs, modals, popovers |
+| Canvas | `--acme-color-canvas` (white) | Page background, the app bar |
+| Surface | `--acme-color-surface` (graphite-50) | Recessed bands: table header, card and modal footers, card media, callouts |
+| Surface hover | `--acme-color-surface-hover` (graphite-100) | Hover fills, the current nav item, neutral badges |
+| Surface raised | `--acme-color-surface-raised` (white) | Cards, inputs, modals, popovers |
 
-Raised surfaces always pair with a `--acme-color-border` hairline; the border
-defines the edge, the shadow (if any) defines the height.
+Raised surfaces always pair with a `--acme-color-border` hairline: the border
+defines the edge, and the shadow defines the height. Recessed *footer bands*
+(cards, modals) separate actions from content without adding another border
+weight.
 
 ## Radius
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--acme-radius-sm` | 4 px | Wordmark mark, checkboxes, nav links, small chips |
-| `--acme-radius-md` | 8 px | **Buttons, inputs**, alerts |
-| `--acme-radius-lg` | 12 px | Cards, popovers |
-| `--acme-radius-xl` | 16 px | Modals, page-level panels |
-| `--acme-radius-full` | 999 px | Badges and switches **only** |
+| `--acme-radius-sm` | 4 px | Badges, checkboxes, focus rings |
+| `--acme-radius-md` | 6 px | **Buttons, inputs**, nav links |
+| `--acme-radius-lg` | 10 px | Cards, alerts, popovers |
+| `--acme-radius-xl` | 12 px | Modals, page-level panels |
+| `--acme-radius-full` | 999 px | Switches and tab counts **only** |
 
 Rules:
 
 - **Controls are rounded rectangles**, not capsules. Buttons and inputs share
-  `--acme-radius-md` so forms read as one family.
-- **Nesting decreases radius** for containers: modal (16) › card (12) › field
-  (8) › checkbox (4).
-- Pills are reserved for the two shapes that are genuinely round-ended:
-  badges and the switch track.
+  `--acme-radius-md`, so forms read as one family.
+- **Nesting decreases radius** for containers: modal (12) › card (10) ›
+  control (6) › badge (4).
+- Status badges are small rounded rectangles, not pills. They read as data
+  labels, not as buttons.
 
 ## Borders
 
-- Every raised surface (card, modal, popover) takes a
-  `1px solid var(--acme-color-border)` edge — borders are the primary
-  separator in the system, not shadows.
-- Inputs take the heavier `--acme-color-border-strong` so fields read as
-  affordances; secondary buttons share it.
-- Dividers inside surfaces (card footers, table rows) stay
-  `1px solid var(--acme-color-border)`.
-- The 3 px accent on alerts is the only decorative thick border in the system.
+| Token | Weight | Use |
+| --- | --- | --- |
+| `--acme-color-border` | hairline (graphite-200) | Card and modal edges, dividers, table rows. Decorative. |
+| `--acme-color-border-control` | graphite-300 | Secondary-button edge, hovered interactive card |
+| `--acme-color-border-strong` | graphite-400, ≥ 3:1 | Inputs and switch tracks, where the edge *is* the affordance |
+
+- Status surfaces (alerts, badges) take their matching `*-border` tint instead
+  of the neutral hairline.
+- The 3 px accent on report callouts is the only thick border in the system,
+  and it is editorial.
 
 ## Elevation
 
-Three levels, three shadows. A shadow never appears without a reason to be
-above the page.
+There are three levels, each with its own shadow. A shadow never appears
+without a reason for the surface to sit above the page.
 
 | Level | Recipe | Use |
 | --- | --- | --- |
-| Resting | border + `--acme-shadow-sm` | Cards, secondary buttons |
-| Raised | border-strong + `--acme-shadow-md` | Hovered interactive cards, dropdowns |
+| Resting | border + `--acme-shadow-sm` | Cards, buttons, inputs |
+| Raised | border-control + `--acme-shadow-md` | Hovered interactive cards, dropdowns |
 | Floating | border + `--acme-shadow-lg` | Modals, command palettes |
 
-The app bar sits at zero elevation — it is part of the page frame, separated
-by its bottom hairline, not floating above content.
+Shadows are tinted with graphite ink (`rgb(16 24 40 / …)`), never pure black,
+and they spread negatively so the edge stays crisp. The app bar sits at zero
+elevation: it is part of the page frame, separated by its bottom hairline,
+not floating above content.
 
-Don'ts: no colored shadows, no stacking shadow tokens, no shadow on static
-text content, no borderless "floating" panels.
+Don'ts:
+
+- no coloured shadows
+- no stacking shadow tokens on one element
+- no shadow on static text content
+- no borderless "floating" panels
+- no glassmorphism or backdrop blur

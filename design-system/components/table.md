@@ -7,8 +7,8 @@ markup only — no div grids.
 
 ## Anatomy
 
-- **Header row:** 12 px, semibold, uppercase, +5% tracking, muted color;
-  bottom border `--acme-color-border-strong`.
+- **Header row:** a recessed `--acme-color-surface` band between hairlines;
+  12 px / 500, sentence case, muted colour, no wrapping.
 - **Body rows:** 14 px, 12 px cell padding, hairline row borders, hover fill
   `--acme-color-surface`.
 - **Numeric columns:** right-aligned with `tabular-nums`
@@ -23,9 +23,8 @@ markup only — no div grids.
   cap at one line.
 - Empty state: keep the header row, show a short message + the action that
   fills the table ("No orders yet. Share your catalog link.").
-- Sorting: clickable `<th>` with `aria-sort`; the sorted header and its
-  bottom border take `--acme-color-selected`, so the Signal Red accent marks the
-  column ordering the data.
+- Sorting: clickable `<th>` with `aria-sort`; the sorted header steps up to
+  ink at 600 and shows a direction arrow (↑/↓, `aria-hidden`).
 - Pagination beyond ~50 rows; virtualize beyond ~500.
 - Column headers describe data ("Ship date"), not actions.
 
@@ -33,7 +32,7 @@ markup only — no div grids.
 
 - `<caption>` (visually hidden if needed) names every table.
 - `scope="col"` / `scope="row"` on header cells.
-- Row hover is decoration only (grey fill); selection uses a leading checkbox
+- Row hover is decoration only (graphite-50 fill); selection uses a leading checkbox
   column plus `aria-selected="true"` on the `<tr>`, which tints the row
-  `--acme-color-selected-soft`. Selection state must never be carried by the
-  tint alone.
+  `--acme-color-selected-soft` (blue-50; text stays ink). Selection state must
+  never be carried by the tint alone.

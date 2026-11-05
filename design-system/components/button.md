@@ -2,7 +2,7 @@
 
 Class: `.acme-btn` · Preview: [previews/buttons.html](../previews/buttons.html)
 
-Buttons are **rounded rectangles** (`--acme-radius-md`, 8 px) and share their
+Buttons are **rounded rectangles** (`--acme-radius-md`, 6 px) and share their
 radius with inputs so forms read as one family. A press is acknowledged by
 the `:active` color step — buttons never scale or bounce.
 
@@ -10,10 +10,10 @@ the `:active` color step — buttons never scale or bounce.
 
 | Variant | Class | Surface | Use |
 | --- | --- | --- | --- |
-| Primary | `.acme-btn--primary` | Signal Red fill, white label | The single most important action on the view — **one per view**. |
-| Secondary | `.acme-btn--secondary` | Raised surface + `border-strong` outline | Alternative or companion actions. Hover fills with `--acme-color-surface`. |
-| Ghost | `.acme-btn--ghost` | Transparent → surface fill on hover | Low-emphasis actions in toolbars, cards, table rows. |
-| Danger | `.acme-btn--danger` | danger-emphasis fill (Crimson) + warning icon | Destructive, irreversible actions. Crimson marks it, the icon and verb confirm it — always paired with a confirmation step. Crimson is close to Signal Red, so it is the one solid action of its view, never placed beside a primary. |
+| Primary | `.acme-btn--primary` | Ink fill (graphite-900), white label, shadow-sm | The single most important action on the view — **one per view**. |
+| Secondary | `.acme-btn--secondary` | White + `border-control` edge + shadow-sm | Alternative or companion actions. Hover tints to `surface` and firms the edge. |
+| Ghost | `.acme-btn--ghost` | Transparent → `surface-hover` fill | Low-emphasis actions in toolbars, cards, table rows, the app bar. |
+| Danger | `.acme-btn--danger` | Red fill (`danger-emphasis`), white label | Destructive, irreversible actions. Red on a control only ever means this; the specific verb confirms it. Usually the solid action of a confirmation step. |
 
 ## Sizes
 
@@ -25,9 +25,9 @@ the `:active` color step — buttons never scale or bounce.
 
 ## States
 
-Rest → hover (one shade deeper / surface fill) → active (two shades deeper)
-→ focus-visible (Signal Red ring, 2 px offset) → disabled (50% opacity,
-`not-allowed` cursor).
+Rest → hover (ink lightens to graphite-700; fills tint) → active (graphite-800)
+→ focus-visible (Blue ring, 2 px offset) → disabled (45% opacity, no shadow,
+`not-allowed` cursor). Labels are 14 px / 500 with snug tracking.
 Disabled buttons never show tooltips explaining why — put the reason in
 adjacent help text instead.
 
@@ -37,9 +37,9 @@ adjacent help text instead.
 - Never "OK", "Yes", "Submit", or "Click here".
 - Icon + label preferred over icon-only; icon-only buttons require an
   `aria-label`.
-- **Danger buttons always lead with a warning icon.** Primary and danger
-  share one fill color now, so the icon — not the color — is what tells a
-  reader "this one is destructive."
+- **Danger buttons name the consequence.** "Delete 12 products", never
+  "Confirm". A leading warning icon is optional — red is unambiguous now that
+  the primary is ink.
 
 ## Accessibility
 

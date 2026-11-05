@@ -2,8 +2,8 @@
 
 Class: `.acme-badge` · Preview: [previews/feedback.html](../previews/feedback.html)
 
-Badges are compact status labels: pill-shaped, 12 px semibold text on a soft
-tinted background. Read-only — a badge is never a button or a filter chip.
+Badges are compact status labels: small rounded rectangles (`--acme-radius-sm`),
+12 px / 500 text on a soft tint with a matching hairline. Read-only — a badge is never a button or a filter chip.
 
 ## Variants
 
@@ -19,12 +19,11 @@ tinted background. Read-only — a badge is never a button or a filter chip.
 
 - One or two words, sentence case, no punctuation. Numbers allowed
   (`3 pending`).
-- Color pairs are fixed soft/soft-text tokens — never put custom colors on
-  badges. Danger takes Crimson and info takes Blue; **success and warning share
-  the same neutral Stone ink** (see [color.md](../foundations/color.md)).
-- **A leading icon is required, not optional.** Success and warning are
-  indistinguishable by color alone, so the icon is the only non-text
-  differentiator they have — status must still be legible from the word
-  alone, but ship the icon. Danger and info keep theirs for consistency.
+- Colour sets are fixed `*-soft` / `*-soft-text` / `*-border` tokens — never put
+  custom colours on badges. Success is Green, warning Amber, danger Red, info
+  Blue, neutral Graphite (see [color.md](../foundations/color.md)).
+- **The word carries the meaning; the hue speeds scanning.** A badge must be
+  legible with colour removed. A leading 12 px icon is optional; if one badge in
+  a set has an icon, all of them do.
 - Maximum one badge per table row / card title line. If everything is badged,
   nothing is.

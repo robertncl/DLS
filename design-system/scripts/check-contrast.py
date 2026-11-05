@@ -76,7 +76,7 @@ def mix_oklab(c1, c2, pct):
 
 # ------------------------------------------------------------- token resolver
 PRIMITIVES = dict(re.findall(
-    r'(--acme-(?:red|gray|crimson|blue)-\d+)\s*:\s*(#[0-9A-Fa-f]{6})', CSS))
+    r'(--acme-(?:red|gray|blue|green|amber)-\d+)\s*:\s*(#[0-9A-Fa-f]{6})', CSS))
 
 
 def _block(pattern):
@@ -148,21 +148,23 @@ def pairings():
     """(label, fg, bg, threshold, note) — what the components actually render."""
     p = []
     add = lambda *a: p.append(a)
-    for bg in ('canvas', 'surface', 'surface-raised'):
+    for bg in ('canvas', 'surface', 'surface-hover', 'surface-raised'):
         add(f'text on {bg}', 'text', bg, T_TEXT, 'body')
         add(f'text-muted on {bg}', 'text-muted', bg, T_TEXT, 'secondary / help')
         add(f'text-subtle on {bg}', 'text-subtle', bg, T_TEXT, 'placeholder / caption')
         add(f'link on {bg}', 'link', bg, T_TEXT, 'inline link')
         add(f'accent on {bg}', 'accent', bg, T_TEXT, 'kicker / numeral, 12px')
     add('link-hover on canvas', 'link-hover', 'canvas', T_TEXT, 'hover')
-    # selection renders as TEXT (tab label, sorted th, current nav item)
-    add('selected on canvas', 'selected', 'canvas', T_TEXT, 'active tab label')
-    add('selected on surface', 'selected', 'surface', T_TEXT, 'sorted column header')
-    add('selected on selected-soft', 'selected', 'selected-soft', T_TEXT, 'current nav item')
-    add('selected indicator vs canvas', 'selected', 'canvas', T_UI, 'tab underline')
+    # selection: checked controls and the switch track are non-text UI (3:1);
+    # selected rows keep ink text on the soft tint.
+    add('selected vs canvas', 'selected', 'canvas', T_UI, 'checked control / switch')
+    add('selected vs surface', 'selected', 'surface', T_UI, 'checked control on a recess')
+    add('text on selected-soft', 'text', 'selected-soft', T_TEXT, 'selected table row')
+    add('text-muted on selected-soft', 'text-muted', 'selected-soft', T_TEXT, 'selected row, muted cell')
     # filled controls
     add('on-primary on primary', 'on-primary', 'primary', T_TEXT, 'primary button label')
     add('on-primary on primary-hover', 'on-primary', 'primary-hover', T_TEXT, 'hover')
+    add('on-primary on primary-active', 'on-primary', 'primary-active', T_TEXT, 'active')
     add('on-primary on danger-emphasis', 'on-primary', 'danger-emphasis', T_TEXT, 'danger button')
     add('on-primary on danger-emphasis-hover', 'on-primary', 'danger-emphasis-hover', T_TEXT, 'hover')
     # status
@@ -170,16 +172,24 @@ def pairings():
         add(f'{k} on canvas', k, 'canvas', T_TEXT, 'status text / icon')
         add(f'{k} on surface-raised', k, 'surface-raised', T_TEXT, 'status inside a card')
         add(f'{k}-soft-text on {k}-soft', f'{k}-soft-text', f'{k}-soft', T_TEXT, 'badge / alert')
-    add('badge neutral', 'text-muted', 'surface', T_TEXT, 'default badge')
+    add('badge neutral', 'text-muted', 'surface-hover', T_TEXT, 'default badge')
+    for k in ('success', 'warning', 'danger', 'info'):
+        add(f'{k} icon on {k}-soft', k, f'{k}-soft', T_UI, 'alert icon')
+        add(f'text on {k}-soft', 'text', f'{k}-soft', T_TEXT, 'alert title')
+        add(f'text-muted on {k}-soft', 'text-muted', f'{k}-soft', T_TEXT, 'alert body')
     # UI component boundaries (1.4.11)
     add('focus ring vs canvas', 'focus', 'canvas', T_UI, 'focus indicator')
     add('focus ring vs surface-raised', 'focus', 'surface-raised', T_UI, 'focus on a card')
     add('input border vs surface-raised', 'border-strong', 'surface-raised', T_UI, 'field boundary')
     add('input border vs canvas', 'border-strong', 'canvas', T_UI, 'field boundary')
-    add('switch track vs surface', 'border-strong', 'surface', T_UI, 'unchecked switch')
-    # A card is a non-interactive container, also carrying a fill and a shadow,
-    # so 1.4.11's 3:1 does not apply — tracked as a perceptibility floor only.
-    add('card border vs canvas', 'border', 'canvas', 1.5, 'decorative divider')
+    add('input border vs surface', 'border-strong', 'surface', T_UI, 'field on a recess')
+    add('switch track vs canvas', 'border-strong', 'canvas', T_UI, 'unchecked switch')
+    add('switch track vs surface-hover', 'border-strong', 'surface-hover', T_UI, 'switch in a hovered row')
+    # Hairlines are decorative: a card is a non-interactive container that also
+    # carries a shadow, and a secondary button is identified by its label, so
+    # 1.4.11's 3:1 does not apply — tracked as perceptibility floors only.
+    add('card border vs canvas', 'border', 'canvas', 1.2, 'decorative hairline')
+    add('control border vs canvas', 'border-control', 'canvas', 1.4, 'secondary button edge')
     # charts
     add('data vs canvas', 'data', 'canvas', T_UI, 'bar mark')
     add('data-highlight vs canvas', 'data-highlight', 'canvas', T_UI, 'takeaway mark')

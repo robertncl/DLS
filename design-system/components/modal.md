@@ -9,14 +9,14 @@ Anything with more than ~4 fields or its own scrollbar should be a page.
 
 ## Anatomy
 
-- Backdrop: a plain `rgb(12 14 18 / 0.5)` scrim — the page dims, no blur.
+- Backdrop: a plain `rgb(11 13 16 / 0.45)` graphite scrim — the page dims, no blur.
   Click-to-dismiss (except destructive confirms).
 - Panel: opaque `--acme-color-surface-raised` with a hairline border, max
-  28 rem wide, `--acme-radius-xl` (16 px), `--acme-shadow-lg`, centered.
-- Header: title 20 px + ghost close button (with `aria-label="Close"`).
+  28 rem wide, `--acme-radius-xl` (12 px), `--acme-shadow-lg`, centered.
+- Header: title 18 px / 600 + ghost close button (with `aria-label="Close"`).
 - Body: muted 14 px text; keep to a few sentences or one small form.
-- Footer: actions right-aligned — **primary/danger rightmost**, "Cancel" as a
-  secondary button beside it.
+- Footer: a recessed `surface` band under a hairline; actions right-aligned —
+  **primary/danger rightmost**, "Cancel" as a secondary button beside it.
 
 ## Destructive confirms
 
