@@ -1,0 +1,35 @@
+<!-- @dsCard height=288 -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+  html, body { margin: 0; }
+  body { width: 960px; height: 288px; position: relative; overflow: hidden; background: var(--acme-color-canvas); }
+  svg { position: absolute; left: 0; top: 0; display: block; }
+  .ink { fill: var(--acme-color-primary); }
+  .brand { fill: var(--acme-red-600); }
+  .interact { fill: var(--acme-blue-600); }
+  .tint { fill: var(--acme-blue-100); }
+  .blk { rx: var(--acme-radius-md); }
+  .rule { stroke: var(--acme-color-border); stroke-width: 1; }
+  .name { position: absolute; left: 40px; bottom: 32px; margin: 0; }
+  .name h1 { margin: 0; font: 600 60px/0.95 var(--acme-font-display); letter-spacing: -0.02em; color: var(--acme-color-text); white-space: nowrap; }
+  .name p { margin: var(--acme-space-2) 0 0; font: 400 14px/1.4 var(--acme-font-sans); color: var(--acme-color-text-muted); }
+</style></head><body>
+<svg width="960" height="96" viewBox="0 0 960 96" aria-hidden="true">
+  <!--
+    blocks: color-primary (ink, Graphite 900) 432×96 · red-600 (Signal Red, the brand signature) 216×96 · blue-600 (interaction) 144×96 · blue-100 (relief tint) 136×96 bleeding right; gaps space-2 (8px); radius-md (6px) on the bottom corners, tops bleed off the edge
+    arrangement: top-band skeleton (the name at 60px measures ~830px, wider than the 440px zone) — one strip of unequal flush bands, like the app bar capped by its hairline; ink leads because "ink acts", red signs, blue interacts
+    pattern: three hairline rules in color-border crossing every band — "Considered: a crisp, quiet page, precise hairlines; hairline borders carry most of the separation"
+    scales: band height space-24 (96), rule pitch space-6 (24), gaps space-2 (8), corners radius-md (6)
+  -->
+  <rect class="blk ink" x="0" y="-8" width="432" height="104"/>
+  <rect class="blk brand" x="440" y="-8" width="216" height="104"/>
+  <rect class="blk interact" x="664" y="-8" width="144" height="104"/>
+  <rect class="blk tint" x="816" y="-8" width="152" height="104"/>
+  <line class="rule" x1="0" y1="24.5" x2="960" y2="24.5"/>
+  <line class="rule" x1="0" y1="48.5" x2="960" y2="48.5"/>
+  <line class="rule" x1="0" y1="72.5" x2="960" y2="72.5"/>
+</svg>
+<div class="name">
+  <h1>ACME Corp Design System</h1>
+  <p>Everything you need. Instantly.</p>
+</div>
+</body></html>

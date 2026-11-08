@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="ACME Catalog App" description="Browse products, view details, add to an order, manage orders — ACME's catalog web app" -->
+<helmet><script src="./ds-base.js"></script></helmet>
+<div style="min-height:100vh;background:var(--acme-color-canvas);font-family:var(--acme-font-sans);color:var(--acme-color-text)">
+<header class="acme-topbar" style="position:sticky;top:0;z-index:5">
+<a class="acme-wordmark" href="#" onClick="{{ goCatalog }}" style="font-size:var(--acme-text-lg)"><span class="acme-wordmark__mark" aria-hidden="true">A</span>ACME</a>
+<nav class="acme-topbar__nav" aria-label="Primary">
+<sc-if value="{{ isCatalog }}" hint-placeholder-val="{{ true }}"><a class="acme-topbar__link" aria-current="page" href="#" onClick="{{ goCatalog }}">Catalog</a></sc-if>
+<sc-if value="{{ isNotCatalog }}" hint-placeholder-val="{{ false }}"><a class="acme-topbar__link" href="#" onClick="{{ goCatalog }}">Catalog</a></sc-if>
+<sc-if value="{{ isOrders }}" hint-placeholder-val="{{ false }}"><a class="acme-topbar__link" aria-current="page" href="#" onClick="{{ goOrders }}">Orders{{ orderCountLabel }}</a></sc-if>
+<sc-if value="{{ isNotOrders }}" hint-placeholder-val="{{ true }}"><a class="acme-topbar__link" href="#" onClick="{{ goOrders }}">Orders{{ orderCountLabel }}</a></sc-if>
+</nav>
+</header>
+<main style="max-width:1200px;margin:0 auto;padding:var(--acme-space-8) var(--acme-space-6)">
+
+<sc-if value="{{ isCatalog }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;gap:var(--acme-space-6)">
+<div style="display:flex;gap:var(--acme-space-3);align-items:flex-end;flex-wrap:wrap">
+<div class="acme-field" style="flex:1 1 260px"><label class="acme-label" for="catalog-search">Search the catalog</label><input id="catalog-search" class="acme-input" placeholder="Try “anvil” or “rocket”"></div>
+<div class="acme-field"><label class="acme-label" for="catalog-sort">Sort</label><select id="catalog-sort" class="acme-input"><option>Most popular</option><option>Price: low to high</option><option>Newest</option></select></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--acme-space-6)">
+<sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+<article class="acme-card acme-card--interactive" style="cursor:pointer" onClick="{{ p.onOpen }}">
+<div class="acme-card__media" style="font:var(--acme-text-xs) var(--acme-font-mono)">16:9 product photo</div>
+<div class="acme-card__body">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--acme-space-2)">
+<h3 class="acme-card__title">{{ p.name }}</h3>
+<sc-if value="{{ p.isWarning }}" hint-placeholder-val="{{ false }}"><span class="acme-badge acme-badge--warning"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>{{ p.badgeText }}</span></sc-if>
+<sc-if value="{{ p.isInfo }}" hint-placeholder-val="{{ false }}"><span class="acme-badge acme-badge--info"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>{{ p.badgeText }}</span></sc-if>
+<sc-if value="{{ p.isDanger }}" hint-placeholder-val="{{ false }}"><span class="acme-badge acme-badge--danger"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg>{{ p.badgeText }}</span></sc-if>
+</div>
+<p style="margin:0;font-size:var(--acme-text-sm);color:var(--acme-color-text-muted)">{{ p.note }}</p>
+</div>
+<div class="acme-card__footer">
+<button type="button" class="acme-btn acme-btn--secondary acme-btn--sm" onClick="{{ p.onDetails }}">Details</button>
+<span style="margin-left:auto;font:600 var(--acme-text-sm) var(--acme-font-sans);font-variant-numeric:tabular-nums">{{ p.price }}</span>
+</div>
+</article>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isProduct }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;gap:var(--acme-space-5)">
+<nav aria-label="Breadcrumb"><div class="acme-breadcrumbs"><a href="#" onClick="{{ goCatalog }}">Catalog</a><span aria-hidden="true">/</span><span aria-current="page">{{ activeProductName }}</span></div></nav>
+<div style="display:grid;grid-template-columns:1fr 320px;gap:var(--acme-space-8)">
+<div style="aspect-ratio:16/9;background:var(--acme-color-surface);border:1px solid var(--acme-color-border);border-radius:var(--acme-radius-lg);display:grid;place-items:center;color:var(--acme-color-text-subtle);font:var(--acme-text-sm) var(--acme-font-mono)">Product photo</div>
+<div style="display:grid;gap:var(--acme-space-4);align-content:start">
+<div>
+<div style="display:flex;gap:var(--acme-space-2);align-items:center;margin-bottom:var(--acme-space-2)"><h1 style="font-size:var(--acme-text-3xl);margin:0">{{ activeProductName }}</h1>
+<sc-if value="{{ activeIsRecalled }}" hint-placeholder-val="{{ false }}"><span class="acme-badge acme-badge--danger"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg>{{ activeBadgeText }}</span></sc-if>
+</div>
+<p style="font:600 var(--acme-text-2xl) var(--acme-font-display);letter-spacing:var(--acme-tracking-tight);margin:0 0 var(--acme-space-2)">{{ activeProductPrice }}</p>
+<p style="margin:0;color:var(--acme-color-text-muted);font-size:var(--acme-text-sm)">{{ activeProductNote }}</p>
+</div>
+<sc-if value="{{ activeIsRecalled }}" hint-placeholder-val="{{ false }}">
+<div class="acme-alert acme-alert--danger" role="alert"><span class="acme-alert__icon"><svg class="acme-status-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg></span><div><p class="acme-alert__title">Recalled</p><p>This product was recalled in 1962. It is no longer sold.</p></div></div>
+</sc-if>
+<sc-if value="{{ activeIsBuyable }}" hint-placeholder-val="{{ true }}">
+<div class="acme-field"><label class="acme-label" for="product-qty">Quantity</label><select id="product-qty" class="acme-input"><option>1</option><option>2</option><option>3</option></select></div>
+<button type="button" class="acme-btn acme-btn--primary" onClick="{{ addToOrder }}">Add to order</button>
+</sc-if>
+<p style="font-size:var(--acme-text-xs);color:var(--acme-color-text-subtle);margin:0">SKU <span style="font-family:var(--acme-font-mono)">{{ activeSku }}</span> · Ships today from the Albuquerque depot.</p>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isOrders }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;gap:var(--acme-space-5)">
+<h1 style="font-size:var(--acme-text-3xl);margin:0">Orders</h1>
+<table class="acme-table">
+<thead><tr><th scope="col">Order</th><th scope="col">Item</th><th scope="col">Status</th><th scope="col" class="acme-table__num">Total</th><th scope="col"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Actions</span></th></tr></thead>
+<tbody>
+<sc-for list="{{ orderRows }}" as="r" hint-placeholder-count="2">
+<tr>
+<td style="font-family:var(--acme-font-mono)">{{ r.id }}</td>
+<td>{{ r.item }}</td>
+<td>
+<sc-if value="{{ r.isSuccess }}" hint-placeholder-val="{{ false }}"><span class="acme-badge acme-badge--success"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>{{ r.status }}</span></sc-if>
+<sc-if value="{{ r.isInfo }}" hint-placeholder-val="{{ false }}"><span class="acme-badge acme-badge--info"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>{{ r.status }}</span></sc-if>
+<sc-if value="{{ r.isNeutral }}" hint-placeholder-val="{{ false }}"><span class="acme-badge">{{ r.status }}</span></sc-if>
+</td>
+<td class="acme-table__num">{{ r.total }}</td>
+<td class="acme-table__num"><sc-if value="{{ r.removable }}" hint-placeholder-val="{{ false }}"><button type="button" class="acme-btn acme-btn--ghost acme-btn--sm" onClick="{{ r.onRemove }}">Delete draft</button></sc-if></td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</sc-if>
+
+</main>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="position:fixed;bottom:var(--acme-space-6);left:50%;transform:translateX(-50%);background:var(--acme-color-surface-raised);border:1px solid var(--acme-color-border);border-radius:var(--acme-radius-md);box-shadow:var(--acme-shadow-lg);color:var(--acme-color-text);padding:var(--acme-space-3) var(--acme-space-4);font:600 var(--acme-text-sm) var(--acme-font-sans)">{{ toastText }}</div>
+</sc-if>
+
+<sc-if value="{{ confirmOpen }}" hint-placeholder-val="{{ false }}">
+<div class="acme-modal-backdrop" style="z-index:10">
+<div class="acme-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+<div class="acme-modal__header"><h3 class="acme-modal__title" id="confirm-title">Delete this order draft?</h3></div>
+<div class="acme-modal__body"><p style="margin:0">This deletes the draft order permanently. This can’t be undone.</p></div>
+<div class="acme-modal__footer">
+<button type="button" class="acme-btn acme-btn--secondary" onClick="{{ cancelDelete }}">Cancel</button>
+<button type="button" class="acme-btn acme-btn--danger" onClick="{{ confirmDeleteOrder }}">Delete draft order</button>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+
+</x-dc>
+
+<script type="text/x-dc" data-dc-script>
+const PRODUCTS = [
+  { id: 1, name: 'Anvil, classic 45 kg', price: '$1,204.00', badge: null, note: "Tested to destruction so you don't have to." },
+  { id: 2, name: 'Rocket skates', price: '$189.00', badge: 'warning', badgeText: 'Low stock', note: 'Twin-turbine. Self-balancing. Mostly.' },
+  { id: 3, name: 'Portable hole', price: '$89.50', badge: 'info', badgeText: 'Preorder', note: 'Fits in any pocket. Ships flat.' },
+  { id: 4, name: 'Giant rubber band', price: '$34.00', badge: null, note: 'Industrial elastic, 200 ft.' },
+  { id: 5, name: 'Earthquake pills', price: '$12.00', badge: 'danger', badgeText: 'Recalled', note: 'Discontinued after the 1962 incident.' },
+  { id: 6, name: 'Jet-propelled unicycle', price: '$412.00', badge: null, note: 'Arrives Jul 20.' },
+];
+const BADGE_COLORS = {
+  success: ['var(--acme-color-success-soft)', 'var(--acme-color-success-soft-text)'],
+  warning: ['var(--acme-color-warning-soft)', 'var(--acme-color-warning-soft-text)'],
+  danger: ['var(--acme-color-danger-soft)', 'var(--acme-color-danger-soft-text)'],
+  info: ['var(--acme-color-info-soft)', 'var(--acme-color-info-soft-text)'],
+  neutral: ['var(--acme-color-surface-hover)', 'var(--acme-color-text-muted)'],
+};
+class Component extends DCLogic {
+  state = { screen: 'catalog', activeId: null, order: null, toast: null, confirmOpen: false };
+  openProduct(p) { this.setState({ screen: 'product', activeId: p.id }); }
+  goCatalog() { this.setState({ screen: 'catalog' }); }
+  goOrders() { this.setState({ screen: 'orders' }); }
+  addToOrder() {
+    const p = PRODUCTS.find(x => x.id === this.state.activeId);
+    this.setState({ order: p, toast: 'Added to order — view in Orders' });
+    setTimeout(() => this.setState({ toast: null }), 2600);
+  }
+  renderVals() {
+    const s = this.state;
+    const active = PRODUCTS.find(p => p.id === s.activeId);
+    const products = PRODUCTS.map(p => ({ ...p, hasBadge: !!p.badge, isWarning: p.badge === 'warning', isInfo: p.badge === 'info', isDanger: p.badge === 'danger', onOpen: () => this.openProduct(p), onDetails: (e) => { e.stopPropagation(); this.openProduct(p); } }));
+    const orderRows = [
+      { id: '#4417', item: 'Anvil, classic 45 kg', status: 'Shipped', isSuccess: true, total: '$1,204.00', removable: false },
+      { id: '#4418', item: 'Portable hole', status: 'Preorder', isInfo: true, total: '$89.50', removable: false },
+    ];
+    if (s.order) orderRows.push({ id: '#4420', item: s.order.name, status: 'Draft', isNeutral: true, total: s.order.price, removable: true, onRemove: () => this.setState({ confirmOpen: true }) });
+    const isOrders = s.screen === 'orders';
+    return {
+      isCatalog: s.screen === 'catalog', isProduct: s.screen === 'product' && !!active, isOrders,
+      isNotCatalog: s.screen !== 'catalog', isNotOrders: !isOrders,
+      orderCountLabel: s.order ? ' (1)' : '',
+      goCatalog: () => this.goCatalog(), goOrders: () => this.goOrders(),
+      products,
+      activeProductName: active ? active.name : '', activeProductPrice: active ? active.price : '', activeProductNote: active ? active.note : '',
+      activeBadgeText: active ? active.badgeText : '',
+      activeIsRecalled: !!(active && active.badge === 'danger'), activeIsBuyable: !!(active && active.badge !== 'danger'),
+      activeSku: active ? 'ACME-' + String(active.id).padStart(4, '0') : '',
+      addToOrder: () => this.addToOrder(),
+      orderRows,
+      hasToast: !!s.toast, toastText: s.toast,
+      confirmOpen: s.confirmOpen, cancelDelete: () => this.setState({ confirmOpen: false }),
+      confirmDeleteOrder: () => this.setState({ order: null, confirmOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

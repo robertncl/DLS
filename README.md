@@ -18,3 +18,10 @@ Everything lives in [design-system/](design-system/):
   per foundation/component, light + dark
 
 Start at [design-system/README.md](design-system/README.md).
+
+[claude-design/](claude-design/) mirrors the same system as it lives in Claude
+Design: React components with a compiled `bundle.js` / `bundle.css`, guideline
+specimen cards, a catalog-app template and the token list the Design System page
+edits. `design-system/` stays the source of truth; see
+[claude-design/SYNC.md](claude-design/SYNC.md) for what was pulled and how to
+re-sync.
