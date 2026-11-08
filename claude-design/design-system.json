@@ -1,0 +1,50 @@
+{
+  "v": 3,
+  "assetGroups": {
+    "notes": {
+      "files": {},
+      "name": "notes",
+      "order": []
+    },
+    "Fonts": {
+      "name": "Fonts",
+      "files": {},
+      "order": []
+    }
+  },
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-10-02T12:45:48.071Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": [
+      "project/github.md"
+    ]
+  },
+  "groups": [
+    "notes",
+    "Fonts"
+  ],
+  "layout": "files",
+  "libraries": [
+    {
+      "name": "react",
+      "version": "18"
+    },
+    {
+      "name": "react-dom",
+      "version": "18"
+    }
+  ],
+  "namespace": "ACMEDesignSystem_739be1",
+  "sections": {},
+  "title": "ACME Design System",
+  "lastChange": {
+    "by": "Robert",
+    "at": "2026-11-06T12:10:00Z",
+    "via": "GitHub · robertncl/DLS@d1665db",
+    "note": "Re-synced to v5.0.0 (PR #12, master): Graphite base, ink primary, Blue interaction, Green/Amber status, Inter only; Crimson ramp, danger-emphasis-active and the serif display face removed"
+  }
+}

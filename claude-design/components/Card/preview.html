@@ -1,0 +1,13 @@
+<!-- @dsCard group="Display" height=330 subtitle="One noun-titled thing: a product, an order, a metric" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script></head><body style="margin:0;padding:16px 20px;background:var(--acme-color-canvas);color:var(--acme-color-text);font-family:var(--acme-font-sans)"><div id="root"></div><script type="text/babel">
+const { Wordmark, Button, Field, Input, Select, Textarea, Choice, Switch, Card, Badge, Alert, Table, Topbar, Tabs, Breadcrumbs, Modal } = window.ACMEDesignSystem_739be1;
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <div style={{maxWidth:260}}>
+    <Card interactive media={<span>16:9 product photo</span>} title="Rocket skates"
+      footer={<><Button size="sm">Details</Button><span style={{marginLeft:'auto',font:'600 var(--acme-text-sm) var(--acme-font-sans)'}}>$189.00</span></>}>
+      <p style={{margin:0,fontSize:'var(--acme-text-sm)',color:'var(--acme-color-text-muted)'}}>Twin-turbine. Self-balancing. Mostly.</p>
+    </Card>
+  </div>
+);
+</script></body></html>

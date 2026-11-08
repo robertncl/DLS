@@ -1,0 +1,14 @@
+<!-- @dsCard group="Display" height=220 subtitle="Left-align text, right-align numbers; status cells use Badge" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script></head><body style="margin:0;padding:16px 20px;background:var(--acme-color-canvas);color:var(--acme-color-text);font-family:var(--acme-font-sans)"><div id="root"></div><script type="text/babel">
+const { Wordmark, Button, Field, Input, Select, Textarea, Choice, Switch, Card, Badge, Alert, Table, Topbar, Tabs, Breadcrumbs, Modal } = window.ACMEDesignSystem_739be1;
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <Table caption="Open orders"
+    columns={[{key:'id',label:'Order'},{key:'item',label:'Item'},{key:'status',label:'Status'},{key:'total',label:'Total',numeric:true}]}
+    rows={[
+      {id:'#4417', item:'Anvil, classic 45 kg', status:<Badge variant="success">Shipped</Badge>, total:'$1,204.00'},
+      {id:'#4418', item:'Portable hole', status:<Badge variant="info">Preorder</Badge>, total:'$89.50'},
+      {id:'#4419', item:'Rocket skates', status:<Badge variant="warning">Low stock</Badge>, total:'$189.00'},
+    ]} />
+);
+</script></body></html>
