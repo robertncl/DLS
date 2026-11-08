@@ -27,6 +27,8 @@ Classes: `.acme-field`, `.acme-label`, `.acme-input`, `.acme-help`,
   `--acme-color-border-strong` border (≥ 3:1) on `--acme-color-surface-raised`,
   resting `--acme-shadow-sm`.
 - `<select>` and `<textarea>` share `.acme-input`.
+- Disabled: `surface` fill, hairline border, `text-subtle` value (4.9:1) —
+  readable, never faded with opacity.
 
 ## Validation
 
@@ -50,6 +52,8 @@ Classes: `.acme-field`, `.acme-label`, `.acme-input`, `.acme-help`,
 ## Accessibility
 
 - Every control has a `<label for>` — clicking the label focuses the control.
+- Help and error text carry an `id` that the control lists in
+  `aria-describedby`, so they are read with the field.
 - Group related choices in `<fieldset>` with a `<legend>`.
 - Error summaries on submit move focus to the first invalid field.
 - Correct `autocomplete` attributes on identity/address/payment fields.

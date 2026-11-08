@@ -40,7 +40,7 @@ In code, use the `.acme-wordmark` component:
 - **Minimum size:** the mark must never render below 20×20 px.
 - On dark or photographic backgrounds, the wordmark text is white and the
   mark lifts to `--acme-red-500` so it stays a bright shape (4.3:1 on
-  graphite-950).
+  graphite-950): add `.acme-wordmark--on-dark`.
 - The mark may be used alone (favicon, avatar) at 24 px and up.
 
 ### Wordmark don'ts
