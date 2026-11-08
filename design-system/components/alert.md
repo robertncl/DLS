@@ -19,7 +19,7 @@ status hue, and a semibold ink title over a muted body.
 
 ```html
 <div class="acme-alert acme-alert--warning" role="status">
-  <svg aria-hidden="true" …><!-- triangle-exclamation --></svg>
+  <span class="acme-alert__icon"><svg aria-hidden="true" …><!-- triangle --></svg></span>
   <div>
     <p class="acme-alert__title">Low stock</p>
     <p>Only 3 anvils left. Restock arrives Jul 20.</p>
@@ -29,7 +29,8 @@ status hue, and a semibold ink title over a muted body.
 
 Title (one line, bold, no period) + body (1–2 sentences, what + next step).
 **The leading icon is required.** It takes the status hue automatically (the
-first child `svg` reads `--acme-alert-icon`), and its shape — info circle,
+`.acme-alert__icon` wrapper — or a bare first-child `svg` — reads
+`--acme-alert-icon`), and its shape — info circle,
 check, triangle, x-circle — keeps the status legible without colour (WCAG
 1.4.1). See [color.md](../foundations/color.md).
 
@@ -38,8 +39,9 @@ check, triangle, x-circle — keeps the status legible without colour (WCAG
 - Alerts appear **at the top of the region they describe** — page alerts under
   the page title, field-group alerts above the group.
 - Danger alerts state the recovery path or they don't ship.
-- `role="status"` for info/success, `role="alert"` for warning/danger that
-  appears dynamically.
+- `role="alert"` for danger only — it is the one variant that interrupts a
+  screen reader. Info, success and warning use `role="status"` and are
+  announced politely.
 - Dismissible only if the information is safe to lose; danger alerts about
   unresolved problems are not dismissible.
 - Never stack more than one alert per region — consolidate.

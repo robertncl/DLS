@@ -31,8 +31,11 @@ Anything with more than ~4 fields or its own scrollbar should be a page.
 
 - Build on `<dialog>` + `showModal()`: free focus trap, Esc handling, and
   top-layer stacking.
-- Focus moves to the first sensible control on open and returns to the
-  trigger on close.
+- Focus moves on open to the first field, else the first footer action —
+  in a destructive confirm that is "Cancel", never the danger button — and
+  returns to the trigger on close.
+- Tab and Shift+Tab cycle inside the panel; Esc closes (also for destructive
+  confirms, where the backdrop does not).
 - `aria-labelledby` points at the title.
 - Enter: fade + scale from 0.98, `--acme-duration-deliberate` ease-out; exit
   faster (`--acme-duration-slow`).

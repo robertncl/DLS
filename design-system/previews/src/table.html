@@ -18,7 +18,7 @@ caption { position: absolute; clip-path: inset(50%); }
   <p class="spec">.acme-table — sentence-case header band, text left, numbers right (tabular-nums) ·
   sorted column steps up to ink with an arrow, selected row takes the blue tint</p>
   <table class="acme-table">
-    <caption>Recent orders</caption>
+    <caption class="acme-visually-hidden">Recent orders</caption>
     <thead>
       <tr>
         <th scope="col" aria-sort="descending">Order <span aria-hidden="true">↓</span></th>
@@ -33,7 +33,7 @@ caption { position: absolute; clip-path: inset(50%); }
       <tr aria-selected="true">
         <td style="font-family: var(--acme-font-mono);">#4421</td>
         <td>Anvil, 10-ton</td>
-        <td><span class="acme-badge acme-badge--success">Shipped</span></td>
+        <td><span class="acme-badge acme-badge--success"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Shipped</span></td>
         <td class="acme-table__num">2</td>
         <td class="acme-table__num">$1,980.00</td>
         <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Track</button></td>
@@ -41,7 +41,7 @@ caption { position: absolute; clip-path: inset(50%); }
       <tr>
         <td style="font-family: var(--acme-font-mono);">#4420</td>
         <td>Rocket skates</td>
-        <td><span class="acme-badge acme-badge--warning">Backordered</span></td>
+        <td><span class="acme-badge acme-badge--warning"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5 1 14h14L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 6.25v3.25M8 11.75h.007" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Backordered</span></td>
         <td class="acme-table__num">1</td>
         <td class="acme-table__num">$399.00</td>
         <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Track</button></td>
@@ -49,7 +49,7 @@ caption { position: absolute; clip-path: inset(50%); }
       <tr>
         <td style="font-family: var(--acme-font-mono);">#4419</td>
         <td>Portable hole</td>
-        <td><span class="acme-badge acme-badge--success">Shipped</span></td>
+        <td><span class="acme-badge acme-badge--success"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Shipped</span></td>
         <td class="acme-table__num">4</td>
         <td class="acme-table__num">$596.00</td>
         <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Track</button></td>
@@ -57,7 +57,7 @@ caption { position: absolute; clip-path: inset(50%); }
       <tr>
         <td style="font-family: var(--acme-font-mono);">#4418</td>
         <td>Earthquake pills</td>
-        <td><span class="acme-badge acme-badge--danger">Payment failed</span></td>
+        <td><span class="acme-badge acme-badge--danger"><svg class="acme-status-icon" width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="m5.8 5.8 4.4 4.4m0-4.4-4.4 4.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Payment failed</span></td>
         <td class="acme-table__num">12</td>
         <td class="acme-table__num">$144.00</td>
         <td><button class="acme-btn acme-btn--ghost acme-btn--sm">Retry</button></td>

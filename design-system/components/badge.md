@@ -23,7 +23,8 @@ Badges are compact status labels: small rounded rectangles (`--acme-radius-sm`),
   custom colours on badges. Success is Green, warning Amber, danger Red, info
   Blue, neutral Graphite (see [color.md](../foundations/color.md)).
 - **The word carries the meaning; the hue speeds scanning.** A badge must be
-  legible with colour removed. A leading 12 px icon is optional; if one badge in
-  a set has an icon, all of them do.
+  legible with colour removed. Status variants carry a leading 12 px icon
+  (`.acme-status-icon`, `aria-hidden`): check, triangle, cross-in-circle,
+  info-in-circle. Neutral badges have none. Keep icons on across a set.
 - Maximum one badge per table row / card title line. If everything is badged,
   nothing is.

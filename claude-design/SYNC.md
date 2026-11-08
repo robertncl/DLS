@@ -24,8 +24,9 @@ template, the token list format the Design System page edits, and JetBrains Mono
 `design-system/tokens/acme.css`; the only differences are notation (`{alias}` vs
 `var()`, hex-alpha vs `rgb()` shadows). `--acme-color-mark` and
 `--acme-color-scrim` exist only here, as recorded under *Local deviations* in
-[github.md](github.md), along with the component-level a11y fixes (disabled
-states, status icons, focus handling) that `design-system/` does not have yet.
+[github.md](github.md). The component-level a11y fixes listed there (disabled
+states, status icons, focus handling, on-dark wordmark) were ported into
+`design-system/` in v5.1.0, so they are no longer deviations.
 
 ## What was copied
 
@@ -33,9 +34,11 @@ Verbatim from the artifact: `README.md`, `github.md`, `design-system.json`,
 `tokens.json`, `components/**`, `guidelines/**`, `templates/**`, `fonts/**`,
 `assets/Fonts/**`.
 
-**Regenerated, not copied: `tokens.css`.** The artifact's stored `tokens.css` is a
+**Regenerated, not copied: `tokens.css`.** (Fixed in the artifact too: the
+rebuilt file was published to it on 2026-11-08 as version 14.) The artifact's
+stored `tokens.css` was a
 stale compile from the v2 Clay/Oat palette (dark theme, 8/12/16 radii, the serif
-display face, `@font-face` rules for deleted files) and does not match its own
+display face, `@font-face` rules for deleted files) and did not match its own
 `tokens.json`. It was rebuilt here from `tokens.json` with
 [compile-tokens.py](compile-tokens.py), which reproduces the page's output format
 (`--acme-*` properties, `--font-*` stacks for `bundle.css`, a class per text

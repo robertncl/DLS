@@ -30,7 +30,8 @@ markup only — no div grids.
 
 ## Accessibility
 
-- `<caption>` (visually hidden if needed) names every table.
+- `<caption>` names every table. When the page heading already titles it,
+  hide the caption visually with `.acme-visually-hidden` — never drop it.
 - `scope="col"` / `scope="row"` on header cells.
 - Row hover is decoration only (graphite-50 fill); selection uses a leading checkbox
   column plus `aria-selected="true"` on the `<tr>`, which tints the row
