@@ -267,7 +267,21 @@ code, pre {
 :is(a, button, input, select, textarea, [tabindex]):focus-visible {
   outline: 2px solid var(--acme-color-focus);
   outline-offset: 2px;
-  border-radius: var(--acme-radius-sm);
+  /* No border-radius here: the ring follows the control's own radius, so
+     focus never reshapes a control. */
+}
+
+/* Visually hidden but announced: table captions, icon-button labels. */
+.acme-visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -301,6 +315,10 @@ code, pre {
   color: var(--acme-gray-0);
   letter-spacing: 0;
 }
+/* On dark grounds (Graphite 900/950 bands, dark slides): white letters, and
+   the mark lifts to red-500 so it stays a bright 3:1+ shape. */
+.acme-wordmark--on-dark { color: var(--acme-gray-0); }
+.acme-wordmark--on-dark .acme-wordmark__mark { background: var(--acme-red-500); }
 
 /* --------------------------------------------------------------------------
    4. Buttons
@@ -358,7 +376,16 @@ code, pre {
 /* Icon-only: square at the control height; always carries an aria-label. */
 .acme-btn--icon { padding: 0; min-inline-size: var(--acme-control-md); }
 .acme-btn--icon.acme-btn--sm { min-inline-size: var(--acme-control-sm); }
-.acme-btn:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+/* Disabled: readable, not faded — surface fill, subtle ink (4.9:1), no shadow. */
+.acme-btn:disabled,
+.acme-btn:disabled:hover,
+.acme-btn:disabled:active {
+  background: var(--acme-color-surface);
+  border-color: var(--acme-color-border);
+  color: var(--acme-color-text-subtle);
+  box-shadow: none;
+  cursor: not-allowed;
+}
 
 /* --------------------------------------------------------------------------
    5. Forms
@@ -387,7 +414,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-input:hover { border-color: var(--acme-color-text-subtle); }
 .acme-input::placeholder { color: var(--acme-color-text-subtle); }
 .acme-input[aria-invalid="true"] { border-color: var(--acme-color-danger); }
-.acme-input:disabled { background: var(--acme-color-surface); box-shadow: none; opacity: 0.6; cursor: not-allowed; }
+.acme-input:disabled { background: var(--acme-color-surface); border-color: var(--acme-color-border); color: var(--acme-color-text-subtle); box-shadow: none; cursor: not-allowed; }
 .acme-help { font-size: var(--acme-text-xs); color: var(--acme-color-text-muted); margin: 0; }
 .acme-error {
   font-size: var(--acme-text-xs);
@@ -505,6 +532,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   background: var(--acme-color-surface-hover);
   color: var(--acme-color-text-muted);
 }
+.acme-status-icon { flex: none; }
 .acme-badge--success { background: var(--acme-color-success-soft); color: var(--acme-color-success-soft-text); border-color: var(--acme-color-success-border); }
 .acme-badge--warning { background: var(--acme-color-warning-soft); color: var(--acme-color-warning-soft-text); border-color: var(--acme-color-warning-border); }
 .acme-badge--danger  { background: var(--acme-color-danger-soft);  color: var(--acme-color-danger-soft-text);  border-color: var(--acme-color-danger-border); }
@@ -525,7 +553,8 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   font-size: var(--acme-text-sm);
   --acme-alert-icon: var(--acme-color-info);
 }
-.acme-alert > svg:first-child { color: var(--acme-alert-icon); flex: none; margin-block-start: 0.0625rem; }
+.acme-alert > svg:first-child,
+.acme-alert__icon { display: flex; color: var(--acme-alert-icon); flex: none; margin-block-start: 0.0625rem; }
 .acme-alert__title { font-weight: 600; margin-block-end: var(--acme-space-1); }
 .acme-alert p { margin: 0; }
 .acme-alert p + p { margin-block-start: var(--acme-space-1); color: var(--acme-color-text-muted); }

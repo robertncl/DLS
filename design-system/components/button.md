@@ -35,8 +35,10 @@ described in [spacing-layout](../foundations/spacing-layout.md#touch-targets).
 ## States
 
 Rest → hover (ink lightens to graphite-700; fills tint) → active (graphite-800)
-→ focus-visible (Blue ring, 2 px offset) → disabled (45% opacity, no shadow,
-`not-allowed` cursor). Labels are 14 px / 500 with snug tracking.
+→ focus-visible (Blue ring, 2 px offset; the ring follows the button's own
+radius) → disabled (`surface` fill, hairline edge, `text-subtle` label at
+4.9:1, no shadow, `not-allowed` cursor — readable, never a faded opacity).
+Labels are 14 px / 500 with snug tracking.
 Disabled buttons never show tooltips explaining why — put the reason in
 adjacent help text instead.
 
@@ -45,7 +47,8 @@ adjacent help text instead.
 - Verb-first, specific, sentence case: "Delete 12 products", "Track order".
 - Never "OK", "Yes", "Submit", or "Click here".
 - Icon + label preferred over icon-only; icon-only buttons require an
-  `aria-label`.
+  `aria-label` and take `.acme-btn--icon` (square, 32 px with `--sm`), like
+  the modal's close button.
 - **Danger buttons name the consequence.** "Delete 12 products", never
   "Confirm". A leading warning icon is optional — red is unambiguous now that
   the primary is ink.

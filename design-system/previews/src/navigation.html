@@ -43,12 +43,12 @@
 
     <p class="spec">Tabs — underline style; selected tab carries a 2 px ink indicator; counts sit in a quiet pill</p>
     <div class="acme-tabs" role="tablist" aria-label="Product sections">
-      <button class="acme-tab" role="tab" aria-selected="true" id="tab-1">Overview</button>
+      <button class="acme-tab" role="tab" aria-selected="true" id="tab-1" aria-controls="panel-1">Overview</button>
       <button class="acme-tab" role="tab" aria-selected="false" id="tab-2" tabindex="-1">Specs</button>
       <button class="acme-tab" role="tab" aria-selected="false" id="tab-3" tabindex="-1">Reviews<span class="acme-tab__count">128</span></button>
       <button class="acme-tab" role="tab" aria-selected="false" id="tab-4" tabindex="-1">Incidents<span class="acme-tab__count">3</span></button>
     </div>
-    <div role="tabpanel" aria-labelledby="tab-1" style="padding-block: var(--acme-space-4); font-size: var(--acme-text-sm); color: var(--acme-color-text-muted); max-inline-size: 60ch;">
+    <div role="tabpanel" id="panel-1" aria-labelledby="tab-1" style="padding-block: var(--acme-space-4); font-size: var(--acme-text-sm); color: var(--acme-color-text-muted); max-inline-size: 60ch;">
       Twin-turbine rocket skates with self-balancing gyros. Reaches highway
       speed in 3 seconds. Helmet sold separately, strongly implied.
     </div>

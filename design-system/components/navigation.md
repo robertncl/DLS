@@ -86,8 +86,12 @@ page (that's a link) and never trigger actions (that's a button).
   tab.
 - 2–6 tabs, one-word labels preferred. Counts go in a quiet pill:
   `Orders<span class="acme-tab__count">12</span>`.
-- Proper ARIA: `role="tablist"` / `role="tab"` / `aria-selected`, arrow-key
-  navigation between tabs.
+- Proper ARIA: `role="tablist"` / `role="tab"` / `aria-selected`, and each
+  tab's `aria-controls` names its `role="tabpanel"` (which points back with
+  `aria-labelledby`).
+- Roving tabindex: only the selected tab is in the tab order
+  (`tabindex="-1"` on the rest). Left/Right arrows move between tabs and wrap,
+  Home/End jump to the first/last, and moving selects the tab.
 - The first tab is selected by default — never render a tabless state.
 
 ## Breadcrumbs

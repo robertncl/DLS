@@ -167,6 +167,8 @@ def pairings():
     add('on-primary on primary-active', 'on-primary', 'primary-active', T_TEXT, 'active')
     add('on-primary on danger-emphasis', 'on-primary', 'danger-emphasis', T_TEXT, 'danger button')
     add('on-primary on danger-emphasis-hover', 'on-primary', 'danger-emphasis-hover', T_TEXT, 'hover')
+    # disabled controls stay readable: surface fill, subtle ink, no opacity
+    add('disabled label on surface', 'text-subtle', 'surface', T_TEXT, 'disabled button / input')
     # status
     for k in ('success', 'warning', 'danger', 'info'):
         add(f'{k} on canvas', k, 'canvas', T_TEXT, 'status text / icon')
