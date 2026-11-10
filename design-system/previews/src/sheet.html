@@ -1,0 +1,31 @@
+<!-- @dsCard name="Bottom sheet" group="Components" subtitle="Destructive confirm on a compact window — static rendering" width="390" height="560" -->
+<!doctype html>
+<html lang="en" class="acme-touch">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>ACME DLS — Bottom sheet</title>
+<!-- @acme:styles -->
+<style>
+body { min-block-size: 100vh; }
+</style>
+</head>
+<body>
+  <!-- Static rendering of the destructive-confirm pattern. In product code,
+       build on <dialog> + showModal(); see components/sheet.md -->
+  <div class="acme-sheet-backdrop">
+    <div class="acme-sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <div class="acme-sheet__handle" aria-hidden="true"></div>
+      <h2 class="acme-sheet__title" id="sheet-title">Cancel order #4416?</h2>
+      <div class="acme-sheet__body">
+        <p>This cancels 1 item and refunds $89.00 to your card. This can't be undone.</p>
+      </div>
+      <div class="acme-sheet__footer">
+        <button class="acme-btn acme-btn--danger acme-btn--lg acme-btn--block">Cancel order</button>
+        <button class="acme-btn acme-btn--secondary acme-btn--lg acme-btn--block">Keep order</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

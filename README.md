@@ -9,9 +9,12 @@ Everything lives in [design-system/](design-system/):
 - **Foundations** — color (a crisp Graphite page: ink primary, Blue interaction,
   status hues, Signal Red brand), typography (one grotesque, Inter), spacing, surfaces / shape &
   elevation, motion
+- **Platforms** — one system for web and mobile apps: pointer and touch
+  control densities, compact / medium / expanded window classes
 - **Tokens** — [tokens.json](design-system/tokens/tokens.json) (DTCG) and
   [acme.css](design-system/tokens/acme.css) (custom properties + component styles)
-- **Components** — button, forms, card, badge, alert, table, navigation, modal
+- **Components** — button, forms, card, badge, alert, table, list, navigation
+  (app bar, tab bar, tabs, breadcrumbs), modal, bottom sheet
 - **Patterns** — presentation deck (16:9 slide masters) and report document
   (long-form editorial styles)
 - **Previews** — self-contained HTML pages with `@dsCard` markers, one card

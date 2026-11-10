@@ -8,7 +8,7 @@
 <title>ACME DLS — Color</title>
 <style>
 /* ==========================================================================
-   ACME Corp Design Language — acme.css  (v5.1.0)
+   ACME Corp Design Language — acme.css  (v6.0.0)
    Single stylesheet: design tokens + base styles + core components.
    ACME Corp is a fictional company; this file is a fixture for testing
    design tooling. Canonical token data lives in tokens.json.
@@ -111,6 +111,21 @@
   --acme-space-20: 5rem;
   --acme-space-24: 6rem;
 
+  /* Sizing — control heights and the minimum touch target. These are the
+     pointer values; touch density (after :root) raises them. */
+  --acme-control-sm: 2rem;
+  --acme-control-md: 2.5rem;
+  --acme-control-lg: 3rem;
+  --acme-touch-target: 2.75rem;
+  --acme-hit-min: 0px;
+  --acme-input-text: var(--acme-text-sm);
+
+  /* Layout — the page gutter for the compact window class (medium and
+     expanded step it up after :root), and the device safe areas. */
+  --acme-gutter: var(--acme-space-4);
+  --acme-safe-top: env(safe-area-inset-top, 0px);
+  --acme-safe-bottom: env(safe-area-inset-bottom, 0px);
+
   /* Shape — crisp, product-grade radii; pills only for switches */
   --acme-radius-sm: 4px;
   --acme-radius-md: 6px;
@@ -186,6 +201,32 @@
 
   /* Checked controls take the interaction blue. */
   accent-color: var(--acme-color-selected);
+}
+
+/* Window classes — compact below 640px (phones), medium 640–1023px
+   (tablets, small windows), expanded from 1024px. Only the gutter and the
+   primary navigation change between them. */
+@media (min-width: 640px)  { :root { --acme-gutter: var(--acme-space-6); } }
+@media (min-width: 1024px) { :root { --acme-gutter: var(--acme-space-8); } }
+
+/* Touch density — a thumb needs a bigger target than a pointer. Applied
+   automatically on coarse pointers; add .acme-touch to opt in where the
+   media query can't tell (native webviews, previews). Small controls rise to
+   the 44px minimum, the default control to 48px, choice and switch rows to
+   44px, and inputs to 16px text so mobile browsers don't zoom on focus. */
+@media (pointer: coarse) {
+  :root {
+    --acme-control-sm: var(--acme-touch-target);
+    --acme-control-md: 3rem;
+    --acme-hit-min: var(--acme-touch-target);
+    --acme-input-text: var(--acme-text-md);
+  }
+}
+.acme-touch {
+  --acme-control-sm: var(--acme-touch-target);
+  --acme-control-md: 3rem;
+  --acme-hit-min: var(--acme-touch-target);
+  --acme-input-text: var(--acme-text-md);
 }
 
 /* --------------------------------------------------------------------------
@@ -296,7 +337,7 @@ code, pre {
   align-items: center;
   justify-content: center;
   gap: var(--acme-space-2);
-  min-height: 2.5rem;
+  min-height: var(--acme-control-md);
   padding: 0 var(--acme-space-4);
   border: 1px solid transparent;
   border-radius: var(--acme-radius-md);
@@ -337,9 +378,13 @@ code, pre {
   box-shadow: var(--acme-shadow-sm);
 }
 .acme-btn--danger:hover { background: var(--acme-color-danger-emphasis-hover); }
-.acme-btn--sm { min-height: 2rem; padding: 0 var(--acme-space-3); font-size: var(--acme-text-xs); }
-.acme-btn--lg { min-height: 3rem; padding: 0 var(--acme-space-5); font-size: var(--acme-text-md); }
-.acme-btn--icon { inline-size: 2rem; padding: 0; }
+.acme-btn--sm { min-height: var(--acme-control-sm); padding: 0 var(--acme-space-3); font-size: var(--acme-text-xs); }
+.acme-btn--lg { min-height: var(--acme-control-lg); padding: 0 var(--acme-space-5); font-size: var(--acme-text-md); }
+/* Full-width: the primary action at the foot of a phone screen or sheet. */
+.acme-btn--block { display: flex; inline-size: 100%; }
+/* Icon-only: square at the control height; always carries an aria-label. */
+.acme-btn--icon { padding: 0; min-inline-size: var(--acme-control-md); }
+.acme-btn--icon.acme-btn--sm { min-inline-size: var(--acme-control-sm); }
 /* Disabled: readable, not faded — surface fill, subtle ink (4.9:1), no shadow. */
 .acme-btn:disabled,
 .acme-btn:disabled:hover,
@@ -364,11 +409,11 @@ code, pre {
   color: var(--acme-color-text-subtle);
 }
 .acme-input {
-  min-height: 2.5rem;
+  min-height: var(--acme-control-md);
   padding: 0 var(--acme-space-3);
   border: 1px solid var(--acme-color-border-strong);
   border-radius: var(--acme-radius-md);
-  font: 400 var(--acme-text-sm) / var(--acme-leading-normal) var(--acme-font-sans);
+  font: 400 var(--acme-input-text) / var(--acme-leading-normal) var(--acme-font-sans);
   color: var(--acme-color-text);
   background: var(--acme-color-surface-raised);
   box-shadow: var(--acme-shadow-sm);
@@ -391,6 +436,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   display: flex;
   align-items: flex-start;
   gap: var(--acme-space-2);
+  min-block-size: var(--acme-hit-min);
   font-size: var(--acme-text-sm);
 }
 .acme-choice input {
@@ -404,6 +450,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   display: inline-flex;
   align-items: center;
   gap: var(--acme-space-2);
+  min-block-size: var(--acme-hit-min);
   font-size: var(--acme-text-sm);
 }
 .acme-switch input {
@@ -609,7 +656,7 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   align-items: center;
   gap: var(--acme-space-6);
   min-block-size: 3.5rem;
-  padding: var(--acme-space-2) var(--acme-space-5);
+  padding: calc(var(--acme-space-2) + var(--acme-safe-top)) var(--acme-gutter) var(--acme-space-2);
   background: var(--acme-color-canvas);
   border-block-end: 1px solid var(--acme-color-border);
   color: var(--acme-color-text);
@@ -631,6 +678,17 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
 .acme-topbar__link[aria-current="page"] {
   background: var(--acme-color-surface-hover);
   color: var(--acme-color-text);
+}
+/* Screen title for pushed screens on compact windows (back link + title). */
+.acme-topbar__title {
+  font-size: var(--acme-text-md);
+  font-weight: 600;
+  letter-spacing: var(--acme-tracking-snug);
+}
+/* Compact windows: destinations move to the tab bar (section 15). */
+@media (max-width: 639.98px) {
+  .acme-topbar { gap: var(--acme-space-2); }
+  .acme-topbar__nav { display: none; }
 }
 
 .acme-breadcrumbs {
@@ -906,6 +964,133 @@ textarea.acme-input { padding: var(--acme-space-2) var(--acme-space-3); min-heig
   * { box-shadow: none !important; }
   .acme-figure, .acme-callout, .acme-card, table { break-inside: avoid; }
   .acme-doc { max-inline-size: none; }
+}
+
+/* --------------------------------------------------------------------------
+   15. Tab bar
+   Primary navigation on compact windows: the top bar's destinations, at the
+   bottom edge where a thumb reaches. Hidden from 640px, where the top bar
+   shows them instead — one markup serves both.
+   -------------------------------------------------------------------------- */
+.acme-tabbar {
+  position: sticky;
+  inset-block-end: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  padding-block-end: var(--acme-safe-bottom);
+  background: var(--acme-color-canvas);
+  border-block-start: 1px solid var(--acme-color-border);
+}
+.acme-tabbar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--acme-space-1);
+  min-block-size: 3.5rem;
+  color: var(--acme-color-text-muted);
+  font-size: var(--acme-text-xs);
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: inset 0 2px 0 transparent;
+  transition: color var(--acme-duration-base) var(--acme-ease-out);
+}
+.acme-tabbar__item svg { inline-size: 1.5rem; block-size: 1.5rem; flex: none; }
+.acme-tabbar__item:hover { color: var(--acme-color-text); }
+.acme-tabbar__item[aria-current="page"] {
+  color: var(--acme-color-text);
+  box-shadow: inset 0 2px 0 var(--acme-color-text);
+}
+@media (min-width: 640px) { .acme-tabbar { display: none; } }
+
+/* --------------------------------------------------------------------------
+   16. List
+   The compact-window form of a table: one row per record, 64px minimum,
+   the whole row one target.
+   -------------------------------------------------------------------------- */
+.acme-list { list-style: none; margin: 0; padding: 0; }
+.acme-list__row {
+  display: flex;
+  align-items: center;
+  gap: var(--acme-space-3);
+  min-block-size: 4rem;
+  padding: var(--acme-space-2) var(--acme-gutter);
+  border-block-end: 1px solid var(--acme-color-border);
+  color: var(--acme-color-text);
+  text-decoration: none;
+  transition: background-color var(--acme-duration-fast) var(--acme-ease-out);
+}
+:is(a, button).acme-list__row:hover { background: var(--acme-color-surface); color: var(--acme-color-text); }
+.acme-list__body { display: grid; flex: 1; min-inline-size: 0; }
+.acme-list__title { font-size: var(--acme-text-md); font-weight: 500; }
+.acme-list__meta { font-size: var(--acme-text-sm); color: var(--acme-color-text-muted); }
+.acme-list__value { font-size: var(--acme-text-md); font-variant-numeric: tabular-nums; }
+.acme-list__chevron { flex: none; inline-size: 1.25rem; block-size: 1.25rem; color: var(--acme-color-text-subtle); }
+/* Inset: a bordered group inside a padded page (order items, settings). */
+.acme-list--inset {
+  border: 1px solid var(--acme-color-border);
+  border-radius: var(--acme-radius-lg);
+  background: var(--acme-color-surface-raised);
+  box-shadow: var(--acme-shadow-sm);
+  overflow: hidden;
+}
+.acme-list--inset .acme-list__row { padding-inline: var(--acme-space-4); }
+.acme-list--inset > :last-child > .acme-list__row,
+.acme-list--inset > .acme-list__row:last-child { border-block-end: 0; }
+
+/* --------------------------------------------------------------------------
+   17. Bottom sheet
+   The compact-window form of a modal: rises from the bottom edge, actions
+   stacked full-width. From 640px it centres and reads as a modal.
+   -------------------------------------------------------------------------- */
+.acme-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  align-items: end;
+  background: rgb(11 13 16 / 0.45);
+}
+.acme-sheet {
+  inline-size: 100%;
+  max-block-size: 90dvh;
+  overflow: auto;
+  padding-block-end: var(--acme-safe-bottom);
+  border: 1px solid var(--acme-color-border);
+  border-block-end: 0;
+  border-radius: var(--acme-radius-xl) var(--acme-radius-xl) 0 0;
+  background: var(--acme-color-surface-raised);
+  box-shadow: var(--acme-shadow-lg);
+}
+.acme-sheet__handle {
+  inline-size: 2.25rem;
+  block-size: 4px;
+  margin: var(--acme-space-2) auto 0;
+  border-radius: var(--acme-radius-full);
+  background: var(--acme-color-border-control);
+}
+.acme-sheet__title { font-size: var(--acme-text-lg); margin: 0; padding: var(--acme-space-3) var(--acme-space-4) 0; }
+.acme-sheet__body { padding: var(--acme-space-1) var(--acme-space-4) var(--acme-space-4); color: var(--acme-color-text-muted); font-size: var(--acme-text-sm); }
+.acme-sheet__body p:last-child { margin: 0; }
+.acme-sheet__footer {
+  display: grid;
+  gap: var(--acme-space-2);
+  padding: var(--acme-space-4);
+  border-block-start: 1px solid var(--acme-color-border);
+  background: var(--acme-color-surface);
+}
+@media (min-width: 640px) {
+  .acme-sheet-backdrop { place-items: center; padding: var(--acme-space-5); }
+  .acme-sheet {
+    inline-size: min(28rem, 100%);
+    padding-block-end: 0;
+    border-block-end: 1px solid var(--acme-color-border);
+    border-radius: var(--acme-radius-xl);
+  }
+  .acme-sheet__handle { display: none; }
+  .acme-sheet__title { padding: var(--acme-space-5) var(--acme-space-6) 0; }
+  .acme-sheet__body { padding: var(--acme-space-2) var(--acme-space-6) var(--acme-space-5); }
+  .acme-sheet__footer { grid-auto-flow: column; justify-content: end; padding: var(--acme-space-4) var(--acme-space-6); }
 }
 </style>
 <style>
