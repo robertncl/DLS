@@ -25,19 +25,33 @@ sections (48).
 
 ## Layout
 
-- **Container:** content max-width 1200 px, centered, with `--acme-space-5`
-  side gutters (`--acme-space-8` at ≥ lg).
+- **Container:** content max-width 1200 px, centered, with `--acme-gutter`
+  side gutters: 16 px on compact windows, 24 px on medium, 32 px on expanded.
 - **Grid:** 12 columns, `--acme-space-6` gutters. Cards snap to 3/4/6/12
   columns.
 - **Prose:** long-form text capped at `65ch` regardless of container width.
+
+## Window classes
+
+Layouts are designed for three window classes, not for devices. The same
+classes apply to web and to native apps (see [platforms](platforms.md)).
+
+| Class | Width | Gutter | Primary navigation | Collections |
+| --- | --- | --- | --- | --- |
+| Compact | below 640 px | 16 px | Tab bar (bottom) | List rows |
+| Medium | 640–1023 px | 24 px | Top bar | Table |
+| Expanded | from 1024 px | 32 px | Top bar | Table |
+
+`--acme-gutter` resolves to the right value for the current class; use it for
+page-edge padding instead of a fixed spacing token.
 
 ## Breakpoints
 
 | Token | Min width | Notes |
 | --- | --- | --- |
-| `sm` | 640 px | Stacked → 2-up cards |
+| `sm` | 640 px | Compact → medium. Stacked → 2-up cards; tab bar gives way to the top bar |
 | `md` | 768 px | Sidebars appear |
-| `lg` | 1024 px | Full grid, persistent nav |
+| `lg` | 1024 px | Medium → expanded. Full grid, persistent nav |
 | `xl` | 1280 px | Container reaches max width |
 
 Design mobile-first; breakpoints add columns, never rearrange meaning. Prefer
@@ -47,6 +61,22 @@ than the viewport.
 
 ## Touch targets
 
-Interactive elements are at least **40×40 px** (`min-height: 2.5rem` on
-buttons and inputs); small buttons (32 px) are for dense toolbars only and
-must keep 8 px of surrounding clearance.
+Controls come in two densities, driven by the `--acme-control-*` tokens:
+
+| Token | Pointer | Touch |
+| --- | --- | --- |
+| `--acme-control-sm` | 32 px | 44 px |
+| `--acme-control-md` (default) | 40 px | 48 px |
+| `--acme-control-lg` | 48 px | 48 px |
+| `--acme-touch-target` | — | 44 px minimum for anything tappable |
+
+**Pointer density** is the default. Small buttons (32 px) are for dense
+toolbars only and must keep 8 px of surrounding clearance.
+
+**Touch density** applies automatically on coarse pointers
+(`@media (pointer: coarse)`); add `.acme-touch` to a root element to opt in
+where the media query can't tell (native webviews, previews). Under touch
+density nothing tappable is smaller than 44×44 px, choice and switch rows
+grow to 44 px, and inputs set 16 px text so mobile browsers don't zoom on
+focus. Never hard-code a control height — use the tokens so both densities
+keep working.

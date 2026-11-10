@@ -7,6 +7,9 @@ A modal interrupts. It earns that interruption only for: confirming
 destructive actions, short focused tasks (rename, share), and blocking errors.
 Anything with more than ~4 fields or its own scrollbar should be a page.
 
+On compact windows use a [bottom sheet](sheet.md) instead — same rules, same
+copy, reachable by thumb.
+
 ## Anatomy
 
 - Backdrop: a plain `rgb(11 13 16 / 0.45)` graphite scrim — the page dims, no blur.

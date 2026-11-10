@@ -27,6 +27,26 @@ template, the token list format the Design System page edits, and JetBrains Mono
 [github.md](github.md), along with the component-level a11y fixes (disabled
 states, status icons, focus handling) that `design-system/` does not have yet.
 
+## Upstream drift since the pull
+
+`design-system/` moved to **v6.0.0** (web + mobile) after this pull; the
+mirror and the artifact are still v5.0.0. Not yet in Claude Design:
+
+- Tokens: `--acme-control-sm/md/lg`, `--acme-touch-target`, `--acme-hit-min`,
+  `--acme-input-text`, `--acme-gutter`, `--acme-safe-top/-bottom`; touch
+  density (`@media (pointer: coarse)` / `.acme-touch`); the compact / medium /
+  expanded window classes.
+- Components: tab bar (`.acme-tabbar`), list (`.acme-list`), bottom sheet
+  (`.acme-sheet`), `.acme-btn--block`, `.acme-topbar__title`; buttons, inputs,
+  choices and switches read the control tokens; the top bar uses
+  `--acme-gutter` and drops its destinations below 640 px.
+- Docs: `foundations/platforms.md`, `components/list.md`,
+  `components/sheet.md`; previews `mobile.html` and `sheet.html`.
+
+Push these to the artifact (its `bundle.css`, three new React components, the
+token list), then re-pull here. The mirror's files were left untouched so it
+still matches the artifact byte for byte.
+
 ## What was copied
 
 Verbatim from the artifact: `README.md`, `github.md`, `design-system.json`,

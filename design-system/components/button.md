@@ -19,9 +19,18 @@ the `:active` color step — buttons never scale or bounce.
 
 | Size | Class | Height | Use |
 | --- | --- | --- | --- |
-| Small | `.acme-btn--sm` | 32 px | Dense toolbars, table rows only |
-| Medium | *(default)* | 40 px | Everything |
-| Large | `.acme-btn--lg` | 48 px | Marketing, checkout, mobile-first flows |
+| Small | `.acme-btn--sm` | 32 px (44 px touch) | Dense toolbars, table rows only |
+| Medium | *(default)* | 40 px (48 px touch) | Everything |
+| Large | `.acme-btn--lg` | 48 px | Marketing, checkout, the foot of a phone screen |
+
+Heights come from `--acme-control-sm/md/lg`, so they follow the touch density
+described in [spacing-layout](../foundations/spacing-layout.md#touch-targets).
+
+- **Block** (`.acme-btn--block`): full width. Use for the primary action at
+  the foot of a compact screen or inside a [bottom sheet](sheet.md); never in
+  a toolbar or table row.
+- **Icon-only** (`.acme-btn--icon`): square at the control height. Always
+  carries an `aria-label`.
 
 ## States
 

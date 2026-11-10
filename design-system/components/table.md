@@ -5,6 +5,11 @@ Class: `.acme-table` · Preview: [previews/table.html](../previews/table.html)
 Tables are ACME's workhorse for catalog and order data. Semantic `<table>`
 markup only — no div grids.
 
+On compact windows (below 640 px) a table with more than three columns
+becomes a [list](list.md): one row per record, the key column as the title.
+Never shrink the type or let the page scroll sideways; if the table must stay
+a table, scroll it inside its own `overflow-x: auto` box.
+
 ## Anatomy
 
 - **Header row:** a recessed `--acme-color-surface` band between hairlines;

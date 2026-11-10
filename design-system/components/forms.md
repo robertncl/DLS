@@ -23,7 +23,8 @@ Classes: `.acme-field`, `.acme-label`, `.acme-input`, `.acme-help`,
 
 ## Text inputs & selects
 
-- 40 px min height, `--acme-radius-md` (6 px, shared with buttons),
+- 40 px min height (48 px and 16 px text under touch density — see
+  [spacing-layout](../foundations/spacing-layout.md#touch-targets)), `--acme-radius-md` (6 px, shared with buttons),
   `--acme-color-border-strong` border (≥ 3:1) on `--acme-color-surface-raised`,
   resting `--acme-shadow-sm`.
 - `<select>` and `<textarea>` share `.acme-input`.
